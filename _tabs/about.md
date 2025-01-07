@@ -6,3 +6,9 @@ order: 5
 
 > Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
 {: .prompt-tip }
+
+
+I am an software enthusistic with jist to learn architecture, design and technologies. I prefer to explore new technologies and give my point of view on them.
+I also write about some of ym reference implementation projects.
+
+<a href="https://stackoverflow.com/users/6786088/pravin-chandankhede"><img src="https://stackoverflow.com/users/flair/6786088.png" width="208" height="58" alt="profile for Pravin Chandankhede at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Pravin Chandankhede at Stack Overflow, Q&amp;A for professional and enthusiast programmers"></a>
