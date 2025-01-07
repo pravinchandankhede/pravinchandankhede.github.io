@@ -35,7 +35,7 @@ social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: Pravin Chandankhede
-  email: pravinchandankhede@hotmailc.om.com # change to your email address
+  email: pravinchandankhede@hotmail.ccom # change to your email address
   links:
     # The first element serves as the copyright owner's link
     # - https://twitter.com/username # change to your Twitter homepage
@@ -61,7 +61,7 @@ analytics:
   google:
     id: # fill in your Google Analytics ID
   goatcounter:
-    id: # fill in your GoatCounter ID
+    id: pravinchandankhede # fill in your GoatCounter ID
   umami:
     id: # fill in your Umami ID
     domain: # fill in your Umami domain
@@ -119,10 +119,10 @@ comments:
     issue_term: # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo: # <gh-username>/<repo>
-    repo_id:
-    category:
-    category_id:
+    repo: pravinchandankhede/pravinchandankhede.github.io # <gh-username>/<repo>
+    repo_id: R_kgDONm51hA
+    category: Blog Post Comments
+    category_id: DIC_kwDONm51hM4ClzyC
     mapping: # optional, default to 'pathname'
     strict: # optional, default to '0'
     input_position: # optional, default to 'bottom'
