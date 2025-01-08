@@ -1,7 +1,11 @@
 ---
-title: Rate Limiter
-date: 2025-01-06 10:30:30 +/-TTTT
-categories: [Architecture, API]
-tags: [rate limit, .net9, middleware]     # TAG names should always be lowercase
-description: This post highlights the usage of Rate Limiter middleware available in .NET 9
+title: Cache in Angular
+date: 2024-11-10 10:30:30 +/-TTTT
+categories: [Architecture, Angular, Caching]
+tags: [angular, cache, services]     # TAG names should always be lowercase
+description: This post explains the importance of caching in Angular and how to use it effectively.
 ---
+
+# Cache in Angular
+
+## Importance of Caching
