@@ -119,10 +119,10 @@ comments:
     issue_term: # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo: pravinchandankhede/pravinchandankhede.github.io # <gh-username>/<repo>
-    repo_id: R_kgDONm51hA
-    category: Blog Post Comments
-    category_id: DIC_kwDONm51hM4ClzyC
+    repo: "pravinchandankhede/pravinchandankhede.github.io" # <gh-username>/<repo>
+    repo_id: "R_kgDONm51hA"
+    category: "Blog Post Comments"
+    category_id: "DIC_kwDONm51hM4ClzyC"
     mapping: # optional, default to 'pathname'
     strict: # optional, default to '0'
     input_position: # optional, default to 'bottom'
