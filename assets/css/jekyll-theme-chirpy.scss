@@ -7,30 +7,6 @@
 }
 
 /* append your custom style below */
-#avatar {
-  display: block;
-  width: 6.5rem;
-  height: 6.5rem;
-  overflow: hidden;
-  box-shadow: var(--avatar-border-color) 0 0 0 2px;
-  transform: translateZ(0); /* fixed the zoom in Safari */
-  border-radius: 0; /* Removes the circular shape */
-
-  @include bp.sm {
-    width: 7rem;
-    height: 7rem;
-  }
-
-  img {
-    transition: transform 0.5s;
-    border-radius: 0; /* Removes the circular shape */
-
-    &:hover {
-      transform: scale(1.2);
-    }
-  }
-}
-
 
 #avatar .rounded-circle {
   border-radius: 0;
