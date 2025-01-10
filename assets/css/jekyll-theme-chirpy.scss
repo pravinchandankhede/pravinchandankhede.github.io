@@ -12,8 +12,8 @@
   border-radius: 0;
 }*/
 
-#sidebar #profile-wrapper .rounded-circle {
-  border-radius: 0;
+#sidebar .profile-wrapper .rounded-circle {
+  border-radius: 0 !important;
 }
 
 #sidebar #avatar {
