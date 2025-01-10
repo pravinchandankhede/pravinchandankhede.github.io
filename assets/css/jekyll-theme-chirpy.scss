@@ -14,6 +14,7 @@
   overflow: hidden;
   box-shadow: var(--avatar-border-color) 0 0 0 2px;
   transform: translateZ(0); /* fixed the zoom in Safari */
+  border-radius: 0; /* Removes the circular shape */
 
   @include bp.sm {
     width: 7rem;
