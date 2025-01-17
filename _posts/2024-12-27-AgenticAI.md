@@ -1,6 +1,6 @@
 ---
 title: Agentic AI
-date: 2025-01-07 10:30:30 +/-TTTT
+date: 2024-12-27 10:30:30 +/-TTTT
 categories: [Architecture, AgenticAI]
 tags: [agenticai, ai, semantic kernel, llm]     # TAG names should always be lowercase
 description: This post highlights the benefits of Semantic Kernel and use of Agentic AI using LLMs
