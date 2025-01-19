@@ -3,6 +3,25 @@
 @if jekyll.environment == 'production' {
   .bundle {
     // Your production-specific styles here
+    #sidebar .profile-wrapper .rounded-circle {
+    border-radius: 0 !important;
+    }
+
+    #sidebar #avatar {
+      border-radius: 0 !important;
+    }
+
+    #sidebar #avatar .rounded-circle {
+      border-radius: 0 !important;
+    }
+
+    #sidebar .profile-wrapper #avatar .rounded-circle {
+      border-radius: 0 !important;
+    }
+
+    body {
+      background-color: red; /* Replace with your desired color */
+    }
   }
 }
 
