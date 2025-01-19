@@ -1,0 +1,31 @@
+@use 'main';
+
+@if jekyll.environment == 'production' {
+  .bundle 
+}
+
+/* append your custom style below */
+
+/*#avatar .rounded-circle {
+  border-radius: 0;
+}*/
+
+#sidebar .profile-wrapper .rounded-circle {
+  border-radius: 0 !important;
+}
+
+#sidebar #avatar {
+  border-radius: 0 !important;
+}
+
+#sidebar #avatar .rounded-circle {
+  border-radius: 0 !important;
+}
+
+#sidebar .profile-wrapper #avatar .rounded-circle {
+  border-radius: 0 !important;
+}
+
+body {
+    background-color: red; /* Replace with your desired color */
+}
