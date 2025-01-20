@@ -1,8 +1,8 @@
 ---
 title: Cache in Angular
 date: 2023-11-10 10:30:30 +/-TTTT
-categories: [Architecture, Angular, Caching]
-tags: [angular, cache, services]     # TAG names should always be lowercase
+categories: [Architecture, Angular, Caching, PWA]
+tags: [angular, cache, services, pwa, client, server, in-memory, interceptor]     # TAG names should always be lowercase
 description: This post explains the importance of caching in Angular and how to use it effectively.
 ---
 
@@ -11,8 +11,8 @@ In the world of web development, performance is key. Users expect fast, responsi
 
 In this blog post, I will explain about various caching strategies in Angular, using a portfolio application for a fictional firm called "Fast Investments." This application includes modules for banking, stocks, and mutual funds.
 
-> This sample application builds on the code developed in the previous blog post on Angular Modules. If you haven't read that post, you can find it here: [Angular Modules](https://pravinchandankhede.github.io/posts/AngularModules/).
-{: .notice--info}
+> **Info** This sample application builds on the code developed in the previous blog post on Angular Modules. If you haven't read that post, you can find it here: [Angular Modules](https://pravinchandankhede.github.io/posts/AngularModules/).
+{: .prompt-info }
 
 
 ## Importance of Caching
@@ -33,31 +33,31 @@ Caching is the process of storing data locally to reduce the need for repeated n
 
 ### Types of Caching
 
-#### Client-side caching
+#### 1. Client-side caching
 This involves storing data on the client-side using mechanisms like local storage, session storage, or in-memory storage.
 
-#### Server-side caching
+#### 2. Server-side caching
 This involves storing data on the server to reduce the load on the backend and improve response times.
 
 ### Caching Strategies
 
-#### Cache-first strategy
+#### 1. Cache-first strategy
 This strategy attempts to retrieve data from the cache first, and only makes a network request if the data is not available.
 
-#### Network-first strategy
+#### 2. Network-first strategy
 This strategy always makes a network request first, and falls back to the cache if the network request fails.
 
 ## Client-side Caching
 
 ### Using Angular Service Worker for Caching
-Angular Service Worker can be used to cache static assets and API responses. Let's set it up:
+Angular Service Worker can be used to cache static assets and API responses. This approach enables your app to be a PWA for which you need to install the required package. Once package is installed, then provide the configuration for items you want to cache as part of PWA.
 
-Install the Angular PWA package:
+ 1. Install the Angular PWA package:
 
 ```bash
 ng add @angular/pwa
 ```
-The ngsw-config.json file is used to configure the Angular Service Worker, which helps in caching static assets and API responses to improve the performance and offline capabilities of Angular application.
+ 2. The ngsw-config.json file is used to configure the Angular Service Worker, which helps in caching static assets and API responses to improve the performance and offline capabilities of Angular application.
 Configure the service worker in ngsw-config.json:
 
 ```json
@@ -92,7 +92,8 @@ Configure the service worker in ngsw-config.json:
 ```
 
 ### Implementing HttpInterceptor for Caching
-An HttpInterceptor can be used to cache HTTP requests. Here's an example:
+An HttpInterceptor can be used to cache HTTP requests. In this caching, we create an interceptor which gets invoke for each API call being done from application. This gives us an opputurnity to implement the technique to first read from cache. If data is present in cache it is returned else it allows the netwrok call and subsequently caches the data for later use.
+Here's an example:
 
 ```typescript
 import { Injectable } from '@angular/core';
