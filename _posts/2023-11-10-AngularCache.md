@@ -327,10 +327,11 @@ export class StocksService {
 }
 ```
 
-Caching in Mutual Fund Module
+## Caching in Mutual Fund Module
 Implementing Caching for Mutual Fund Data
 Here's an example service for caching mutual fund data using in-memory storage:
 
+```typescript
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
@@ -359,15 +360,22 @@ export class MutualFundService {
     );
   }
 }
-Advanced Caching Techniques
-Using IndexedDB for Local Database Caching
+```
+
+## Advanced Caching Techniques
+
+### Using IndexedDB for Local Database Caching
 IndexedDB is a low-level API for storing large amounts of structured data, including files and blobs. Here's an example service for caching data using IndexedDB:
 
 Install the idb package:
 
+```bash
 npm install idb
+```
+
 Create an IndexedDB service:
 
+```typescript
 import { Injectable } from '@angular/core';
 import { openDB, DBSchema, IDBPDatabase } from 'idb';
 
@@ -417,8 +425,11 @@ export class IndexedDBService {
     return db.getAllKeys('keyval');
   }
 }
+```
+
 Use the IndexedDB service in a component or another service:
 
+```typescript
 import { Component, OnInit } from '@angular/core';
 import { IndexedDBService } from './indexed-db.service';
 
@@ -435,18 +446,25 @@ export class IndexedDBExampleComponent implements OnInit {
     console.log('IndexedDB value:', value);
   }
 }
-Service-side Caching Options
+```
+
+### Service-side Caching Options
 Service-side caching can be implemented using various techniques and tools. Here are a few options:
 
-Redis: An in-memory data structure store that can be used as a database, cache, and message broker.
-Memcached: A distributed memory caching system that can be used to speed up dynamic web applications by alleviating database load.
-HTTP Caching: Using HTTP headers like Cache-Control, ETag, and Last-Modified to control caching behavior on the server side.
+ - **Redis**: An in-memory data structure store that can be used as a database, cache, and message broker.
+ - **Memcached**: A distributed memory caching system that can be used to speed up dynamic web applications by alleviating database load.
+ - **HTTP Caching**: Using HTTP headers like Cache-Control, ETag, and Last-Modified to control caching behavior on the server side.
+
 Example: Implementing Redis Caching
 Install Redis and the redis package:
 
+```bash
 npm install redis
+```
+
 Create a Redis service:
 
+```typescript
 import { Injectable } from '@nestjs/common';
 import { createClient } from 'redis';
 
@@ -476,8 +494,11 @@ export class RedisService {
     await this.client.flushAll();
   }
 }
+```
+
 Use the Redis service in a controller or another service:
 
+```typescript
 import { Controller, Get, Param } from '@nestjs/common';
 import { RedisService } from './redis.service';
 
@@ -490,7 +511,11 @@ export class CacheController {
     return this.redisService.get(key);
   }
 }
-Conclusion
-In this blog post, we've explored various caching strategies in Angular, using a portfolio application for a "Fast Investments" firm as an example. We covered client-side caching techniques such as using Angular Service Worker, HttpInterceptor, local storage, session storage, and in-memory storage. We also discussed server-side caching with Angular Universal and advanced caching techniques using IndexedDB and Redis.
+```
 
-By implementing these caching strategies, you can significantly improve the performance and user experience of your Angular applications. Caching reduces the need for repeated network requests, leading to faster load times and a more responsive application.
+## Conclusion
+In this blog post, I tried to provide you with various caching strategies in Angular, using a portfolio application for a "Fast Investments" firm as an example. We covered client-side caching techniques such as using Angular Service Worker, HttpInterceptor, local storage, session storage, and in-memory storage. We also discussed server-side caching with Angular Universal and advanced caching techniques using IndexedDB and Redis.
+
+By implementing these caching strategies, you can significantly improve the performance and user experience of Angular applications. 
+
+I hope you found this post helpful and informative. If you have any questions or feedback, feel free to leave a comment below.
