@@ -2,7 +2,7 @@
 title: Angular Modules
 date: 2023-11-06 10:30:30 +/-TTTT
 categories: [Architecture, Frontend, Modular Designs]
-tags: [angular, modules, components, elements]     # TAG names should always be lowercase
+tags: [angular, modules, components, elements, lazy loading]     # TAG names should always be lowercase
 description: In this post, I will discuss the importance of Angular Modules and how to use them effectively.
 ---
 
@@ -728,7 +728,7 @@ Once the dependencies are installed you can run the app by using below command
 ng serve -o
 ```
 
-This will open a new tab in browser and you can navigate between different modules. If you notice from network tab, you would observe that only the needed modules are loaded. This results in faster loading of application and avoid unnecessary downloads to user machine.
+This will open a new tab in browser and you can navigate between different modules. If you notice from network tab, you would observe that only the needed modules are loaded. This results in faster loading of application and avoid unnecessary downloads to user machine. This lazy loading helps in making the application perform well.
 
 ## Source Code
 
