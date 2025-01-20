@@ -6,7 +6,7 @@ tags: [angular, modules, components, elements]     # TAG names should always be 
 description: In this post, I will discuss the importance of Angular Modules and how to use them effectively.
 ---
 
-# Exploring Angular Modules
+# Angular Modules
 
 ## Introduction
 Angular modules are a powerful feature that allows developers to organize and manage their code efficiently. In this article, we will explore various use cases of Angular modules through a fictitious company named "Fast Investment." We will create a project with modules for banking, mutual funds, and stocks, and provide code samples to illustrate their usage.
@@ -52,25 +52,31 @@ We will create an `AccountSummaryComponent` to display the user's account summar
 ng generate component banking/account-summary
 ```
 
-**account-summary.component.ts**
+Here is the final **account-summary.component.ts**
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
-import { LoggerService } from '../core/logger.service';
+import { LoggerService } from '../../core/logger.service';
+import { CachingService } from '../../core/caching.service';
 
 @Component({
-  selector: 'app-account-summary',
-  templateUrl: './account-summary.component.html',
-  styleUrls: ['./account-summary.component.css']
+    selector: 'app-account-summary',
+    templateUrl: './account-summary.component.html',
+    styleUrls: ['./account-summary.component.css'],
+    standalone: false,
 })
 export class AccountSummaryComponent implements OnInit {
-  accountBalance: number = 5000;
+    accountBalance: number = 5000;
 
-  constructor(private logger: LoggerService) { }
+    constructor(private logger: LoggerService,
+                private cache: CachingService) {
+    }
 
-  ngOnInit(): void {
-    this.logger.log('AccountSummaryComponent initialized');
-  }
+    ngOnInit(): void {
+        this.cache.set('accountBalance', this.accountBalance);
+        const cachedBalance = this.cache.get('accountBalance');
+        this.logger.log('Cached Account Balance:' + cachedBalance);        
+    }
 }
 ```
 
@@ -94,23 +100,31 @@ ng generate component banking/transaction-history
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
+import { LoggerService } from '../../core/logger.service';
+import { CachingService } from '../../core/caching.service';
 
 @Component({
-  selector: 'app-transaction-history',
-  templateUrl: './transaction-history.component.html',
-  styleUrls: ['./transaction-history.component.css']
+    selector: 'app-transaction-history',
+    templateUrl: './transaction-history.component.html',
+    styleUrls: ['./transaction-history.component.css'],
+    standalone: false,
 })
 export class TransactionHistoryComponent implements OnInit {
-  transactions = [
-    { date: '2025-01-01', amount: -100, description: 'Grocery Shopping' },
-    { date: '2025-01-05', amount: 2000, description: 'Salary' },
-    { date: '2025-01-10', amount: -50, description: 'Electricity Bill' }
-  ];
+    transactions = [
+        { date: '2025-01-01', amount: -100, description: 'Grocery Shopping' },
+        { date: '2025-01-05', amount: 2000, description: 'Salary' },
+        { date: '2025-01-10', amount: -50, description: 'Electricity Bill' }
+    ];
 
-  constructor() { }
+    constructor(private logger: LoggerService,
+                private cache: CachingService) {
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+        this.cache.set('transactions', this.transactions);
+        const cachedTransactions = this.cache.get('transactions');
+        this.logger.log('Cached Transactions:' + cachedTransactions);        
+    }
 }
 ```
 
@@ -355,17 +369,18 @@ ng generate component shared/header
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.css'],
+    standalone: false,
 })
 export class HeaderComponent implements OnInit {
-  companyName: string = 'Fast Investment';
+    companyName: string = 'Fast Investment';
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 }
 ```
 
@@ -375,9 +390,9 @@ export class HeaderComponent implements OnInit {
 <header>
   <h1>{{ companyName }}</h1>
   <nav>
-    <a routerLink="/banking">Banking</a>
-    <a routerLink="/mutual-funds">Mutual Funds</a>
-    <a routerLink="/stocks">Stocks</a>
+    <a routerLink="/app/banking">Banking</a>
+    <a routerLink="/app/mutual-funds">Mutual Funds</a>
+    <a routerLink="/app/stocks">Stocks</a>
   </nav>
 </header>
 ```
@@ -395,17 +410,18 @@ ng generate component shared/footer
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css']
+    selector: 'app-footer',
+    templateUrl: './footer.component.html',
+    styleUrls: ['./footer.component.css'],
+    standalone: false,
 })
 export class FooterComponent implements OnInit {
-  currentYear: number = new Date().getFullYear();
+    currentYear: number = new Date().getFullYear();
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 }
 ```
 
@@ -417,7 +433,7 @@ export class FooterComponent implements OnInit {
 </footer>
 ```
 
-### Profile Component
+#### Profile Component
 We will create a `ProfileComponent` to display user profile information. This component will be part of the shared module.
 
 ```bash
@@ -437,8 +453,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
   user = {
-    name: 'John Doe',
-    email: 'john.doe@example.com',
+    name: 'pravin c',
+    email: 'pravin.c@git.com',
     phone: '123-456-7890'
   };
 
@@ -457,6 +473,37 @@ export class ProfileComponent implements OnInit {
   <p><strong>Email:</strong> {{ user.email }}</p>
   <p><strong>Phone:</strong> {{ user.phone }}</p>
 </div>
+```
+
+#### Home Component
+Home component will be used to load the home page for application which will redirect the user to a default route in banking module. This page will also show the header and footer components.
+
+```bash
+ng generate component shared/home
+```
+
+**home.component.ts**
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-home',
+  standalone: false,  
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css'
+})
+export class HomeComponent {
+
+}
+```
+
+**home.component.html**
+
+```html
+<app-header></app-header>
+<router-outlet></router-outlet>
+<app-footer></app-footer>
 ```
 
 ## Core Module
@@ -579,10 +626,122 @@ export class CachingService {
 }
 ```
 
+## App Level Changes
 
+### Update AppModule
+Update AppModule class to import the dependent modules. This helps the DI framework resolve dependencies properly
+
+```typescript
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
+import { FormsModule } from '@angular/forms';
+import { CoreModule } from './core/core.module';
+
+@NgModule({
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        AppRoutingModule,
+        SharedModule,
+        CoreModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+### App Component HTML
+Update the html file to include a router-outlet and let Angular handle the loading part
+
+```html
+<router-outlet></router-outlet>
+```
+
+### App Routing
+Finally app routing we can update to include the default route and other nested routes between the 3 modules.
+
+```typescript
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './shared/home/home.component';
+
+const routes: Routes = [
+    {
+        path: 'app',
+        component: HomeComponent,        
+        children: [
+            {
+                path: 'banking',
+                loadChildren: () => import('./banking/banking.module')
+                    .then(mod => mod.BankingModule)
+            },
+            {
+                path: 'mutual-funds',
+                loadChildren: () => import('./mutual-funds/mutual-funds.module')
+                    .then(mod => mod.MutualFundsModule)
+            },
+            {
+                path: 'stocks',
+                loadChildren: () => import('./stocks/stocks.module')
+                    .then(mod => mod.StocksModule)
+            },
+            {
+                path: '', pathMatch: 'full', redirectTo: 'banking'
+            },
+            {
+                path: '**', pathMatch: 'full', redirectTo: 'banking',
+            }
+        ]
+    },    
+    {
+        path: '', pathMatch: 'full', redirectTo: 'app/banking',
+    },
+    {
+        path: '**', pathMatch: 'full', redirectTo: 'app/banking',
+    }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+```
+
+## Running the app
+You can build the app from command line using the below commands
+
+Navigate to project directory and run the below command to install all dependencies 
+```bash
+npm install
+```
+
+Once the dependencies are installed you can run the app by using below command
+```bash
+ng serve -o
+```
+
+This will open a new tab in browser and you can navigate between different modules. If you notice from network tab, you would observe that only the needed modules are loaded. This results in faster loading of application and avoid unnecessary downloads to user machine.
+
+## Source Code
+
+The source code for this project is available on GitHub. You can find it at the following link:
+
+[Code Sample](https://github.com/pravinchandankhede/codesamples/tree/main/src/Portfolio)
+
+Feel free to explore the code, open issues, and contribute!
 
 
 ## Conclusion
 In this article, we explored the different use cases of Angular modules through a fictitious company named "Fast Investment." We created a project with modules for banking, mutual funds, and stocks, and provided code samples to illustrate their usage. By organizing our application into cohesive blocks of functionality, we can enhance code maintainability, reusability, and scalability.
 
 Angular modules are a powerful tool for any Angular developer, and understanding how to use them effectively can greatly improve the structure and efficiency of your applications. We hope this article has provided you with valuable insights and practical examples to help you get started with Angular modules.
+
+Hope this was helpful, please leave your comment if you would like something else to be covered as well.
