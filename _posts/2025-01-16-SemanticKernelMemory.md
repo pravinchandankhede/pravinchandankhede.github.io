@@ -252,5 +252,10 @@ public static async Task Main(String[] args)
 }
 ```
 
-Conclusion
+## Sample Application Code
+You can find the complete code for the sample application [here](https://github.com/pravinchandankhede/agenticai/tree/main/src/CustomerService). Feel free to fork it and try it out on your own.
+
+I hope you found this post useful, as always the suggestions are welcome. Please feel free to reach out to me or leave a comment below.
+
+## Conclusion
 In this blog post, we saw we explored the benefits of using Semantic Kernel and the importance of Azure Search in data embedding and retrieval. We have seen how embeddings are generated and stored in vectors. We also covered the creation of record definitions and how they are used to create an index in Azure Search. Finally, we saw how to instantiate and configure the kernel, integrate the EmbeddingEngine as a plugin, and generate and upload embeddings.
