@@ -242,7 +242,7 @@ foreach (KeyValuePair<String, String> documentRecord in documentRecords)
 
 `GetDocumentRecords` is a utility method that reads the text data from a JSON file and returns it as a collection of key-value pairs. The `GenerateEmbeddingsAndStore` method is then called to generate and upload the embeddings for each document record.
 
-#### Runnign the application
+#### Running the application
 Now its time to test the application we developed. We need a Main static method to run the application. Here is the code snippet for the Main method:
 ```csharp
 public static async Task Main(String[] args)
