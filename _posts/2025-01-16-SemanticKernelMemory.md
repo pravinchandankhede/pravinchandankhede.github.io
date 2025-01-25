@@ -83,7 +83,7 @@ public async Task GenerateEmbeddingsAndStore(String collectionName, IEnumerable<
 }
 ```
 
-> **NOTE** Notice how the method utilizes the `textEmbeddingGenerationService` to generate embeddings calls the UpsertAsync to store the embeddings in the specified vector collection.
+> **NOTE** Notice how the method utilizes the `textEmbeddingGenerationService` to generate embeddings calls the UpsertAsync to store the embeddings in the specified vector collection. 
 {: .prompt-info}
 
 ### Creating Record Definition class
