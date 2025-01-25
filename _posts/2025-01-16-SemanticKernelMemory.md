@@ -1,21 +1,21 @@
 ---
 title: Semantic Kernel Vector Memory using Azure Search
-date: 2025-01-13 10:30:30 +/-TTTT
-categories: [Architecture, AgenticAI]
+date: 2025-01-16 10:30:30 +/-TTTT
+categories: [Architecture, AgenticAI, Vector, Embeddings]
 tags: [semantic kernel, ai, plugins, planner, llm, vector store, azure search]     # TAG names should always be lowercase
 description: This post highlights the benefits of Semantic Kernel vector memory and its use in developing AI Agents. It also shows how to utilize Azure Search to store and retrieve the vectors and use them in the AI Agents.
 ---
 
 ## What is Semantic Kernel?
-Semantic Kernel is an SDK by Microsoft which helps us to write AI Agents. These AI Agents are highly collaborative and can use different LLMs to infer and act like humans.
+[Semantic Kernel](https://learn.microsoft.com/en-us/semantic-kernel/overview/) is an SDK by Microsoft which helps us to write AI Agents. These AI Agents are highly collaborative and can use different LLMs to infer and act like humans.
 It helps us develop agents that are intelligent, autonomous and adaptable. Semantic Kernel has many features that helps us to do the mundane coding taks systematically and at a good level of abstraction. One such feature is Vector Memory which is main topic of this blog post.
 
 ## Semantic Kernel Vector Memory
 The vector memory feature in Semantic Kernel allows us to store and manage embeddings in a vector store. This store can be either in-memory or backed by an external database, depending on the use case. The vector memory is what gives an agent its power to remember and infer the things to better arrives at a decision. This is used as a basis for RAG based automation. 
-Semantic KErnel supports variety of vector store which can be found [here](https://learn.microsoft.com/en-us/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/).
+Semantic Kernel supports variety of vector stores that can be found [here](https://learn.microsoft.com/en-us/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/).
 
 ### Key Characteristics
- - **In-Memory Storage**: The vector store can operate entirely in memory, which allows for high-speed operations and quick access to data. This is ideal for scenarios where performance is critical, and the data does not need to be persisted long-term1.
+ - **In-Memory Storage**: The vector store can operate entirely in memory, which allows for high-speed operations and quick access to data. This is ideal for scenarios where performance is critical, and the data does not need to be persisted long-term.
  - **Support for Various Data Types**: The vector store supports a wide range of data types, including strings, numbers, and custom objects. This allows it to be suitable for variety of use cases.
  - **Multiple Vectors per Record**: The vector store can handle multiple vectors within a single record, allowing for complex data representations and more detailed embeddings.
  - **Advanced Querying Capabilities**: The vector store supports advanced querying capabilities, including filtering and full-text search, which enhances its utility in data retrieval applications.
@@ -27,7 +27,7 @@ Semantic Kernel is a powerful tool that enables the generation of embeddings for
  - **Enhanced Data Analysis**: Embeddings allow for advanced data analysis techniques, such as clustering and classification, which can uncover hidden patterns and insights.
  - **Scalability** : Semantic Kernel can handle large volumes of data, making it suitable for enterprise-level applications.
 
-## Importance of Azure Search
+## What is Azure Search?
 Azure Search is a cloud-based search service that provides powerful indexing and querying capabilities. It is essential for:
 
  - **Efficient Data Retrieval**: Azure Search enables fast and efficient retrieval of data from large datasets.
@@ -35,35 +35,47 @@ Azure Search is a cloud-based search service that provides powerful indexing and
  - **Integration with Other Azure Services**: Azure Search seamlessly integrates with other Azure services, such as Azure Cognitive Services and Azure Machine Learning, to provide a comprehensive data processing solution.
  - **Skill Set**: Azure Search is a powerful tool that allows you customized the retrival, extraction, transformation of content by using skill pipelines.
 
-Understanding the EmbeddEngine Class
-The EmbeddEngine class is a crucial component in the process of generating and storing embeddings. It interacts with the vector store and the text embedding generation service to create embeddings for text data and upload them to a specified collection.
+## Demo Application
+In this blog post, I will demonstrate how to use Semantic Kernel and Azure Search to generate and store embeddings for text data. I will create an EmbeddingEngine class that interacts with the vector store and the text embedding generation service to generate embeddings for text paragraphs and upload them to a specified collection in Azure Search.
 
-Generating Embeddings
-The GenerateEmbeddingsAndUpload method in the EmbeddEngine class is responsible for generating embeddings for each text paragraph and uploading them to the specified collection. Here is the code snippet for this method:
+
+### Understanding the EmbeddingEngine Class
+The EmbeddingEngine class holds the code to generate and store the embeddings in a vector store. The class works at an abstraction that does the work using interfaces and methods as defined by Semantic Kernel. This enable the plugin & plug model, in which the core implementation remains the same and actual embedding algorithm or physical vector store can be changed without modifying this class.
+
+The class is declared as follows:
+```csharp
+internal class EmbeddingEngine(IVectorStore vectorStore, ITextEmbeddingGenerationService textEmbeddingGenerationService)
+{
+    // Methods to generate and upload embeddings
+}
+```
+[IVectorStore](https://learn.microsoft.com/en-us/dotnet/api/microsoft.semantickernel.data.ivectorstore?view=semantic-kernel-dotnet) and [ITextEmbeddingGenerationService](https://learn.microsoft.com/en-us/dotnet/api/microsoft.semantickernel.embeddings.itextembeddinggenerationservice?view=semantic-kernel-dotnet) are interfaces that define the methods for interacting with the vector store and generating text embeddings, respectively.
+
+The GenerateEmbeddingsAndStore method in the EmbeddEngine class is responsible for generating embeddings for each document record and uploading them to the specified collection. Here is the code snippet for this method:
 
 ```csharp
-internal class EmbeddEngine(IVectorStore vectorStore, ITextEmbeddingGenerationService textEmbeddingGenerationService)
+public async Task GenerateEmbeddingsAndStore(String collectionName, IEnumerable<DocumentRecord> documentRecords)
 {
-    public async Task GenerateEmbeddingsAndUpload(String collectionName, IEnumerable<DocumentRecord> textParagraphs)
+    var collection = vectorStore.GetCollection<String, DocumentRecord>(collectionName);
+    await collection.CreateCollectionIfNotExistsAsync();
+
+    foreach (var record in documentRecords)
     {
-        var collection = vectorStore.GetCollection<String, DocumentRecord>(collectionName);
-        await collection.CreateCollectionIfNotExistsAsync();
+        // Generate the text embedding.
+        Console.WriteLine($"Generating embedding for record: {record.RecordId}");
+        record.TextEmbedding = await textEmbeddingGenerationService.GenerateEmbeddingAsync(record.Text);
 
-        foreach (var paragraph in textParagraphs)
-        {
-            // Generate the text embedding.
-            Console.WriteLine($"Generating embedding for paragraph: {paragraph.ParagraphId}");
-            paragraph.TextEmbedding = await textEmbeddingGenerationService.GenerateEmbeddingAsync(paragraph.Text);
+        // Upload the text Record.
+        Console.WriteLine($"Upserting record: {record.RecordId}");
+        await collection.UpsertAsync(record);
 
-            // Upload the text paragraph.
-            Console.WriteLine($"Upserting paragraph: {paragraph.ParagraphId}");
-            await collection.UpsertAsync(paragraph);
-
-            Console.WriteLine();
-        }
+        Console.WriteLine();
     }
 }
 ```
+
+> Carefully notice how the method utilizes the textEmbeddingGenerationService to generate embeddings calls the UpsertAsync to store the embeddings in the specified vector collection.
+{:.info prompt}
 
 Storing Embeddings in Vectors
 The embeddings generated by the EmbeddEngine are stored in vectors within the vector store. This abstract way of storing embeddings ensures that the data is organized and easily retrievable.
