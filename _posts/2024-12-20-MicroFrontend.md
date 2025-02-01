@@ -4,6 +4,7 @@ date: 2024-12-20 10:30:30 +/-TTTT
 categories: [Architecture, Micro Frontend]
 tags: [angular, module federation]     # TAG names should always be lowercase
 description: This post provides the explanaton fo an reference implementation
+mermaid: true
 ---
 
 # Micro Frontend
@@ -22,8 +23,8 @@ Each micro frontend can be developed using a different technology, framework, an
 ```
 
 ```mermaid
-  archtiecture-beta
-    group api(cloud)[API]
+ architecture-beta
+    group api(cloud)[Micro Frontend]
 
     service db(database)[Database] in api
     service disk1(disk)[Storage] in api
