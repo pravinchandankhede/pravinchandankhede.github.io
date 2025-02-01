@@ -17,23 +17,10 @@ As discussed above, Micro Frontend focuses on breaking down the monolith applica
 Each micro frontend can be developed using a different technology, framework, and language. They can be developed by different teams and can be deployed independently. The host utlizies a configuration approach to load these micro frontends at runtime to form a uniform single UI experience for users.
 
 ```mermaid
-  flowchart LR
-    A[Host Application] --> B[Micro Frontend 1]
-    A --> C[Micro Frontend 2]
-```
-
-```mermaid
- architecture-beta
-    group api(cloud)[Micro Frontend]
-
-    service db(database)[Database] in api
-    service disk1(disk)[Storage] in api
-    service disk2(disk)[Storage] in api
-    service server(server)[Server] in api
-
-    db:L -- R:server
-    disk1:T -- B:server
-    disk2:T -- B:db    
+  flowchart TB
+    A[Host Application] --> B[Team Frontend]
+    A --> C[Staff Frontend]
+    A --> D[Role Frontend]
 ```
 
 ### Ways to implement Micro Frontend
