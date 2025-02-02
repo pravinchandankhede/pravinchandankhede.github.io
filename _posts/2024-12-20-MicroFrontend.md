@@ -3,7 +3,7 @@ title: Micro Frontend
 date: 2024-12-20 10:30:30 +/-TTTT
 categories: [Architecture, Micro Frontend]
 tags: [angular, module federation]     # TAG names should always be lowercase
-description: This post provides the explanaton fo an reference implementation
+description: This post gives an overview of Micro Frontend architecture, its benefits, challenges and implementation.
 mermaid: true
 ---
 
@@ -26,6 +26,10 @@ Each micro frontend can be developed using a different technology, framework, an
 ### Ways to implement Micro Frontend
 
 ### Benefits of using Micro Frontend
+Micro Frontend architecture has several benefits over the traditional monolithic architecture. Some of the key benefits are:
+ - Modular Structure: Micro Frontend allows you to break down your large frontend application into smaller, more manageable modules. This modules can be developed by different teams in parallel.
+ - Independent Development: Each of the module can be developed by diffeent teams using thier own tech stack. This means more autonomy and control over internal designs.
+ - Independent Deployment: Each team can decide on thier own deployment plans. This gives more control to each team and enables the release cycles that are not dependent on other teams.
 
 ### Challenges of using Micro Frontend
 
