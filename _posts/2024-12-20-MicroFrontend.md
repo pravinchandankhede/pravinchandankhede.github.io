@@ -30,7 +30,25 @@ Micro Frontend architecture has several benefits over the traditional monolithic
  - Modular Structure: Micro Frontend allows you to break down your large frontend application into smaller, more manageable modules. This modules can be developed by different teams in parallel.
  - Independent Development: Each of the module can be developed by diffeent teams using thier own tech stack. This means more autonomy and control over internal designs.
  - Independent Deployment: Each team can decide on thier own deployment plans. This gives more control to each team and enables the release cycles that are not dependent on other teams.
+ - Performance: Micro Frontend architecture allows you to load only the required modules on demand. This helps in reducing the initial load time of the application.
+ - Reusability: Micro Frontend architecture allows you to reuse the modules across different applications. This helps in reducing the development time and effort.
+ - Scalability: Micro Frontend architecture allows you to scale your application horizontally by adding more instances of the modules. This helps in handling the increased load on the application.
+ - Maintainability: Micro Frontend architecture allows you to maintain each module independently. This helps in reducing the complexity of the codebase and makes it easier to debug and fix issues.
+ - Flexibility: Micro Frontend architecture allows you to change the technology stack of a module without affecting the other modules. This helps in keeping the application up-to-date with the latest technologies.
+ - Improved User Experience: Micro Frontend architecture allows you to provide a seamless user experience by loading the modules on demand. This helps in reducing the initial load time of the application and providing a better user experience. your users don't need to wait to load the entire application before they can start using it.
+ - Security: Micro Frontend architecture allows you to secure each module independently. This helps in reducing the attack surface of the application and makes it more secure.
+ - Shared Services: Micro Frontend architecture allows you to share services across different modules. This helps in reducing the duplication of code and makes it easier to maintain and update the services.
 
 ### Challenges of using Micro Frontend
+Micro Frontend architecture has several challenges that you need to consider before adopting it. Some of the key challenges are:
+ - Integration: Micro Frontend architecture requires you to integrate the modules at runtime. This can be challenging as you need to ensure that the modules are loaded in the correct order and communicate with each other properly.
+ - Communication: Micro Frontend architecture requires you to establish a communication mechanism between the modules. This can be challenging as you need to ensure that the modules can communicate with each other without any issues.
+ - State Management: Micro Frontend architecture requires you to manage the state of the application across different modules. This can be challenging as you need to ensure that the state is consistent across the modules.
+ - Performance: Micro Frontend architecture requires you to load the modules on demand. This can be challenging as you need to ensure that the modules are loaded quickly and provide a seamless user experience.
+ - Security: Micro Frontend architecture requires you to secure each module independently. This can be challenging as you need to ensure that the modules are secure and don't expose any vulnerabilities.
+ - Testing: Micro Frontend architecture requires you to test each module independently. This can be challenging as you need to ensure that the modules work correctly and don't break the application.
+ - Deployment: Micro Frontend architecture requires you to deploy each module independently. This can be challenging as you need to ensure that the modules are deployed correctly and don't affect the other modules.
+ - Versioning: Micro Frontend architecture requires you to version each module independently. This can be challenging as you need to ensure that the modules are compatible with each other and don't break the application.
+ - Monitoring: Micro Frontend architecture requires you to monitor each module independently. This can be challenging as you need to ensure that the modules are performing correctly and don't affect the other modules.
 
 ## Micro Frontend with Angular
