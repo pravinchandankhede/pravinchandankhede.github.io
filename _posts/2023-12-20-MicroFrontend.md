@@ -31,24 +31,28 @@ Diagram below shows a typical monolithic architecture where the entire frontend 
 ```mermaid
 graph TD
     A[User]
-    B[Application Layer]      
+    subgraph B[Application]
+      B1[Banking Feature]
+      B2[Mutual Fund Feature]
+      B3[Stocks Feature]
+      B4[Reporting Feature]
+      subgraph B5[Cross Cutting]
+        B51[Security]
+        B52[Logging]
+        B53[Monitoring]
+        B54[Error Handling]
+        B55[Configuration]
+      end
+    end
     C[API Layer]
     D[Data Layer]
     A --> B    
     B --> C
     C --> D
+    B3 --> B1
+    B4 --> B2
 ```
 
-     
-        BA [UI Layer]
-        BB [Sec Layer]
-        subgraph BC [Modules]
-            B21[Module 1]
-            B22[Module 2]
-            B23[Module 3]
-            B24[Module 4]
-        end           
-    end 
 # Micro Frontend
 Micro Frontend is a new architectural style for building web applications. It is an extension of the microservices architecture to the frontend world. It allows you to break down your large frontend application into smaller, more manageable pieces, which can be developed, deployed, and maintained independently.
 This allows us to break a big monilith UI into smaller pieces of modules/screens that can be clubbed together to form a single UI. This helps in better maintainability, scalability and reusability of the code.
