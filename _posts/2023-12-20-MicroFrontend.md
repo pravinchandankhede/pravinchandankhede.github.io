@@ -1,5 +1,5 @@
 ---
-title: Micro Frontend
+title: Micro Frontend Architecture
 date: 2023-12-20 10:30:30 +/-TTTT
 categories: [Architecture, Micro Frontend]
 tags: [angular, module federation]     # TAG names should always be lowercase
@@ -17,13 +17,38 @@ Currently the traditional monolithic architecture that is very much prevelant ha
  - **Tight Coupling**: The traditional monolithic architecture has tight coupling between the frontend components. This makes it difficult to change or replace a component without affecting the other components.
  - **Single Technology Stack**: The traditional monolithic architecture has a single technology stack that is used to develop the frontend application. This makes it difficult to upgrade to the latest technologies and frameworks without rewriting the entire application. This means the upgrade needs to be planned for entire application and doesn't support incremental upgrades.
  - **Single Deployment**: The traditional monolithic architecture has a single deployment process that is used to deploy the frontend application. This makes it difficult to deploy the application in a continuous delivery environment. Even if one single funcionality is changed, the entire application needs to be deployed increasng downtime and risk.
- - **Single Team**: The traditional monolithic architecture has a single team that is responsible for developing the frontend application. This makes it difficult to scale the development team as the application grows.
+ - **Large Team Size**: The traditional monolithic architecture has a single large team that is responsible for developing the frontend application. This makes it difficult to scale the development team as the application grows.
  - **Single Release Cycle**: The traditional monolithic architecture has a single release cycle that is used to release the frontend application. This makes it difficult to release new features and bug fixes quickly.
  - **Single User Experience**: The traditional monolithic architecture has a single user experience that is provided to all the users. This makes it difficult to provide a personalized user experience.
  - **Single Performance**: The traditional monolithic architecture has a single performance that is provided to all the users. This makes it difficult to optimize the performance for different users. The grain of deployment unit is much bigger and hence the performance optimization is difficult.
  - **Single Scalability**: The traditional monolithic architecture has a single scalability that is provided to all the users. This makes it difficult to scale the application horizontally. This also means that scaling a individual functionality is difficult or rather not possible.
  - **Single Security**: The traditional monolithic architecture has a single security that is provided to all the users. This makes it difficult to secure the application from different types of attacks.
 
+### A Typical Monolith Architecture
+Diagram below shows a typical monolithic architecture where the entire frontend application is developed as a single unit. This makes it difficult to scale and maintain the application as the codebase grows.
+
+![Monolith Architecture](/assets/images/posts/2023-12-20/monolitharch.png)
+```mermaid
+graph TD
+    A[User]
+    B[Application Layer]      
+    C[API Layer]
+    D[Data Layer]
+    A --> B    
+    B --> C
+    C --> D
+```
+
+     
+        BA [UI Layer]
+        BB [Sec Layer]
+        subgraph BC [Modules]
+            B21[Module 1]
+            B22[Module 2]
+            B23[Module 3]
+            B24[Module 4]
+        end           
+    end 
 # Micro Frontend
 Micro Frontend is a new architectural style for building web applications. It is an extension of the microservices architecture to the frontend world. It allows you to break down your large frontend application into smaller, more manageable pieces, which can be developed, deployed, and maintained independently.
 This allows us to break a big monilith UI into smaller pieces of modules/screens that can be clubbed together to form a single UI. This helps in better maintainability, scalability and reusability of the code.
@@ -68,3 +93,24 @@ Micro Frontend architecture has several challenges that you need to consider bef
  - **Monitoring**: Micro Frontend architecture requires you to monitor each module independently. This can be challenging as you need to ensure that the modules are performing correctly and don't affect the other modules.
 
 ## Micro Frontend with Angular
+
+```mermaid
+graph TD
+    A[Main Block]
+    subgraph B[Sub Block 1]
+        B1[Sub Block 1]
+        B2[Sub Block 2]
+        subgraph B3[Sub Block B3]
+          B31[Sub Block 3.1]
+          B32[Sub Block 3.2]
+        end
+    end
+    subgraph C[Sub Block 2]
+        C1[Sub Block 2.1]
+        C2[Sub Block 2.2]
+    end
+    A --> B
+    A --> C
+    B1 --> C1
+    B2 --> C2
+```
