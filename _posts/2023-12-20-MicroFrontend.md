@@ -28,30 +28,6 @@ Currently the traditional monolithic architecture that is very much prevelant ha
 Diagram below shows a typical monolithic architecture where the entire frontend application is developed as a single unit. This makes it difficult to scale and maintain the application as the codebase grows.
 
 ![Monolith Architecture](/assets/images/posts/2023-12-20/monolitharch.png)
-```mermaid
-graph TD
-    A[User]
-    subgraph B[Application]
-      B1[Banking Feature]
-      B2[Mutual Fund Feature]
-      B3[Stocks Feature]
-      B4[Reporting Feature]
-      subgraph B5[Cross Cutting]
-        B51[Security]
-        B52[Logging]
-        B53[Monitoring]
-        B54[Error Handling]
-        B55[Configuration]
-      end
-    end
-    C[API Layer]
-    D[Data Layer]
-    A --> B    
-    B --> C
-    C --> D
-    B3 --> B1
-    B4 --> B2
-```
 
 # Micro Frontend
 Micro Frontend is a new architectural style for building web applications. It is an extension of the microservices architecture to the frontend world. It allows you to break down your large frontend application into smaller, more manageable pieces, which can be developed, deployed, and maintained independently.
@@ -97,24 +73,3 @@ Micro Frontend architecture has several challenges that you need to consider bef
  - **Monitoring**: Micro Frontend architecture requires you to monitor each module independently. This can be challenging as you need to ensure that the modules are performing correctly and don't affect the other modules.
 
 ## Micro Frontend with Angular
-
-```mermaid
-graph TD
-    A[Main Block]
-    subgraph B[Sub Block 1]
-        B1[Sub Block 1]
-        B2[Sub Block 2]
-        subgraph B3[Sub Block B3]
-          B31[Sub Block 3.1]
-          B32[Sub Block 3.2]
-        end
-    end
-    subgraph C[Sub Block 2]
-        C1[Sub Block 2.1]
-        C2[Sub Block 2.2]
-    end
-    A --> B
-    A --> C
-    B1 --> C1
-    B2 --> C2
-```
