@@ -12,6 +12,9 @@ Agents are the entities which can act on their own. They can take decisions and 
 ## Evolution of Agents
 Agents have evolved from simple software agents to more complex AI Agents. AI Agents are more intelligent and can take decisions based on the environment they are in. They can also learn from the environment and improve their decision making capabilities.
 
+![Monolith Architecture](/assets/images/posts/2024-12-13/evolution.png)
+
+
 ## Characteristics of AI Agents
 AI Agents have the following characteristics:
 - They are autonomous.
@@ -24,6 +27,8 @@ AI Agents have the following characteristics:
 
 
 ## Challenges with AI Agents
+AI Agents have the following challenges
+- They are 
 ## What is Agentic AI
 Agentic AI is the new way of organizing your agents and making them more intelligent, human friendly and self sustainable.
 
