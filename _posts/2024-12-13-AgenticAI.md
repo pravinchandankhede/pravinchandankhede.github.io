@@ -7,7 +7,7 @@ description: We will see what are AI Agents and what type of challenges it solve
 ---
 
 # What are Agents?
-Agents are the entities which can act on their own. They can take decisions and perform actions based on the environment they are in. Agents can be of different types like software agents, robots, humans etc.
+AI agents are autonomous systems capable of sensing, learning and acting upon their environments(both digital & physical) to achieve specific objectives.
 
 ## Evolution of Agents
 Agents have evolved from simple software agents to more complex AI Agents. AI Agents are more intelligent and can take decisions based on the environment they are in. They can also learn from the environment and improve their decision making capabilities.
@@ -17,7 +17,7 @@ Agents have evolved from simple software agents to more complex AI Agents. AI Ag
 
 ## Characteristics of AI Agents
 AI Agents have the following characteristics:
-- They are autonomous.
+- An AI agent responds autonomously.
 - They understand the environment they are in.
 - They act on their own based on the environment feedback and change in operational parameters.
 - Talk to other agents and collaborate with them to achieve a common goal.
@@ -25,6 +25,12 @@ AI Agents have the following characteristics:
 - Use different AI models to learn and improve their decision making capabilities.
 - Utilize the tools to take tangible actions based on the environment feedback.
 
+## Core Components of AI Agents
+AI Agents have the following core components:
+
+- **Sensors**: Sensors are used to sense the environment and collect data.
+- **Actuators**: Actuators are used to act on the environment based on the data collected by the sensors.
+- **
 
 ## Challenges with AI Agents
 AI Agents have the following challenges

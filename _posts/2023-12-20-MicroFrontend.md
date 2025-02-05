@@ -37,12 +37,7 @@ This allows us to break a big monilith UI into smaller pieces of modules/screens
 As discussed above, Micro Frontend focuses on breaking down the monolith application into smaller pieces. Each small piece is called a Micro Frontend and loaded inside a shell called Host application.
 Each micro frontend can be developed using a different technology, framework, and language. They can be developed by different teams and can be deployed independently. The host utlizies a configuration approach to load these micro frontends at runtime to form a uniform single UI experience for users.
 
-```mermaid
-  flowchart TB
-    A[Host Application] --> B[Team Frontend]
-    A --> C[Staff Frontend]
-    A --> D[Role Frontend]
-```
+![Micro Frontend Architecture](/assets/images/posts/2023-12-20/mfarch.png)
 
 ### Ways to implement Micro Frontend
 
