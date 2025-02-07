@@ -20,3 +20,13 @@ You can find a working demo of the implementation [here](https://agreeable-sand-
 ## Reference Implementation code using Angular's Module Federation.
 
 The source code is available [here](https://github.com/pravinchandankhede/microfrontend)
+
+## Structure of the application
+This application demonstrates a micro frontend app build on Angular. It has a shell application and a child applications with multiple modules. The shell application is the main application that loads the child applications. The child applications are loaded dynamically using Angular's Module Federation.
+
+> For this architecture, we would be using [Webpack](https://webpack.js.org/) based [Module Federation](https://webpack.js.org/concepts/module-federation/) implementation of Angular provided by [Angular Architects](https://www.npmjs.com/package/@angular-architects/module-federation) team.
+{: .prompt-info }
+
+
+
+
