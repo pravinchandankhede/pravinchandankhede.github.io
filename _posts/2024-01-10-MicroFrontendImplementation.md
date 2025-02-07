@@ -1,5 +1,5 @@
 ---
-title: Micro Frontend Architecture
+title: Micro Frontend Reference Implementation using Angular's Module Federation
 date: 2024-01-10 10:30:30 +/-TTTT
 categories: [Architecture, Micro Frontend, Micro Services, Dynamic Loading]
 tags: [angular, module federation, modules, webpack, lazyloading]     # TAG names should always be lowercase
