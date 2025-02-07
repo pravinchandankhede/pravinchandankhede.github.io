@@ -3,7 +3,7 @@ title: Micro Frontend Reference Implementation using Angular's Module Federation
 date: 2024-01-10 10:30:30 +/-TTTT
 categories: [Architecture, Micro Frontend, Micro Services, Dynamic Loading]
 tags: [angular, module federation, modules, webpack, lazyloading]     # TAG names should always be lowercase
-description: In this post I will explain the apporach to implemtn a micro frontend architecture. We will see how to define multiple child applications and load them in a shell. I will also show how to define common functionlaity that can be utilized by all child applications.
+description: In this post I will explain the apporach to implement a micro frontend architecture. We will see how to define multiple child applications and load them in a shell. I will also show how to define common functionality that can be utilized by all child applications.
 mermaid: true
 ---
 
