@@ -5,6 +5,7 @@ categories: [Architecture, Micro Frontend, Micro Services, Dynamic Loading]
 tags: [angular, module federation, modules, webpack, lazyloading]     # TAG names should always be lowercase
 description: In this post I will explain the apporach to implement a micro frontend architecture. We will see how to define multiple child applications and load them in a shell. I will also show how to define common functionality that can be utilized by all child applications.
 mermaid: true
+media_subpath: "assets/images/posts/2024-01-10"
 ---
 
 
@@ -37,6 +38,9 @@ The solution contains 3 angular project -
  - **Angular19Client** - This is the child application that is loaded by the shell application.
  - **MEFLibrary** - This is a library that contains common functionality that can be utilized by all child applications.
  - **Services** - This is a .NET Core Web API project that provides data to the child applications.
+
+ ![Micro Frontend Architecture](/assets/images/posts/2024-01-10/slnstructure.png)
+ ![Micro Frontend Architecture](/slnstructure.png)
 
 
 
