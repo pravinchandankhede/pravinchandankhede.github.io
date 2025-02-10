@@ -27,6 +27,16 @@ This application demonstrates a micro frontend app build on Angular. It has a sh
 > For this architecture, we would be using [Webpack](https://webpack.js.org/) based [Module Federation](https://webpack.js.org/concepts/module-federation/) implementation of Angular provided by [Angular Architects](https://www.npmjs.com/package/@angular-architects/module-federation) team.
 {: .prompt-info }
 
+## Anatomy of the solution
+The reference implementation is developed using Visual Studio and inbuilt Angular project template.
+
+The solution contains 3 angular project -
+
+ - **AngularHost** - This is the shell application that loads the child applications.
+ - **Angular18Client** - This is the child application that is loaded by the shell application.
+ - **Angular19Client** - This is the child application that is loaded by the shell application.
+ - **MEFLibrary** - This is a library that contains common functionality that can be utilized by all child applications.
+ - **Services** - This is a .NET Core Web API project that provides data to the child applications.
 
 
 
