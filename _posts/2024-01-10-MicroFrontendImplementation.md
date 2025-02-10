@@ -5,7 +5,7 @@ categories: [Architecture, Micro Frontend, Micro Services, Dynamic Loading]
 tags: [angular, module federation, modules, webpack, lazyloading]     # TAG names should always be lowercase
 description: In this post I will explain the apporach to implement a micro frontend architecture. We will see how to define multiple child applications and load them in a shell. I will also show how to define common functionality that can be utilized by all child applications.
 mermaid: true
-media_subpath: "assets/images/posts/2024-01-10"
+media_subpath: "/assets/images/posts/2024-01-10"
 ---
 
 
