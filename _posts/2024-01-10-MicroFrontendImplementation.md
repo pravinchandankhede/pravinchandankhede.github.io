@@ -40,7 +40,7 @@ The solution contains 3 angular project -
  - **Services** - This is a .NET Core Web API project that provides data to the child applications.
 
  ![Micro Frontend Architecture](/slnstructure.png)
- ![Micro Frontend Architecture](/slnstructure.png)
+ 
 
 
 
