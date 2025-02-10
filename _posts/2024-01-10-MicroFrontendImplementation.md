@@ -39,7 +39,7 @@ The solution contains 3 angular project -
  - **MEFLibrary** - This is a library that contains common functionality that can be utilized by all child applications.
  - **Services** - This is a .NET Core Web API project that provides data to the child applications.
 
- ![Micro Frontend Architecture](/assets/images/posts/2024-01-10/slnstructure.png)
+ ![Micro Frontend Architecture](/slnstructure.png)
  ![Micro Frontend Architecture](/slnstructure.png)
 
 
