@@ -4,6 +4,7 @@ date: 2024-12-13 10:30:30 +/-TTTT
 categories: [Architecture, AgenticAI, RAG, LLM]
 tags: [agenticai, ai, semantic kernel, llm, rag]     # TAG names should always be lowercase
 description: We will see what are AI Agents and what type of challenges it solves.
+media_subpath: "/assets/images/posts/2024-12-13"
 ---
 
 # What are Agents?
@@ -12,7 +13,7 @@ AI agents are autonomous systems capable of sensing, learning and acting upon th
 ## Evolution of Agents
 Agents have evolved from simple software agents to more complex AI Agents. AI Agents are more intelligent and can take decisions based on the environment they are in. They can also learn from the environment and improve their decision making capabilities.
 
-![Agent evolution](/assets/images/posts/2024-12-13/evolution.png)
+![Agent evolution](/evolution.png)
 
  - **Simple LLM Bots:** With the era of Gen AI, we had a new breed of bots coming in that can understand the semantic meaning of user query and provide data using a pre-trained LLM model. The response was more like humans and gives the feeling of a human like conversation. These bots were trained on large data set and could often provide information on a wide range of topics.
 
@@ -39,7 +40,7 @@ AI Agents have the following characteristics:
 ## Core Components of AI Agents
 AI Agents have the following core components:
 
-![Core Components of AI Agent](/assets/images/posts/2024-12-13/agentcore.png)
+![Core Components of AI Agent](/agentcore.png)
 
 - **User Input**: The user input is the trigger for most of the flows that a agent will start processing. This can be in the form of text, voice, image, etc. This can also be a automated trigger based on some event or data like a sensor sendign data to agent.
 - **Environment**: The environment is the context in which the agent is operating. This can be a digital environment like a website, application, etc. or a physical environment like a factory, warehouse, etc. This serves as aboudnary of operation for agent.
