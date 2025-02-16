@@ -32,11 +32,13 @@ body {
 
 %table-cell {
   white-space: normal;
+  border: all
 }
 
 ---@use "main.bundle";.table-wrapper>table thead th,
 .table-wrapper>table tbody tr td {
     padding: .4rem 1rem;
     font-size: 95%;
-    white-space: normal
+    white-space: normal;
+    
 }
