@@ -61,7 +61,7 @@ AI Agents can be categorized into the following categories:
 |-----------------------|--------------------------|
 | Rule Based            | Intelligent              |
 | Not Intelligent       | Intelligent              |
-| No Learning           | Learning                |
+| No Learning           | Learning                 |
 | Predictable           | Unpredictable            |
 | Transparent           | Non-Transparent          |
 | Consisitent           | Inconsistent             |
@@ -73,10 +73,10 @@ AI Agents are of different types based on the way they operate and type of work 
 
 | Type of AI Agent | Description | Adaptibility |
 |------------------|-------------|--------------|
-|Simple Reflex Agents|These agents are rule based and take decisions based on the rules defined by the user. These agents do no consider past experiences or historical data. These agents are not intelligent and can only take decisions based on the rules defined by the user.| Unable to adapt to changes
-|Model Based Reflex Agents|These agents are rule based and take decisions based on the rules defined by the user. These agents consider past experiences or historical data.| They are more adaptabe as compared to Simple Reflex Agents.
-|Goal Based Agents|These agents can consider future trends and scenrios in account. These agents consider past experiences or historical data as well. They utlize a plan based approach to arrive at a outcome. These agents have a goal to achieve and take decisions based on the goal.| They are more adaptabe and suitable for complex decision making tasks.
-|Utility Based Agents|These agents are similar to Goal Based Agents but they consider the utility of the outcome as well. They employ search & planning algorithms and assings weigth to each outcome. This way they ensure optimal decision making in conflicting or uncertain goals| They are more adaptabe and suitable for complex decision making tasks.
+|Simple Reflex Agents|These agents are rule based and take decisions based on the rules defined by the user. These agents do no consider past experiences or historical data. These agents are not intelligent and can only take decisions based on the rules defined by the user.| Unable to adapt to changes|
+|Model Based Reflex Agents|These agents are rule based and take decisions based on the rules defined by the user. These agents consider past experiences or historical data.| They are more adaptabe as compared to Simple Reflex Agents.|
+|Goal Based Agents|These agents can consider future trends and scenrios in account. These agents consider past experiences or historical data as well. They utlize a plan based approach to arrive at a outcome. These agents have a goal to achieve and take decisions based on the goal.| They are more adaptabe and suitable for complex decision making tasks.|
+|Utility Based Agents|These agents are similar to Goal Based Agents but they consider the utility of the outcome as well. They employ search & planning algorithms and assings weigth to each outcome. This way they ensure optimal decision making in conflicting or uncertain goals| They are more adaptabe and suitable for complex decision making tasks.|
 
 ## Challenges with AI Agents
 AI Agents have the following challenges
