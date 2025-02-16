@@ -1,7 +1,7 @@
 ---
-title: Agentic AI - Architecture, Evolution, Challenges & Benefits
+title: Agentic AI - Architecture, Evolution, Patterns & Benefits
 date: 2024-12-13 10:30:30 +/-TTTT
-categories: [Architecture, AgenticAI, RAG, LLM]
+categories: [AI, Architecture, AgenticAI, RAG, LLM]
 tags: [agenticai, ai, semantic kernel, llm, rag]     # TAG names should always be lowercase
 description: We will see what are AI Agents and what type of challenges it solves.
 media_subpath: "/assets/images/posts/2024-12-13"
@@ -51,6 +51,32 @@ AI Agents have the following core components:
 - **Actions**: Actions are the decisions taken by the agent based on the data collected by the sensors. This can be in the form of sending a message, updating a record, etc. This is how the agent acts on the environment based on the data collected by the sensors.
 - **Learning**: Learning is the process of improving the decision making capabilities of the agent. This can be in the form of using different AI models to learn and improve the decision making capabilities. This can also be in the form of using different LLMs to infer and act like humans.
 - **Memory**: Memory is the data that is stored by the agent. Memory enables the agent to remember the past events and uses them to take decisions in the future.
+
+## Categories of AI Agents
+AI Agents can be categorized into the following categories:
+- **Deterministic Agents**: These agents are rule based and take decisions based on the rules defined by the user. These agents are not intelligent and can only take decisions based on the rules defined by the user.
+- **Non-Deterministic Agents**: These agents are intelligent and can take decisions based on the environment feedback and change in operational parameters. These agents can learn from the environment and improve their decision making capabilities.
+
+| Deterministic Agents  | Non-Deterministic Agents |
+|-----------------------|--------------------------|
+| Rule Based            | Intelligent              |
+| Not Intelligent       | Intelligent              |
+| No Learning           | Learning                |
+| Predictable           | Unpredictable            |
+| Transparent           | Non-Transparent          |
+| Consisitent           | Inconsistent             |
+| Limited Adaptibility  | High Adaptibility        |
+| Simple Decision Making| Complex Decision Making  |
+
+## Types of AI Agents
+AI Agents are of different types based on the way they operate and type of work they do. These are:
+
+| Type of AI Agent | Description | Adaptibility |
+|------------------|-------------|--------------|
+|Simple Reflex Agents|These agents are rule based and take decisions based on the rules defined by the user. These agents do no consider past experiences or historical data. These agents are not intelligent and can only take decisions based on the rules defined by the user.| Unable to adapt to changes
+|Model Based Reflex Agents|These agents are rule based and take decisions based on the rules defined by the user. These agents consider past experiences or historical data.| They are more adaptabe as compared to Simple Reflex Agents.
+|Goal Based Agents|These agents can consider future trends and scenrios in account. These agents consider past experiences or historical data as well. They utlize a plan based approach to arrive at a outcome. These agents have a goal to achieve and take decisions based on the goal.| They are more adaptabe and suitable for complex decision making tasks.
+|Utility Based Agents|These agents are similar to Goal Based Agents but they consider the utility of the outcome as well. They employ search & planning algorithms and assings weigth to each outcome. This way they ensure optimal decision making in conflicting or uncertain goals| They are more adaptabe and suitable for complex decision making tasks.
 
 ## Challenges with AI Agents
 AI Agents have the following challenges
