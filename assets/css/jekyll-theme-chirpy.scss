@@ -15,7 +15,7 @@
     padding: .4rem 1rem;
     font-size: 95%;
     white-space: normal;
-    border: solid;
+    border: solid 2px;
 }
 
 %table-cell {
@@ -29,4 +29,12 @@ body {
 
 #sidebar #avatar .rounded-circle {
   border-radius: 0 !important;
+  width: 150px;
+  height: 150px;
+}
+
+.rounded-circle {
+  border-radius: 0 !important;
+  width: 160px;
+  height: 160px;
 }
