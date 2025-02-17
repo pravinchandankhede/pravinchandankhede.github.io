@@ -72,15 +72,22 @@ AI Agents are of different types based on the way they operate and type of work 
 
 | Type of AI Agent | Description | Adaptibility |
 |------------------|-------------|--------------|
-|Simple Reflex Agents|These agents are rule based and take decisions based on the rules defined by the user. These agents do not consider past experiences or historical data. </br> These agents are not intelligent and can only take decisions based on the rules defined by the user.| Unable to adapt to changes.|
-|Model Based Reflex Agents|These agents are rule based and take decisions based on the rules defined by the user. These agents consider past experiences or historical data.| They are more adaptabe as compared to Simple Reflex Agents.|
-|Goal Based Agents|These agents can consider future trends and scenrios in account. These agents consider past experiences or historical data as well. They utlize a plan based approach to arrive at a outcome. These agents have a goal to achieve and take decisions based on the goal.| They are more adaptabe and suitable for complex decision making tasks.|
-|Utility Based Agents|These agents are similar to Goal Based Agents but they consider the utility of the outcome as well. They employ search & planning algorithms and assings weigth to each outcome. This way they ensure optimal decision making in conflicting or uncertain goals| They are more adaptabe and suitable for complex decision making tasks.|
+| **Simple Reflex Agents** |These agents are rule based and take decisions based on the rules defined by the user. These agents do not consider past experiences or historical data. </br> These agents are not intelligent and can only take decisions based on the rules defined by the user.| Unable to adapt to changes.|
+| **Model Based Reflex Agents** |These agents are rule based and take decisions based on the rules defined by the user. These agents consider past experiences or historical data.| They are more adaptabe as compared to Simple Reflex Agents.|
+| **Goal Based Agents** |These agents can consider future trends and scenrios in account. These agents consider past experiences or historical data as well. They utlize a plan based approach to arrive at a outcome. These agents have a goal to achieve and take decisions based on the goal.| They are more adaptabe and suitable for complex decision making tasks.|
+| **Utility Based Agents** |These agents are similar to Goal Based Agents but they consider the utility of the outcome as well. They employ search & planning algorithms and assings weigth to each outcome. This way they ensure optimal decision making in conflicting or uncertain goals| They are more adaptabe and suitable for complex decision making tasks.|
 
-## Challenges with AI Agents
+## AI Agents Patterns
+Just like software design patterns, AI Agents have patterns that can be used to solve common problems. These patterns are:
+
+| Pattern | Description | Use Case |
+|---------|-------------|----------|
+| **Reflex Pattern** | In this pattern, the agent uses a criticizer to evaluate its own output and make corrections. It contains a feedback loop which can be controlled thorugh a iteration count.| This pattern is used when the agent needs to evaluate its own output and make corrections. |
+| **Tool Use Pattern** | In this pattern, the agent uses tools to extend the capbilities of agent. This provides oppurtunity to delegate the task to other tools or agents.| This pattern is used when the agent needs to collaborate with other systems. |
+| **Planning Pattern** | In this pattern, the agent uses a planner to generate a plan to achieve a goal. The planner generates a multi-step plan of actions to achieve the goal.| This pattern is used when the agent needs to achieve a dynamic goal. |
+| **Multi-Agent Pattern** | In this pattern, the agent collaborates with other agents to achieve a common goal. The agents can communicate with each other and share information.| This pattern is used when the agent needs to collaborate with other agents to achieve a common goal. |
  
-## What is Agentic AI
-Agentic AI is the new way of organizing your agents and making them more intelligent, human friendly and self sustainable.
+## Conclusion
+We saw the evolution of AI Agents and how they have evolved from simple bots to more complex AI Agents. We also saw the characteristics of AI Agents and the core components of AI Agents. We also saw the categories and types of AI Agents. We also saw the patterns of AI Agents that can be used to solve common problems. AI Agents are the future of AI and will play a key role in solving complex problems.
 
-## What is Semantic Kernel
-Semantic Kernel is an SDK by Microsoft which helps us to write AI Agents. These AI Agents are highly collaborative and can use different LLMs to infer and act like humans.
+Please feel free to leave your feedback.
