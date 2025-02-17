@@ -4,6 +4,10 @@
 
 @if jekyll.environment == 'production' {
   .bundle 
+  %table-cell {
+  white-space: normal;
+  border: solid 1px #ccc;
+  }
 }
 
 /* append your custom style below */
