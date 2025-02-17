@@ -27,14 +27,17 @@ body {
   background-color: white; /* Replace with your desired color */
 }
 
-#sidebar #avatar .rounded-circle {
-  border-radius: 0 !important;
-  width: 150px;
-  height: 150px;
+#sidebar #avatar {
+  display: contents;
+  width: 170px;  
 }
 
-/*.rounded-circle {
+.rounded-circle {
   border-radius: 0 !important;
   width: 160px;
   height: 160px;
-}*/
+}
+
+.img {
+  height: 0 !important;
+}
