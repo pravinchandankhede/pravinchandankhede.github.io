@@ -1,50 +1,6 @@
-/* @use 'main'; */
-
-@import 'main';
-
-@if jekyll.environment == 'production' {
-  .bundle 
-  %table-cell {
-  white-space: normal;
-  border: solid 1px #ccc;
-  }
-}
-
-/* append your custom style below */
-
-/*#avatar .rounded-circle {
-  border-radius: 0;
-}*/
-
-#sidebar .profile-wrapper .rounded-circle {
-  border-radius: 0 !important;
-}
-
-#sidebar #avatar {
-  border-radius: 0 !important;
-}
-
-#sidebar #avatar .rounded-circle {
-  border-radius: 0 !important;
-}
-
-#sidebar .profile-wrapper #avatar .rounded-circle {
-  border-radius: 0 !important;
-}
-
-body {
-    background-color: red; /* Replace with your desired color */
-}
-
-%table-cell {
-  white-space: normal;
-  border: solid 1px #ccc;
-}
-
-.table-wrapper>table thead th,
+---@use "main.bundle";.table-wrapper>table thead th,
 .table-wrapper>table tbody tr td {
     padding: .4rem 1rem;
     font-size: 95%;
-    white-space: normal;
-    border: solid 1px #ccc;
+    white-space: normal
 }
