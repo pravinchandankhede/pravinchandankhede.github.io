@@ -1,5 +1,0 @@
-User-agent: *
-
-Disallow:
-
-Sitemap: https://pravinchandankhede.github.io/sitemap.xml
