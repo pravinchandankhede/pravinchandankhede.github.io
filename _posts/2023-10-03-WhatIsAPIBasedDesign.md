@@ -58,7 +58,9 @@ Managed Services like [Azure API Management](https://azure.microsoft.com/en-us/p
 
 ### Benefits of Subscription-Based API Model
 - **Predictable Revenue**: Recurring payments provide a steady and predictable revenue stream, which is beneficial for financial planning and growth.
+
 - **Customer Retention**: Subscription models foster long-term relationships with customers, increasing retention and loyalty.
+
 - **Scalability** : APIs allow businesses to scale their services easily by adding new features or expanding to new markets without significant infrastructure changes.
 
 ## Example of calling a HTTP Service in .NET 9
@@ -101,8 +103,6 @@ class Program
 
 This code snippet demonstrates how to use HttpClient class to call a simple Staff API. This API returns a list of Staff members and doesn't need any token or key.
 
-## What is Rate Limiting?
 
-### Importance of rate limiting
-
-### Ways to implement rate limiting
+## Conclusion
+API Driven Development is a powerful approach that enables developers to build flexible, scalable, and maintainable applications. By focusing on APIs as the core of the application, developers can create applications that are accessible from multiple devices and platforms. The API Economy offers numerous opportunities for businesses to innovate, monetize their APIs, and enhance customer experience. Subscription-based API models provide a predictable revenue stream and foster long-term customer relationships. Managed services like Azure API Management and APIgee help businesses manage their APIs effectively and offer subscription-based APIs. By leveraging these concepts and tools, businesses can create value-added products and services that drive growth and innovation.
