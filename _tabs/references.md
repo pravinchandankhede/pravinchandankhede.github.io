@@ -3,6 +3,7 @@
 icon: fas fa-info-circle
 order: 1
 ---
+This page provides references of material I found useful for my work.
 
 ## Azure Architecture
  - [Azure Architecture Blog](https://techcommunity.microsoft.com/category/azure/blog/azurearchitectureblog)
