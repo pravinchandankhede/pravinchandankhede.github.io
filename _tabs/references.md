@@ -10,3 +10,5 @@ This page provides references of material I found useful for my work.
  - [Well Architected Framework](https://learn.microsoft.com/en-us/azure/well-architected/)
  - [Cloud Adoption Framework](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/)
  - [Azure Architecture Center](https://learn.microsoft.com/en-us/azure/architecture/)
+
+ - <a href="https://learn.microsoft.com/en-us/azure/architecture/" target="_blank">Learn Markdown!</a>
