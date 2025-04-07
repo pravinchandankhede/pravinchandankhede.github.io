@@ -67,4 +67,10 @@ Micro Frontend architecture has several challenges that you need to consider bef
  - **Versioning**: Micro Frontend architecture requires you to version each module independently. This can be challenging as you need to ensure that the modules are compatible with each other and don't break the application.
  - **Monitoring**: Micro Frontend architecture requires you to monitor each module independently. This can be challenging as you need to ensure that the modules are performing correctly and don't affect the other modules.
 
-## Micro Frontend with Angular
+## Micro Frontend Implementation
+Micro Frontend can be implementted using variety of techniques. There are many good frameworks available to start with. These are available for wide range of programming languages like JavaScript, TypeScript etc. Some frameworks provides feature to build this from scratch , some are interoperable and allows you hook other libraries and Micro frontend frameworks into your existing codebase.
+
+The module federation feature available as part of Webpack 5 bundling is by far the most popular way of developing micro frontend apps. It supports any language that can hook WebPack in its build process.
+In the next article, we will explore the micro frontend implementation using module federation package for angular.
+
+I hope this article gave you some idea of what micro frontend is and how it can help solve the challenges of modular application. Please feel free to leave your comment!!
