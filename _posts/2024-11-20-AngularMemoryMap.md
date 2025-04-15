@@ -8,4 +8,5 @@ description: This post explains the importance of Memory Map in Angular and how 
 
 # Memory Map
 
+As part of frontend development we have seen a lot of UI framework. These frameworks provides features that makes the life od developer easy. These features helps in organizing your application in a maintainable way. One such framework is Angular
 ## Importance of Memory Map
