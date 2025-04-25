@@ -170,5 +170,10 @@ Description: Echoes the length of message back to the client.
 Tool result: [{"name":"JohnDoe","amount":1500.75},{"name":"JaneSmith","amount":2450.00},{"name":"AliceBrown","amount":320.50}]
 ```
 
+## Source Code
+You can fine the source code for this project at below location
+
+[Code](https://github.com/pravinchandankhede/agenticai/tree/main/src/model-context-protocol-demo)
+
 ## Conclusion
 My objective was to demonstrate the model context protocol at a very basic level without considering the complexity of LLMs and other tools. In later post, I will demonstrate how to integrate with LLM and AI Agents.
