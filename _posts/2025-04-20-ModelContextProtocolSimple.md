@@ -164,16 +164,16 @@ Starting MCP inspector...
 ```
 
 Now open this URL in browser and you should see a screen like this - 
-![alt text](image.png)
+![alt text](/image.png)
 
 Select SSE for Transport type, provide the sse URL and then click connect. The connection would be done and you can see a "List Tools" button enabled
-![alt text](image-1.png)
+![alt text](/image-1.png)
 
 Once you click "List Tools@, it would show you all the tools available with this server
-![alt text](image-2.png)
+![alt text](/image-2.png)
 
 Select one of the tool and a testing pane will open. You can run it and test
-![alt text](image-3.png)
+![alt text](/image-3.png)
 
 ## Run
 To run the demo - 
