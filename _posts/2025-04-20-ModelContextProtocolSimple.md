@@ -1,20 +1,20 @@
 ---
 title: Model Context Protocol, a simple implementaiton
 date: 2025-04-20 10:30:30 +/-TTTT
-categories: [Architecture, AgenticAI, Model Context Protocol, Embeddings]
-tags: [semantic kernel, ai, plugins, planner, llm, vector store, mcp]     # TAG names should always be lowercase
+categories: [Architecture, Agentic AI, Model Context Protocol, Embeddings]
+tags: [semantic kernel, ai, ai agents, plugins, planner, llm, vector store, mcp, .NET]     # TAG names should always be lowercase
 description: In this post I will talk about model context protocol and how it can be implemented in C#. This is avery simple implementation wihtout considerating much complexity and try to showcase the concept at a core level.
 ---
 
 # Model Context Protocol
 This is a demo project that demonstrate the concept of using [model context protocol](https://modelcontextprotocol.io/introduction) with C#. It uses the core Nuget packages [ModelContextProtocol](https://packages.nuget.org/packages/ModelContextProtocol/0.1.0-preview.10)
-MCP helps you connect with variety of sources and expose them in a way which is similar to other MCP servers. This way the client code is simplified and it can focus on implementing the core lgoic rather than trying to integrate the Agent with all varied data sources.
+MCP helps you connect with variety of sources and expose them in a way which is similar to other MCP servers. This way the client code is simplified, and it can focus on implementing the core lgoic rather than trying to integrate the Agent with all varied data sources.
 
 **In this demo, I will show how to expose your organizations APIs as Tools using MCP server technique.**
 
 ## Banking Service
 This is  simple banking service which provides 2 operations
- - **Get Balances**: This return a list of balances for various accounts.
+ - **Get Balances**: This returns a list of balances for various accounts.
 	```csharp	   
 	[HttpGet("balance")]
 	public IActionResult GetBalances()
@@ -114,7 +114,7 @@ var sseClientTransport = new SseClientTransport(new SseClientTransportOptions { 
 var client = await McpClientFactory.CreateAsync(clientTransport: sseClientTransport);
 ```
 
-*Note*: The MCP server exposes the metadat over `sse` endpoint.
+*Note*: The MCP server exposes the metadata over `sse` endpoint.
 
 ### Tool Discovery
 Once the client connection is established, we can use the `McpClient` instance to list down all the tools available with the MCP server. The `McpClient` class has a method called `ListToolsAsync` which returns a list of all the tools available with the MCP server. The tools are returned as a list of `McpClientTool` objects. Each `McpClientTool` object contains the name and description of the tool.
@@ -171,7 +171,7 @@ Tool result: [{"name":"JohnDoe","amount":1500.75},{"name":"JaneSmith","amount":2
 ```
 
 ## Source Code
-You can fine the source code for this project at below location
+You can find the source code for this project at below location
 
 [Code](https://github.com/pravinchandankhede/agenticai/tree/main/src/model-context-protocol-demo)
 
