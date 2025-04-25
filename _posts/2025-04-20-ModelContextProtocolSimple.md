@@ -146,8 +146,35 @@ await client.CallToolAsync("GetBalances")
 		}
 	});
 ```
+## Standalone Testing of the MCP server 
+In this section I will talk about a open source npm package that can we used to test an mcp server without needing a mcp client. This allows you to quickly go through the capabilities exposed by the server and also invoke them from the same interface.
 
-### Run
+Open a command prompt and run the below command. This command will install and run tool on your machine. Make sure you have Node runtime on your machine.
+
+```bash
+>npx @modelcontextprotocol/inspector
+```
+
+The tool will output somehting like below
+```bash
+Starting MCP inspector...
+⚙️ Proxy server listening on port 6277
+🔍 MCP Inspector is up and running at http://127.0.0.1:6274
+```
+
+Now open this URL in browser and you should see a screen like this - 
+![alt text](image.png)
+
+Select SSE for Transport type, provide the sse URL and then click connect. The connection would be done and you can see a "List Tools" button enabled
+![alt text](image-1.png)
+
+Once you click "List Tools@, it would show you all the tools available with this server
+![alt text](image-2.png)
+
+Select one of the tool and a testing pane will open. You can run it and test
+![alt text](image-3.png)
+
+## Run
 To run the demo - 
 - You can first start the BankingService project, this will start the APIs on `http://localhost:7001`
 - Then you can start the MCP server project, this will start the MCP server on `http://localhost:5000/sse`
