@@ -4,7 +4,6 @@ date: 2025-04-20 10:30:30 +/-TTTT
 categories: [Architecture, Agentic AI, Model Context Protocol, Testing]
 tags: [inspector, semantic kernel, ai, ai agents, plugins, planner, llm, vector store, mcp, .NET]     # TAG names should always be lowercase
 description: In this post I will show how to test a mcp server using inspector tool. We will utilise a mcp server created in my earlier blog post.
-media_subpath: "/assets/images/posts/2025-04-20"
 ---
 
 In this post I will show how to test a MCP server by using a basic UI based testing tool. 
