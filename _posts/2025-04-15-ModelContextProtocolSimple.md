@@ -4,7 +4,6 @@ date: 2025-04-15 10:30:30 +/-TTTT
 categories: [Architecture, Agentic AI, Model Context Protocol, Embeddings]
 tags: [semantic kernel, ai, ai agents, plugins, planner, llm, vector store, mcp, .NET]     # TAG names should always be lowercase
 description: In this post I will talk about model context protocol and how it can be implemented in C#. This is avery simple implementation wihtout considerating much complexity and try to showcase the concept at a core level.
-media_subpath: "/assets/images/posts/2025-04-15"
 ---
 
 # Model Context Protocol

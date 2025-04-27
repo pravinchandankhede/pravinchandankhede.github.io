@@ -50,31 +50,6 @@ Inspector provides various options to configure the server. One such option is T
  - Select one of the tool and a testing pane will open. You can run it and test
 ![alt text](/image-3.png)
 
-## Run
-To run the demo - 
-- You can first start the BankingService project, this will start the APIs on `http://localhost:7001`
-- Then you can start the MCP server project, this will start the MCP server on `http://localhost:5000/sse`
-- Finally you can start the MCP client project, this will connect to the MCP server and list down all the tools available with it. You can then invoke the tools to perform operations.
-
-### Output
-
-You can see a sample output below -
-```bash
-Tool: GetBalances
-Description: Get a list of accounts and balance.
-
-Tool: GetBalance
-Description: Get a balance by name.
-
-Tool: Echo
-Description: Echoes the message back to the client.
-
-Tool: Length
-Description: Echoes the length of message back to the client.
-
-Tool result: [{"name":"JohnDoe","amount":1500.75},{"name":"JaneSmith","amount":2450.00},{"name":"AliceBrown","amount":320.50}]
-```
-
 ## Source Code
 You can find the source code for this project at below location
 
