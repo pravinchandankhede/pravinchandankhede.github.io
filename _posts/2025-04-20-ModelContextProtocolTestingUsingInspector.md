@@ -39,16 +39,16 @@ Starting MCP inspector...
 Inspector provides various options to configure the server. One such option is Transport. MCP server can connect over multiple transport channel with the clients. In this article we would be  using an [Server Side Events](https://modelcontextprotocol.io/docs/concepts/transports#server-sent-events-sse)
 
  - Now open this URL in browser and you should see a screen like this -
-![alt text](image.png)
+![default screen](/assets/images/posts/2025-04-20/image.png)
 
  - Select SSE for Transport type, provide the sse URL and then click connect. The connection would be done and you can see a "List Tools" button enabled
-![alt text](/image-1.png)
+![transport selection](/assets/images/posts/2025-04-20/image-1.png)
 
  - Once you click "List Tools@, it would show you all the tools available with this server
-![alt text](/image-2.png)
+![listing the tools](/assets/images/posts/2025-04-20/image-2.png)
 
  - Select one of the tool and a testing pane will open. You can run it and test
-![alt text](/image-3.png)
+![tool call result](/assets/images/posts/2025-04-20/image-3.png)
 
 ## Source Code
 You can find the source code for this project at below location
