@@ -1,16 +1,20 @@
 ---
-title: Model Context Protocol, a core implementation of protocol using C# and ASP.NET.
-date: 2025-04-15 10:30:30 +/-TTTT
-categories: [Architecture, Agentic AI, Model Context Protocol, Embeddings]
-tags: [semantic kernel, ai, ai agents, plugins, planner, llm, vector store, mcp, .NET]     # TAG names should always be lowercase
-description: In this post I will talk about model context protocol and how it can be implemented in C#. This is a very simple implementation wihtout considerating complexity of high level frameworks. I will try to showcase the concept at a core level.
+title: Model Context Protocol: How to integrate Azure OpenAI ChatCompletion LLM calls with MCP Tools.
+date: 2025-04-18 10:30:30 +/-TTTT
+categories: [Architecture, Agentic AI, Model Context Protocol, Azure OpenAI]
+tags: [ai, ai agents, plugins, planner, llm, vector store, mcp, .NET]     # TAG names should always be lowercase
+description: In this post I will show how to integrate tools exposed by a MCP server and consume them through a LLM call made using raw Azure OpenAI client libraries.
 ---
 
 # Model Context Protocol
 This is a demo project that demonstrate the concept of using [model context protocol](https://modelcontextprotocol.io/introduction) with C#. It uses the core Nuget packages [ModelContextProtocol](https://packages.nuget.org/packages/ModelContextProtocol/0.1.0-preview.10)
 MCP helps you connect with variety of sources and expose them in a way which is similar to other MCP servers. This way the client code is simplified, and it can focus on implementing the core lgoic rather than trying to integrate the Agent with all varied data sources.
 
-**In this demo, I will show how to expose your organizations APIs as Tools using MCP server technique.**
+In this post I will show how to test a MCP server by using a basic UI based testing tool. 
+
+> **Info:** This blog uses the MCP server created in my earlier blog post [here](https://pravinchandankhede.github.io/posts/ModelContextProtocolSimple/)
+{: .prompt-info }
+
 
 ## Banking Service
 This is  simple banking service which provides 2 operations
