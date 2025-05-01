@@ -43,66 +43,83 @@ npm install @angular/elements
 Create a component that you want to convert into an Angular Element. For example:
 
 ```typescript
-// filepath: src/app/hello-world/hello-world.component.ts
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-hello-world',
-  template: `<p>Hello, World!</p>`,
-  styles: [`p { font-size: 20px; color: blue; }`]
+    selector: 'app-hello-world',
+    standalone: false,
+    templateUrl: './hello-world.component.html',
+    styleUrl: './hello-world.component.css'
 })
-export class HelloWorldComponent {}
+export class HelloWorldComponent {
+    @Input() name: string = 'World';
+}
 ```
 
 ### Step 3: Convert the Component into a Custom Element
 In your AppModule, use the createCustomElement function to convert the component into a custom element:
 
 ```typescript
-// filepath: src/app/app.module.ts
-import { NgModule, Injector } from '@angular/core';
+import { Injector, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { createCustomElement } from '@angular/elements';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { HelloWorldComponent } from './hello-world/hello-world.component';
 
 @NgModule({
-  declarations: [HelloWorldComponent],
-  imports: [BrowserModule],
-  providers: [],
-  bootstrap: [] // No bootstrap component for Angular Elements
+    declarations: [
+        AppComponent,
+        HelloWorldComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule
+    ],
+    providers: [],
 })
 export class AppModule {
-  constructor(private injector: Injector) {
-    const helloWorldElement = createCustomElement(HelloWorldComponent, { injector });
-    customElements.define('hello-world', helloWorldElement);
-  }
 
-  ngDoBootstrap() {}
+    constructor(private injector: Injector) {
+        const helloWorldElement = createCustomElement(HelloWorldComponent, { injector });
+        customElements.define('app-hello-world', helloWorldElement);
+    }
+
+    ngDoBootstrap() {
+    }
 }
 ```
 
-### Step 4: Build and Use the Custom Element
-Build your Angular project using the following command:
-
-```bash
-ng build --prod
-```
-
-The output will be in the dist folder. You can include the generated JavaScript files in any HTML file and use the custom element like this:
+### Use the newly defined anuglar element
+In your Index.html, instead of using the <app-root> element use the <app-hello-world> element
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Angular Element Example</title>
+  <meta charset="utf-8">
+  <title>AngularElements</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <hello-world></hello-world>
-  <script src="main.js"></script>
+    <!--<app-root></app-root>-->
+    <app-hello-world></app-hello-world>
 </body>
 </html>
 ```
+
+### Step 4: Build and Use the Custom Element
+Build and run your Angular project using the following command:
+
+```bash
+ng serve -o
+```
+
+This will open the browser and load the element inside it.
+
+![run sample](/assets/images/posts/2024-12-07/image.png)
 
 ## Use Cases for Angular Elements
  - **Micro-Frontend Architecture**: Share components across multiple applications.
