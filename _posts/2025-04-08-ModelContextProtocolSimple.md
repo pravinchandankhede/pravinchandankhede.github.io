@@ -1,6 +1,6 @@
 ---
 title: Model Context Protocol, a core implementation of protocol using C# and ASP.NET.
-date: 2025-04-15 10:30:30 +/-TTTT
+date: 2025-04-08 10:30:30 +/-TTTT
 categories: [Architecture, Agentic AI, Model Context Protocol, Embeddings]
 tags: [semantic kernel, ai, ai agents, plugins, planner, llm, vector store, mcp, .NET]     # TAG names should always be lowercase
 description: In this post I will talk about model context protocol and how it can be implemented in C#. This is a very simple implementation wihtout considerating complexity of high level frameworks. I will try to showcase the concept at a core level.

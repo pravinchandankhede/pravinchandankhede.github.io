@@ -1,6 +1,6 @@
 ---
 title: Model Context Protocol - How to integrate Azure OpenAI ChatCompletion LLM calls with MCP Tools.
-date: 2025-04-18 10:30:30 +/-TTTT
+date: 2025-04-12 10:30:30 +/-TTTT
 categories: [Architecture, Agentic AI, Model Context Protocol, Azure OpenAI]
 tags: [ai, ai agents, plugins, planner, llm, vector store, mcp, .NET]     # TAG names should always be lowercase
 description: In this post I will show how to integrate tools exposed by a MCP server and consume them through a LLM call made using raw Azure OpenAI client libraries.
