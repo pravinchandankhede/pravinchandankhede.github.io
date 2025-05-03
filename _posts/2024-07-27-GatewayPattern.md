@@ -6,28 +6,24 @@ tags: [api, bff, angular, limit, .net9, middleware]     # TAG names should alway
 description: We will discuss the importance of BFF API Gateway and how to use it effectively.
 ---
 
-# 🧭 API Gateway Pattern
+# API Gateway Pattern
 Today we are in era of application development where we are developing applications that are highly scalable, easy to user, responsive and performant. As applications are growing so is the choice for API driven systems. In this API driven development, most of the system are desinged around the collections of API which work together to provide a set of functionality or feature. This is frontended using a UI layer which helps user 'talk' to system.
 There are many choices to develop this UI layer, however the most prominent one is to have single page application or SPA which are becoming defacto standards across industry.
 
 These SPA apps are generally lazily loaded on the client browser and they often call API(s) to fetch the data and perform some actions.
 
-
-# 🧭 The API Gateway Pattern: A Comprehensive Guide with C# Examples
-
-## 📌 Introduction
+## Introduction
 
 In modern software architecture, especially with the rise of **microservices**, the **API Gateway** pattern has become a cornerstone. It acts as a single entry point for clients, handling requests by routing them to the appropriate microservices, aggregating results, and performing cross-cutting concerns like authentication, logging, and rate limiting.
 
 In this  article I will explore the API Gateway pattern in depth, with practical **C# code samples**, and discuss its implementation across different architectural paradigms.
 
----
 
-## 🧱 What is an API Gateway?
+## What is an API Gateway?
 
 An **API Gateway** is a server that sits between clients and backend services. It abstracts the internal system architecture and provides a unified API to the clients.
 
-### 🔍 Responsibilities of an API Gateway:
+### Responsibilities of an API Gateway:
 - Request routing
 - Load balancing
 - Authentication and authorization
@@ -36,16 +32,14 @@ An **API Gateway** is a server that sits between clients and backend services. I
 - Caching
 - Logging and monitoring
 
----
-
-## 🧩 Why Use an API Gateway?
+## Why Use an API Gateway?
 
 Without an API Gateway, clients must interact with each microservice individually. This leads to:
 - Increased complexity on the client side
 - Tight coupling between client and services
 - Duplication of cross-cutting concerns
 
-### ✅ Benefits of Using an API Gateway:
+### Benefits of Using an API Gateway:
 - **Simplified Client Communication**: Clients interact with a single endpoint.
 - **Centralized Security**: Authentication and authorization are managed in one place.
 - **Rate Limiting and Throttling**: Prevent abuse and ensure fair usage.
@@ -82,17 +76,17 @@ Without an API Gateway, clients must interact with each microservice individuall
 7. **Service Mesh Integration**  
    Leveraging service mesh tools like Istio or Linkerd to implement API Gateway functionality as part of the service mesh. This approach is suitable for Kubernetes-based environments.
 
-## 🛠️ Implementing an API Gateway in C#
+## Implementing an API Gateway in C#
 
 Let’s start with a **basic custom API Gateway** using **ASP.NET Core**.
 
-### 🧪 Sample Setup
+### Sample Setup
 
 Assume we have two microservices:
 - `ProductService` at `http://localhost:5001`
 - `OrderService` at `http://localhost:5002`
 
-### 📦 Step 1: Create the API Gateway Project
+### Step 1: Create the API Gateway Project
 
 ```bash
 dotnet new webapi -n ApiGateway
@@ -224,12 +218,12 @@ In a microservices setup, the API Gateway:
 ## BFF (Backend for Frontend)
 A BFF is a specialized API Gateway tailored to a specific frontend (e.g., mobile, web).
 
-🔄 Why BFF?
+Why BFF?
  - Different frontends have different needs
  - Avoid over-fetching or under-fetching
  - Encapsulate frontend-specific logic
 
-🧪 Example
+Example
 
 ```csharp
 app.MapGet("/mobile/dashboard", async (HttpClient http) =>
@@ -247,9 +241,8 @@ You can have separate BFFs for:
 
 ## API Gateway vs Service MFeature	API Gateway	Service Mesh
 
----------------------------------------------------------
 | Feature | API Gateway | Service Mesh |
-----------------------------------------------------------
+|---------|-------------|--------------|
 | Scope	| North-South (client to service)	| East-West (service to service)
 | Focus	| Entry point, auth, rate limiting	| Traffic control, observability
 | Examples | 	Ocelot, Azure APIM	| Istio, Linkerd
@@ -274,6 +267,6 @@ Use tools like:
  - Serilog or Application Insights for logging
  - Prometheus + Grafana for metrics
 
-## 📚 Conclusion
+## Conclusion
 The API Gateway pattern is essential in modern distributed systems. Whether you're building a custom gateway in C#, using cloud-native solutions like Azure APIM, or implementing BFFs for frontend optimization, the pattern provides a powerful abstraction layer that simplifies client interactions and centralizes cross-cutting concerns.
 
