@@ -6,7 +6,7 @@ tags: [api, bff, angular, limit, .net9, middleware]     # TAG names should alway
 description: We will discuss the importance of BFF API Gateway and how to use it effectively.
 ---
 
-# API Gateway Pattern
+## API Gateway Pattern
 Today we are in era of application development where we are developing applications that are highly scalable, easy to user, responsive and performant. As applications are growing so is the choice for API driven systems. In this API driven development, most of the system are desinged around the collections of API which work together to provide a set of functionality or feature. This is frontended using a UI layer which helps user 'talk' to system.
 There are many choices to develop this UI layer, however the most prominent one is to have single page application or SPA which are becoming defacto standards across industry.
 
@@ -158,7 +158,7 @@ AWS offers:
 
 
 ## Custom API Gateway with Ocelot (C#)
-Ocelot is a popular .NET API Gateway library.
+[Ocelot](https://www.nuget.org/packages/Ocelot) is a popular .NET API Gateway library.
 
 Install Ocelot
 
@@ -239,7 +239,7 @@ You can have separate BFFs for:
  - Mobile
  - IoT
 
-## API Gateway vs Service MFeature	API Gateway	Service Mesh
+## API Gateway vs Service Mesh
 
 | Feature | API Gateway | Service Mesh |
 |---------|-------------|--------------|
