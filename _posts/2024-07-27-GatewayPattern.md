@@ -83,8 +83,44 @@ Let’s start with a **basic custom API Gateway** using **ASP.NET Core**.
 ### Sample Setup
 
 Assume we have two microservices:
-- `ProductService` at `http://localhost:5001`
 - `OrderService` at `http://localhost:5002`
+- `ProductService` at `http://localhost:5001`
+
+The services are created using API controller for Order and Products as shown below
+
+```csharp
+	// GET: api/Order
+	[HttpGet]
+	public IActionResult GetOrders()
+	{
+		if (!System.IO.File.Exists(DataFilePath))
+		{
+			return NotFound("Data file not found.");
+		}
+
+		var jsonData = System.IO.File.ReadAllText(DataFilePath);
+		var orders = JsonSerializer.Deserialize<List<Order>>(jsonData);
+
+		return Ok(orders);
+	}
+```
+
+```csharp
+	// GET: api/Product
+	[HttpGet]
+	public IActionResult GetProducts()
+	{
+		if (!System.IO.File.Exists(DataFilePath))
+		{
+			return NotFound("Data file not found.");
+		}
+
+		var jsonData = System.IO.File.ReadAllText(DataFilePath);
+		var products = JsonSerializer.Deserialize<List<Product>>(jsonData);
+
+		return Ok(products);
+	}
+```
 
 ### Step 1: Create the API Gateway Project
 
@@ -93,33 +129,131 @@ dotnet new webapi -n ApiGateway
 cd ApiGateway
 ```
 
-### Startup.cs or Program.cs (ASP.NET Core 6+)
+### Create a GatewayController 
+Next we will create a GatewayController which exposes endpoints for Products and Order. These endpoints internally calls the underlying products and order services.
+ - This way the caller client is sheilded from the lower level details of smaller services.
+ - Also it helps to implement the aggregation and other features in gateway.
+ - This way the heavy lifting logic is done by the gateway.
+
+#### Exposing the intermediate methods
+Here we will expose expose gateway method for Products and Orders
 
 ```csharp
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+	// GET: api/Gateway/products
+	[HttpGet("products")]
+	public async Task<IActionResult> GetProducts()
+	{
+		var productServiceUrl = _productServiceUrl + "Product";
+		var response = await _httpClient.GetAsync(productServiceUrl);
 
-app.MapGet("/products", async (HttpClient http) =>
-{
-    var response = await http.GetAsync("http://localhost:5001/products");
-    return Results.Content(await response.Content.ReadAsStringAsync(), "application/json");
-});
+		if (!response.IsSuccessStatusCode)
+		{
+			return StatusCode((int)response.StatusCode, "Failed to fetch products.");
+		}
 
-app.MapGet("/orders", async (HttpClient http) =>
-{
-    var response = await http.GetAsync("http://localhost:5002/orders");
-    return Results.Content(await response.Content.ReadAsStringAsync(), "application/json");
-});
+		var products = await response.Content.ReadAsStringAsync();
+		return Content(products, "application/json");
+	}
 
-app.Run();
+	// GET: api/Gateway/orders
+	[HttpGet("orders")]
+	public async Task<IActionResult> GetOrders()
+	{
+		var orderServiceUrl = _orderServiceUrl + "Order";
+		var response = await _httpClient.GetAsync(orderServiceUrl);
+
+		if (!response.IsSuccessStatusCode)
+		{
+			return StatusCode((int)response.StatusCode, "Failed to fetch orders.");
+		}
+
+		var orders = await response.Content.ReadAsStringAsync();
+		return Content(orders, "application/json");
+	}
 
 ```
 
-Add HttpClient to Program.cs:
+#### Exposing an aggregate method
+This method exposes an endpoint that calls the orders and products services and then return only the orders that matches with products. This way, you can implement any filter or aggregation logic
 
 ```csharp
-builder.Services.AddHttpClient();
+	[HttpGet("orders-with-products")]
+	public async Task<IActionResult> GetOrdersWithProducts()
+	{
+		var orderServiceUrl = _orderServiceUrl + "Order";
+		var productServiceUrl = _productServiceUrl + "Product";
+
+		var options = new JsonSerializerOptions
+		{
+			PropertyNameCaseInsensitive = true
+		};
+
+		// Fetch orders
+		var orderResponse = await _httpClient.GetAsync(orderServiceUrl);
+		if (!orderResponse.IsSuccessStatusCode)
+		{
+			return StatusCode((int)orderResponse.StatusCode, "Failed to fetch orders.");
+		}
+		var orderData = await orderResponse.Content.ReadAsStringAsync();
+		var orders = JsonSerializer.Deserialize<List<Order>>(orderData, options);
+
+		// Fetch products
+		var productResponse = await _httpClient.GetAsync(productServiceUrl);
+		if (!productResponse.IsSuccessStatusCode)
+		{
+			return StatusCode((int)productResponse.StatusCode, "Failed to fetch products.");
+		}
+		var productData = await productResponse.Content.ReadAsStringAsync();
+		var products = JsonSerializer.Deserialize<List<Product>>(productData, options);
+
+		// Aggregate orders with product details
+		var ordersWithProducts = orders.Select(order =>
+		{
+			var enrichedItems = order.Items.Select(item =>
+			{
+				var product = products.FirstOrDefault(p => p.Id == item.ProductId);
+				return new
+				{
+					item.ProductId,
+					ProductName = product?.Name,
+					item.Quantity,
+					item.Price,
+					ProductCategory = product?.Category
+				};
+			}).ToList();
+
+			return new
+			{
+				order.Id,
+				order.CustomerName,
+				order.OrderDate,
+				Items = enrichedItems,
+				order.TotalAmount
+			};
+		});
+
+		return Ok(ordersWithProducts);
+	}
 ```
+
+### Create a client console app to call the gateway
+Though this can be any type of client, we will use a .NET Console application to call our Gateway methods.
+
+```csharp
+		var client = new ShoppingCartClient("http://localhost:5003");
+
+		// Fetch products
+		var products = await client.GetProductsAsync();
+		Console.WriteLine("Products: " + products);
+
+		// Fetch orders
+		var orders = await client.GetOrdersAsync();
+		Console.WriteLine("Orders: " + orders);
+```
+
+Here `ShoppingCartClient` is a utility class created to abstract the `HttpClient` calls for gateway service.
+
+The code for this sample can be found [here](https://github.com/pravinchandankhede/designpatterns/tree/main/src/microservices/APIGateway)
 
 This is a basic reverse proxy. Let’s now explore more advanced patterns.
 
