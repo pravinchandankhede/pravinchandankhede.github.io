@@ -240,7 +240,7 @@ This method exposes an endpoint that calls the orders and products services and 
 Though this can be any type of client, we will use a .NET Console application to call our Gateway methods.
 
 ```csharp
-		var client = new ShoppingCartClient("http://localhost:5003");
+		var client = new ShoppingCartClient("http://localhost:5002");
 
 		// Fetch products
 		var products = await client.GetProductsAsync();
