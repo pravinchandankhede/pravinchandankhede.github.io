@@ -122,7 +122,7 @@ The services are created using API controller for Order and Products as shown be
 	}
 ```
 
-### Step 1: Create the API Gateway Project
+### Create the API Gateway Project
 
 ```bash
 dotnet new webapi -n ApiGateway
