@@ -83,7 +83,7 @@ Let’s start with a **basic custom API Gateway** using **ASP.NET Core**.
 ### Sample Setup
 
 Assume we have two microservices:
-- `OrderService` at `http://localhost:5002`
+- `OrderService` at `http://localhost:5000`
 - `ProductService` at `http://localhost:5001`
 
 The services are created using API controller for Order and Products as shown below
