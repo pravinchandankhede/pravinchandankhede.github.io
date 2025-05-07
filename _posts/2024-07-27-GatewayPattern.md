@@ -258,37 +258,91 @@ The code for this sample can be found [here](https://github.com/pravinchandankhe
 This is a basic reverse proxy. Let’s now explore more advanced patterns.
 
 ## Cloud-Native API Gateways
+In this method we will use the API gateway that are provided by all major cloud providers. In this method, we deploy an instance of API Gateway which acts as an reverse proxy and handle all the heavu lifting work like aggregation etc.
+
 ### Azure API Management (APIM)
+Microsoft Azure provides a cloud service [Azure API Management](https://azure.microsoft.com/en-us/products/api-management). It supports following features at a high level
 
-Azure APIM provides:
+ - **API Gateway**: Lets you manage API securely with declarative pplicies for request authentication, validation, routing, throttling, caching, transformation, load balancing and circuit breaking.
+ - **Monitoring**: Provides native support for monitoring and log analytics. Helps you get insights into usage, latency, error rates with pre define dashboards.
+ - **Seemless Integration**: It is capable of native integration with services like App Services, Azure Functions, Logic Apps, Kubernetes etc. This help to unify traffic across all these workloads.
+ - **API Developer Portal**: Proivdes self service developer portal for interactive documentation, test and access management.
+ - **Hybrid Cloud Support**: Capable of exposing not only Azure but services from other cloud providers as well.
 
- - Developer portal
- - Policy-based request/response transformation
- - OAuth2/JWT validation
- - Rate limiting
 
- Example Policy (XML):
+
+#### Example Policy (XML):
+
+Here is an sample Azure API Management (APIM) policy example for a shopping cart service that shows request authentication, response caching, response transformation, and circuit breaking. This assumes the service aggregates two granular services: Orders and Products.
 
  ```xml
- <inbound>
-    <base />
-    <validate-jwt header-name="Authorization" failed-validation-httpcode="401">
-        <openid-config url="https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration" />
-        <required-claims>
-            <claim name="aud">
-                <value>api://your-api-id</value>
-            </claim>
-        </required-claims>
-    </validate-jwt>
-</inbound>
+<policies>
+    <inbound>
+        <!-- Base policy -->
+        <base />
+
+        <!-- Request Authentication -->
+        <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized">
+            <openid-config url="https://login.microsoftonline.com/{tenant-id}/.well-known/openid-configuration" />
+            <required-claims>
+                <claim name="aud">
+                    <value>api://shopping-cart-service</value>
+                </claim>
+            </required-claims>
+        </validate-jwt>
+
+        <!-- Caching Response -->
+        <cache-lookup vary-by-developer="false" vary-by-developer-groups="false" vary-by-query-parameters="*" />
+    </inbound>
+
+    <backend>
+        <!-- Circuit Breaker -->
+        <circuit-breaker errors-count="5" interval="30" />
+    </backend>
+
+    <outbound>
+        <!-- Caching Response -->
+        <cache-store duration="300" />
+
+        <!-- Response Transformation -->
+        <set-body>
+            @{
+                var response = context.Response.Body.As<JObject>();
+                return new JObject(
+                    new JProperty("status", "success"),
+                    new JProperty("data", response)
+                ).ToString();
+            }
+        </set-body>
+    </outbound>
+
+    <on-error>
+        <!-- Handle errors gracefully -->
+        <set-status code="500" reason="Internal Server Error" />
+        <set-body>
+            {
+                "status": "error",
+                "message": "An unexpected error occurred. Please try again later."
+            }
+        </set-body>
+    </on-error>
+</policies>
 ```
 
-### AWS API Gateway
-AWS offers:
+**Request Authentication**: Uses validate-jwt to authenticate requests using a JWT token issued by Azure AD.
+Replace {tenant-id} with your Azure AD tenant ID and api://shopping-cart-service with your API's audience.
 
- - REST and HTTP APIs
- - Integration with Lambda, EC2, or any HTTP backend
- - Built-in throttling, caching, and authorization
+**Caching**: cache-lookup checks if the response is already cached.
+cache-store stores the response for 300 seconds (5 minutes).
+
+**Circuit Breaker**: Limits backend calls if there are 5 errors within a 30-second interval.
+
+**Response Transformation**: Wraps the backend response in a custom JSON structure with a status field.
+
+**Error Handling**: Returns a user-friendly error message in case of failures.
+
+### AWS API Gateway
+AWS also offers a similar service however we won't be going thorugh that in detail. You can refer it [here](https://aws.amazon.com/api-gateway/)
 
 
 ## Custom API Gateway with Ocelot (C#)
