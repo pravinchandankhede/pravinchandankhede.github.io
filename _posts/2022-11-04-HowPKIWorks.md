@@ -31,6 +31,27 @@ PKI is composed of several integral components that work together to provide a s
 
 - **Key Management System** : The Key Management System is responsible for the secure handling of cryptographic keys. It manages the creation, distribution, storage, and destruction of keys, ensuring that they are protected throughout their lifecycle. This system is vital for maintaining the security and integrity of the PKI infrastructure.
 
+The diagram below shows the relation between these components
+
+```mermaid
+ graph TD
+    CA[Certificate Authority]
+    RA[Registration Authority]
+    DB[Certificate Database]
+    CS[Certificate Store]
+    KMS[Key Management System]
+    User[User/Device]
+    Server[Server/Service]
+
+    CA --> RA
+    RA --> DB
+    DB --> CS
+    CS --> KMS
+    User --> RA
+    Server --> CA
+    User --> Server 
+```
+
 #### 1.3 Types of PKI Architectures
 
 PKI architectures can be broadly categorized into two types:
