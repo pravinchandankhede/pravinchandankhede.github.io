@@ -3,12 +3,13 @@ title: PKI Architecture & Working, its benefits, challenges
 date: 2022-11-04 10:30:30 +/-TTTT
 categories: [Architecture, PKI, x509, certificates, ssl]
 tags: [api, pki, x509, certificates, ssl, security, attack, encryption]     # TAG names should always be lowercase
-description: In this post I will talk about a basic security setup that every organnization as a baseline security measure. The post talks about PKI infrastructure that holds the foundation of modern security for any organization. 
+description: In this post I will talk about a basic security setup that every organnization as a baseline security measure. The post talks about PKI infrastructure that holds the foundation of modern security for any organization.
+mermaid: true
 ---
 
 ## Introduction
 
-Public Key Infrastructure (PKI) is a framework that enables secure, encrypted communication and authentication over networks. It is essential for ensuring the integrity, confidentiality, and authenticity of data in digital communications.
+Public Key Infrastructure (PKI) is a comprehensive framework designed to manage digital certificates and public-key encryption. It facilitates secure communication and authentication over networks, ensuring data integrity, confidentiality, and authenticity.
 
 ### 1. Understanding PKI Architecture
 
@@ -18,16 +19,44 @@ PKI is a system of hardware, software, policies, and standards that manage the c
 
 #### 1.2 Components of PKI
 
-- **Certificate Authority (CA**): The trusted entity that issues and manages digital certificates.
-- **Registration Authority (RA)**: Verifies the identity of entities requesting certificates.
-- **Certificate Database**: Stores certificates and their metadata.
-- **Certificate Store**: A repository for certificates and keys.
-- **Key Management System** : Manages the lifecycle of cryptographic keys.
+PKI is composed of several integral components that work together to provide a secure environment for digital communications:
+
+- **Certificate Authority (CA**): The Certificate Authority (CA) is the cornerstone of PKI. It is a trusted entity responsible for issuing, revoking, and managing digital certificates. The CA verifies the identity of entities requesting certificates and signs them with its private key, ensuring their authenticity.
+
+- **Registration Authority (RA)**: The Registration Authority (RA) acts as an intermediary between the CA and the entities requesting certificates. It handles the initial verification of the entities' identities before forwarding their requests to the CA for approval and issuance.
+
+- **Certificate Database**: The Certificate Database is a centralized repository that stores all issued certificates and their associated metadata. This database is crucial for managing the lifecycle of certificates, including tracking their validity, renewal, and revocation status.
+
+- **Certificate Store**: The Certificate Store is a secure repository where certificates and their private keys are stored. It ensures that certificates are readily accessible for applications and systems to use in secure communication and authentication processes.
+
+- **Key Management System** : The Key Management System is responsible for the secure handling of cryptographic keys. It manages the creation, distribution, storage, and destruction of keys, ensuring that they are protected throughout their lifecycle. This system is vital for maintaining the security and integrity of the PKI infrastructure.
 
 #### 1.3 Types of PKI Architectures
 
-**Publicly Trusted PKI**: Used for public-facing services, relying on certificates from trusted CAs.
-**Privately Trusted PKI**: Used within organizations for internal security needs.
+PKI architectures can be broadly categorized into two types:
+
+- **Publicly Trusted PKI**: Publicly Trusted PKI is used for public-facing services and relies on certificates issued by trusted CAs. These certificates are recognized and trusted by clients and operating systems in public channels, such as the internet.
+
+- **Privately Trusted PKI**: Privately Trusted PKI is used within organizations to secure internal assets and networks. It involves running a private CA that issues certificates for internal use, providing control over the PKI infrastructure.
+
+```mermaid
+ graph TD
+    subgraph Publicly Trusted PKI
+        CA1[Public CA]
+        Client1[Client]
+        Server1[Server]
+        CA1 --> Client1
+        CA1 --> Server1
+    end
+
+    subgraph Privately Trusted PKI
+        CA2[Private CA]
+        Client2[Internal Client]
+        Server2[Internal Server]
+        CA2 --> Client2
+        CA2 --> Server2
+    end 
+```
 
 ### 2. The Need for PKI
 
@@ -80,8 +109,8 @@ Choose the Right Architecture: Decide between publicly trusted and privately tru
 
 #### 5.2 Setting Up the Infrastructure
 
-Establish a Certificate Authority (CA): Set up a CA to issue and manage digital certificates.
-Deploy Registration Authorities (RAs): Implement RAs to verify the identity of entities requesting certificates.
+- **Establish a Certificate Authority (CA)**: Set up a CA to issue and manage digital certificates.
+- **Deploy Registration Authorities (RAs)**: Implement RAs to verify the identity of entities requesting certificates.
 
 #### 5.3 Managing Certificates
 
