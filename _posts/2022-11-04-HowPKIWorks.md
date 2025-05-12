@@ -18,11 +18,11 @@ PKI is a system of hardware, software, policies, and standards that manage the c
 
 #### 1.2 Components of PKI
 
-**Certificate Authority (CA**): The trusted entity that issues and manages digital certificates.
-**Registration Authority (RA)**: Verifies the identity of entities requesting certificates.
-**Certificate Database**: Stores certificates and their metadata.
-**Certificate Store**: A repository for certificates and keys.
-**Key Management System** : Manages the lifecycle of cryptographic keys.
+- **Certificate Authority (CA**): The trusted entity that issues and manages digital certificates.
+- **Registration Authority (RA)**: Verifies the identity of entities requesting certificates.
+- **Certificate Database**: Stores certificates and their metadata.
+- **Certificate Store**: A repository for certificates and keys.
+- **Key Management System** : Manages the lifecycle of cryptographic keys.
 
 #### 1.3 Types of PKI Architectures
 
