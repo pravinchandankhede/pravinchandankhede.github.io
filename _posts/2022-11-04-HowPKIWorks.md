@@ -1,5 +1,5 @@
 ---
-title: PKI Architecture & Working, its benefits, challenges
+title: Enterprise PKI Architecture & Working, its benefits, challenges
 date: 2022-11-04 10:30:30 +/-TTTT
 categories: [Architecture, PKI, x509, certificates, ssl]
 tags: [api, pki, x509, certificates, ssl, security, attack, encryption]     # TAG names should always be lowercase
