@@ -89,69 +89,45 @@ In today's digital world, security is paramount. PKI enhances security by provid
 
 PKI provides robust security by encrypting data and ensuring that only authorized entities can access it.
 
-##### 2.1.1 Encryption
+**Encryption**: PKI uses asymmetric encryption to protect data. This involves a pair of cryptographic keys: a public key and a private key. The public key encrypts data, while the private key decrypts it. This ensures that even if data is intercepted during transmission, it cannot be read without the corresponding private key.
 
-PKI uses asymmetric encryption to protect data. This involves a pair of cryptographic keys: a public key and a private key. The public key encrypts data, while the private key decrypts it. This ensures that even if data is intercepted during transmission, it cannot be read without the corresponding private key.
-
-##### 2.1.2 Authentication
-
-Digital certificates issued by a trusted Certificate Authority (CA) authenticate the identity of users, devices, and services. This prevents unauthorized access and ensures that entities involved in communication are who they claim to be.
+**Authentication**: Digital certificates issued by a trusted Certificate Authority (CA) authenticate the identity of users, devices, and services. This prevents unauthorized access and ensures that entities involved in communication are who they claim to be.
 
 #### 2.2 Authentication and Trust
 
 PKI establishes a chain of trust through digital certificates, which are used to verify identities and secure communications.
 
-##### 2.2.1 Identity Verification
+**Identity Verification**: Digital certificates contain information about the entity they are issued to, such as their public key and identity details. When a certificate is presented, the recipient can verify its authenticity by checking the signature of the CA that issued it.
 
-Digital certificates contain information about the entity they are issued to, such as their public key and identity details. When a certificate is presented, the recipient can verify its authenticity by checking the signature of the CA that issued it.
-
-##### 2.2.2 Trust Hierarchy
-
-PKI creates a hierarchical trust model, where trust is established from a root CA down to intermediate CAs and end-entity certificates. This hierarchy ensures that trust is propagated through the entire chain, making it difficult for malicious entities to forge identities.
+**Trust Hierarchy**: PKI creates a hierarchical trust model, where trust is established from a root CA down to intermediate CAs and end-entity certificates. This hierarchy ensures that trust is propagated through the entire chain, making it difficult for malicious entities to forge identities.
 
 #### 2.3 Regulatory Compliance
 
 Many industries have stringent regulations and standards for data protection and privacy. PKI helps organizations comply with these requirements.
 
-##### 2.3.1 Data Protection Regulations
+**Data Protection Regulations**: Regulations such as the General Data Protection Regulation (GDPR) and the Health Insurance Portability and Accountability Act (HIPAA) mandate the protection of sensitive data. PKI provides the necessary encryption and authentication mechanisms to meet these requirements.
 
-Regulations such as the General Data Protection Regulation (GDPR) and the Health Insurance Portability and Accountability Act (HIPAA) mandate the protection of sensitive data. PKI provides the necessary encryption and authentication mechanisms to meet these requirements.
-
-##### 2.3.2 Industry Standards
-
-Standards such as the Payment Card Industry Data Security Standard (PCI DSS) require the use of encryption and secure authentication methods. PKI helps organizations adhere to these standards, ensuring the security of payment card data and other sensitive information.
+**Industry Standards**: Standards such as the Payment Card Industry Data Security Standard (PCI DSS) require the use of encryption and secure authentication methods. PKI helps organizations adhere to these standards, ensuring the security of payment card data and other sensitive information.
 
 #### 2.4 Challenges Without PKI
 
 Without PKI, organizations face several significant challenges that can compromise their security and trustworthiness.
 
-##### 2.4.1 Lack of Encryption
+**Lack of Encryption**: Without PKI, data transmitted over networks is vulnerable to interception and unauthorized access. This can lead to data breaches and the exposure of sensitive information.
 
-Without PKI, data transmitted over networks is vulnerable to interception and unauthorized access. This can lead to data breaches and the exposure of sensitive information.
+**Identity Verification Issues**: Without digital certificates, verifying the identity of users, devices, and services becomes challenging. This can result in unauthorized access and potential security breaches.
 
-##### 2.4.2 Identity Verification Issues
-
-Without digital certificates, verifying the identity of users, devices, and services becomes challenging. This can result in unauthorized access and potential security breaches.
-
-##### 2.4.3 Increased Risk of Data Breaches
-
-The absence of PKI increases the risk of data breaches and cyber-attacks. Without robust encryption and authentication mechanisms, organizations are more susceptible to attacks such as man-in-the-middle (MitM) attacks and phishing.
+**Increased Risk of Data Breaches**: The absence of PKI increases the risk of data breaches and cyber-attacks. Without robust encryption and authentication mechanisms, organizations are more susceptible to attacks such as man-in-the-middle (MitM) attacks and phishing.
 
 #### 2.5 Benefits of PKI
 
 Implementing PKI brings numerous benefits that enhance security, trust, and compliance.
 
-##### 2.5.1 Enhanced Security
+**Enhanced Security**: PKI provides strong encryption and authentication, protecting data from unauthorized access and tampering. This ensures the integrity and confidentiality of communications.
 
-PKI provides strong encryption and authentication, protecting data from unauthorized access and tampering. This ensures the integrity and confidentiality of communications.
+**Improved Trust and Compliance**: PKI helps organizations comply with regulatory requirements and build trust with customers and partners. By using digital certificates, organizations can demonstrate their commitment to security and data protection.
 
-##### 2.5.2 Improved Trust and Compliance
-
-PKI helps organizations comply with regulatory requirements and build trust with customers and partners. By using digital certificates, organizations can demonstrate their commitment to security and data protection.
-
-##### 2.5.3 Scalability and Flexibility
-
-PKI can be scaled to meet the needs of organizations of all sizes. It provides a flexible solution for various security requirements, from securing internal communications to protecting public-facing services.
+**Scalability and Flexibility**: PKI can be scaled to meet the needs of organizations of all sizes. It provides a flexible solution for various security requirements, from securing internal communications to protecting public-facing services.
 
 ### 3. Challenges Without PKI
 
@@ -452,21 +428,4 @@ Allow users and developers to request and manage certificates through a secure, 
 
 Implementing PKI is crucial for organizations to secure their digital communications and protect sensitive data. By understanding the architecture, benefits, and implementation steps, organizations can effectively deploy PKI to enhance their security posture.
 
-```mermaid
-graph TD
-    A[Azure Key Vault] --> B[Store DigiCert Certificate]
-    B --> C[Azure Web Apps]
-    C --> D[Bind Certificate to Web App]
-    D --> E[Auto-Renewal via DigiCert Integration]
-    B --> F[ServiceNow]
-    F --> G[Export Certificate from Key Vault]
-    G --> H[Upload Certificate to ServiceNow]
-    B --> I[Workday]
-    I --> J[Export Certificate from Key Vault]
-    J --> K[Upload Certificate to Workday]
-    B --> L[Azure Automation / Logic Apps]
-    L --> M[Monitor Certificate Expiry]
-    M --> N[Renew Certificate]
-    N --> O[Export New Certificate]
-    O --> P[Push to External Apps]
-```
+
