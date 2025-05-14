@@ -470,6 +470,11 @@ Use tools like:
 - Serilog or Application Insights for logging
 - Prometheus + Grafana for metrics
 
+## Sample code
+
+Please refer the below project for the sample implementation code
+[Link](https://github.com/pravinchandankhede/designpatterns/tree/main/src/microservices/APIGateway)
+
 ## Conclusion
 
 The API Gateway pattern is essential in modern distributed systems. Whether you're building a custom gateway in C#, using cloud-native solutions like Azure APIM, or implementing BFFs for frontend optimization, the pattern provides a powerful abstraction layer that simplifies client interactions and centralizes cross-cutting concerns.
