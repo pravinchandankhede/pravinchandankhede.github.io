@@ -372,6 +372,7 @@ A KMS handles:
 
 Use Certificate Revocation Lists (CRLs) or Online Certificate Status Protocol (OCSP).
 Revoke certificates immediately if:
+
 - A private key is compromised
 - An employee leaves the organization
 - A device is decommissioned
@@ -450,3 +451,22 @@ Allow users and developers to request and manage certificates through a secure, 
 ## Conclusion
 
 Implementing PKI is crucial for organizations to secure their digital communications and protect sensitive data. By understanding the architecture, benefits, and implementation steps, organizations can effectively deploy PKI to enhance their security posture.
+
+```mermaid
+graph TD
+    A[Azure Key Vault] --> B[Store DigiCert Certificate]
+    B --> C[Azure Web Apps]
+    C --> D[Bind Certificate to Web App]
+    D --> E[Auto-Renewal via DigiCert Integration]
+    B --> F[ServiceNow]
+    F --> G[Export Certificate from Key Vault]
+    G --> H[Upload Certificate to ServiceNow]
+    B --> I[Workday]
+    I --> J[Export Certificate from Key Vault]
+    J --> K[Upload Certificate to Workday]
+    B --> L[Azure Automation / Logic Apps]
+    L --> M[Monitor Certificate Expiry]
+    M --> N[Renew Certificate]
+    N --> O[Export New Certificate]
+    O --> P[Push to External Apps]
+```
