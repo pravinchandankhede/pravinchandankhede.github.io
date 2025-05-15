@@ -1,5 +1,5 @@
 ---
-title: Enterprise PKI Architecture & Working, its benefits, challenges
+title: Pillars of Enterprise PKI Strategy & Architecture, its benefits, challenges and working
 date: 2022-11-04 10:30:30 +/-TTTT
 categories: [Architecture, PKI, x509, certificates, ssl]
 tags: [api, pki, x509, certificates, ssl, security, attack, encryption]     # TAG names should always be lowercase
@@ -220,6 +220,7 @@ While implementing PKI requires an initial investment, it can lead to significan
 ### 5. Implementing PKI in Organizations
 
 Implementing a Public Key Infrastructure (PKI) is a strategic initiative that requires careful planning, technical precision, and ongoing governance. A well-implemented PKI enables secure digital communication, identity verification, and data integrity across an organization’s ecosystem.
+We will discuss on the pillars of this infrastructure and possible deployment options. An organization should consider these 7 pillars while architecturing thier PKI.
 
 #### 5.1 Planning and Design
 
