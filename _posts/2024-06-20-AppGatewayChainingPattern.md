@@ -4,23 +4,68 @@ date: 2024-06-20 10:30:30 +/-TTTT
 categories: [Architecture, API, Backend, Gateway]
 tags: [api, nsg, chaining, traffic, limit, .net9, middleware]     # TAG names should always be lowercase
 description: In this post, I will talk about patternt hat can be used to create a DMZ based setup for an Azure or other cloud environment. We will utilize the NSG rules to implement the chaining between Application Gateway located in different VNET or Subnets.
+mermaid: true
 ---
 
 ## What is Azure Application Gateway?
 
-Azure Application Gateway is a web traffic load balancer that operates at the application layer ([OSI Layer 7](https://en.wikipedia.org/wiki/OSI_model)). Unlike traditional load balancers that work at the transport layer (Layer 4), Application Gateway can make routing decisions based on HTTP attributes such as:
+[Azure Application Gateway](https://learn.microsoft.com/en-us/azure/application-gateway/overview) is a web traffic load balancer that operates at the application layer ([OSI Layer 7](https://en.wikipedia.org/wiki/OSI_model)). Unlike traditional load balancers that work at the transport layer (Layer 4), Application Gateway can make routing decisions based on HTTP attributes such as:
 
 - URL path
 - Host headers
 - Query strings
 - HTTP methods
 
-## API Gateway Pattern
+This enables advanced routing scenarios, such as:
 
-Today we are in era of application development where we are developing applications that are highly scalable, easy to user, responsive and performant. As applications are growing so is the choice for API driven systems. In this API driven development, most of the system are desinged around the collections of API which work together to provide a set of functionality or feature. This is frontended using a UI layer which helps user 'talk' to system.
-There are many choices to develop this UI layer, however the most prominent one is to have single page application or SPA which are becoming defacto standards across industry.
+- URL-based routing (e.g., /images to one backend, /videos to another)
+- Multi-site hosting
+- SSL termination
+- Web Application Firewall (WAF) integration
 
-These SPA apps are generally lazily loaded on the client browser and they often call API(s) to fetch the data and perform some actions.
+### Key Feature of Application Gateway
+
+- **Layer 7 Load Balancing**: Intelligent routing based on HTTP/S attributes
+- **Web Application Firewall (WAF)**: Protects against common threats like SQL injection and XSS
+- **SSL Termination**: Offloads SSL processing from backend servers
+- **Autoscaling**: Automatically adjusts capacity based on traffic
+- **Zone Redundancy**: High availability across availability zones
+- **Custom Probes**: Health monitoring of backend services
+- **Private Link Support**: Secure backend connectivity
+
+### Benefits
+
+Application Gateway provides a lot of benefits, some of them I have highlgihted in below table
+
+|Benefit|Description|
+|-------|---------|
+|Security|Built-in WAF, SSL termination, and integration with Azure DDoS Protection|
+|Performance|Autoscaling and caching improve response times|
+|Flexibility|Supports multiple site hosting and path-based routing|
+|Cost Efficiency|Reduces backend load by offloading SSL and routing logic|
+|Zero Trust Ready|Works with Private Link and NSGs for secure internal access|
+
+## What is App Gateway Chaining?
+
+App Gateway refers to the architectural practice of connecting multiple Application Gateways in a sequence to manage and route traffic across complex application environments. This is often used in enterprise or hybrid cloud scenarios where traffic needs to pass through multiple layers of inspection, transformation, or routing before reaching the final destination.
+
+In this pattern, more than one gateways are used to route the traffic before it reaches the destination backend. There are different topologies that can be used to arrange these App Gateway. These are often used as a design for network segmentation like DMZ and multiregion setup.
+
+In this post, I will show how to use App Gateway in a chain fashion performing different roles in the overall setup.
+
+Imagine a setup, in which the client calls an backend system to get the data. However, instead of diretly calling the backend we will put a gateway in between that will route the traffic to backend. In our case, the client is internet facing hence we will use 2 gateways to structure in the form of DMZ located in 2 subnets.
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant GatewayA as Gateway A
+    participant GatewayB as Gateway B
+    participant Backend as Backend App
+
+    Client ->> GatewayA: Request
+    GatewayA ->> GatewayB: Forward Request
+    GatewayB ->> Backend: Forward Request
+```
 
 ## Introduction
 
