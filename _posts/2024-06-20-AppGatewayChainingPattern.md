@@ -107,6 +107,24 @@ flowchart TD
     Internet --> GatewayA
 ```
 
+In this setup, we will use 2 NSG that will be associated to subnet of 2 App Gateways
+
+- **NSG 1**: This NSG will be attached to subnet of gateway 1, it will allow all traffic from internet to flow to gateway 1. It will also allow traffic to flow from Gateway 1 to 2.
+Below rule table show the details
+
+|Priority|Direction|Protocol|Source|Destination|Port|Action|Description|
+|--------|---------|--------|------|------------|----|-----|-----------|
+|100|Inbound|TCP|Internet|Gateway A|443|Allow|AllowHTTPS from internet|
+|200|Inbound|TCP|Gateway A|Gateway B|443|Allow|Allow HTTPS to Gateway B|
+|400|Inbound|*|*|*|*|Deny|Deny all else|
+
+- **NSG 2**: This NSG routes the traffic from Gateway 2 to Backend services.
+
+|Priority|Direction|Protocol|Source|Destination|Port|Action|Description|
+|--------|---------|--------|------|------------|----|-----|-----------|
+|100|Inbound|TCP|Gateway A|Gateway B|Allow|Allow HTTPS from Gateway A|
+|200|Inbound|TCP|Gateway B|Backend Pool|443|Allow|Allow HTTPS to backend|
+|400|Inbound|*|*|*|*|Deny|Deny all else|
 
 ## Introduction
 
