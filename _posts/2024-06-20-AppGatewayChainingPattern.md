@@ -51,6 +51,8 @@ App Gateway refers to the architectural practice of connecting multiple Applicat
 
 In this pattern, more than one gateways are used to route the traffic before it reaches the destination backend. There are different topologies that can be used to arrange these App Gateway. These are often used as a design for network segmentation like DMZ and multiregion setup.
 
+### Scenario
+
 In this post, I will show how to use App Gateway in a chain fashion performing different roles in the overall setup.
 
 Imagine a setup, in which the client calls an backend system to get the data. However, instead of diretly calling the backend we will put a gateway in between that will route the traffic to backend. In our case, the client is internet facing hence we will use 2 gateways to structure in the form of DMZ located in 2 subnets.
@@ -66,6 +68,45 @@ sequenceDiagram
     GatewayA ->> GatewayB: Forward Request
     GatewayB ->> Backend: Forward Request
 ```
+
+Each gateway in the chain will perform specific functions:
+
+- **Gateway A**: Handles SSL termination, Web Application Firewall (WAF), and basic routing. This is exposed to internet.
+- **Gateway B**: Performs advanced routing, authentication, or forwards traffic to internal services. This will be internal to setup.
+
+## Connectivity Options
+
+Below are some of the connectivity options that can be used
+
+|Method|Description|Use Case|
+|--------|---------|--------|
+|VNet Peering| Use this to connects two virtual networks in Azure|Same region or global VNet communication|
+|Private Link|This provides private connectivity to Azure services|Secure, private access to Gateway B|
+|ExpressRoute|Dedicated private connection from on-prem to Azure|Hybrid cloud or high-throughput needs|
+
+## Benefits of using Gateway Chaining for DMZ
+
+|Benefit|Description|
+|--------|-----------|
+|Layered Security|Isolates public and internal traffic handling|
+|Granular Control|Each gateway can enforce different policies|
+|Scalability|Each layer can scale independently|
+|Compliance|Easier to meet regulatory requirements with network segmentation|
+|Zero Trust Ready|Supports identity-aware routing and inspection at multiple layers|
+
+## Using NSG to implement routing
+
+```mermaid
+flowchart TD
+    Internet(["Internet"])
+    GatewayA["Gateway A (Public)"] --> NSGA["NSG A"]
+    NSGA --> GatewayB["Gateway B (Internal)"]
+    GatewayB --> NSGB["NSG B"]
+    NSGB --> Backend["Backend Pool (App Services, VMs, etc.)"]
+
+    Internet --> GatewayA
+```
+
 
 ## Introduction
 
