@@ -133,10 +133,38 @@ Below rule table show the details
 
 |Priority|Direction|Protocol|Source|Destination|Port|Action|Description|
 |--------|---------|--------|------|------------|----|-----|-----------|
-|100|Inbound|TCP|Gateway A|Gateway B|Allow|Allow HTTPS from Gateway A|
+|100|Inbound|TCP|Gateway A|Gateway B|443|Allow|Allow HTTPS from Gateway A|
 |200|Inbound|TCP|Gateway B|Backend Pool|443|Allow|Allow HTTPS to backend|
 |400|Inbound|*|*|*|*|Deny|Deny all else|
 
+## Why to use 2 NSGs?
+
+In the above setup, we have used 2 NSGs. However this is not needed in every case. Please consider the below before you decide on the number of NSGs
+
+### When One NSG Is Enough
+
+If both Gateway A and Gateway B are in the same subnet or you only need to control traffic in one direction, then:
+
+You can attach one NSG to the subnet (or NIC) and define inbound and outbound rules to control traffic between the gateways and the backend. This simplifies management and reduces overhead.
+
+Example: Single NSG on Gateway A Subnet
+
+
+| Priority | Direction | Protocol | Source     | Destination | Port | Action | Description                  |
+|----------|-----------|----------|------------|-------------|------|--------|------------------------------|
+| 100      | Inbound   | TCP      | Internet   | Gateway A   | 443  | Allow  | Allow HTTPS from internet   |
+| 200      | Outbound  | TCP      | Gateway A  | Gateway B   | 443  | Allow  | Allow HTTPS to Gateway B    |
+| 300      | Outbound  | TCP      | Gateway B  | Backend     | 443  | Allow  | Allow HTTPS to backend      |
+| 400      | *         | *        | *          | *           | *    | Deny   | Default deny                |
+
+### When Two NSGs Are Better
+
+Use two NSGs when:
+
+- Gateways are in different subnets (which is common in layered architectures).
+- You want independent control over each layer (e.g., DMZ vs internal).
+- You need more granular logging, auditing, or policy enforcement.
+- This aligns with Zero Trust and defense-in-depth principles.
 
 ## Conclusion
 
