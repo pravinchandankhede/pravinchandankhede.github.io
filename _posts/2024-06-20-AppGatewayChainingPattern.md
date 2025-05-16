@@ -189,7 +189,7 @@ This section describes how a typical deployment can be done to implement Gateway
 
 We will focus on implementing the pattern using below major components.
 
-1. **Angular Frontend** – Hosted on Azure App Service or Static Web App
+1. **Frontend** – Hosted on Azure App Service or Static Web App
 2. **Gateway A (DMZ Layer)** – Public-facing, WAF-enabled, SSL termination, header/url rewrite
 3. **Gateway B (Internal Layer)** – Internal, JWT/OIDC authentication, response caching, internal routing
 4. **Backend API** – Hosted on Azure App Service
@@ -197,16 +197,19 @@ We will focus on implementing the pattern using below major components.
 ### 🔧 Step-by-Step Deployment
 
 #### 1. **Provision Virtual Network**
+
 - Create a VNet with two subnets:
   - `subnetA` for Gateway A
   - `subnetB` for Gateway B
 
 #### 2. **Deploy NSGs**
+
 - Attach NSGs to each subnet:
   - Allow HTTPS (443) inbound/outbound
   - Deny all other traffic
 
 #### 3. **Deploy Gateway A**
+
 - SKU: `WAF_v2`
 - Enable:
   - **WAF** in Prevention mode
@@ -215,6 +218,7 @@ We will focus on implementing the pattern using below major components.
   - **Path-based routing** to `/api/*` → Gateway B IP
 
 #### 4. **Deploy Gateway B**
+
 - SKU: `Standard_v2`
 - Private IP only
 - Enable:
@@ -225,13 +229,15 @@ We will focus on implementing the pattern using below major components.
   - Route to backend App Service
 
 #### 5. **Deploy Backend API**
+
 - Azure App Service (Linux or Windows)
 - Configure:
   - HTTPS only
   - Authentication (Azure AD or custom JWT validation)
   - CORS to allow frontend origin
 
-#### 6. **Deploy Angular Frontend**
+#### 6. **Deploy Frontend**
+
 - Option 1: Azure Static Web App
 - Option 2: Azure App Service (Web App)
 - Configure:
@@ -239,12 +245,13 @@ We will focus on implementing the pattern using below major components.
   - API base URL pointing to Gateway A
 
 #### 7. **DNS & SSL**
+
 - Map custom domain to Gateway A public IP
 - Upload SSL cert for custom domain
 
----
+### Feature Mapping
 
-### ✅ Feature Mapping
+The below table shows a map of gateway with features enabled.
 
 | Feature | Gateway A | Gateway B |
 |--------|-----------|-----------|
@@ -255,6 +262,10 @@ We will focus on implementing the pattern using below major components.
 | Response Caching | ❌ | ✅ |
 | Public IP | ✅ | ❌ |
 
+### Code Sample
+
+Please refer the below location for ARM template. The template can be used to deploy the above setup quickly.
+[Template]()
 
 ## Conclusion
 
