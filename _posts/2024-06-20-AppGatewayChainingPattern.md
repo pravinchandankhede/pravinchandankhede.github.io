@@ -265,7 +265,7 @@ The below table shows a map of gateway with features enabled.
 ### Code Sample
 
 Please refer the below location for ARM template. The template can be used to deploy the above setup quickly.
-[Template]()
+[Template](https://github.com/pravinchandankhede/designpatterns/tree/main/src/microservices/AppGatewayChaining)
 
 ## Conclusion
 
