@@ -74,7 +74,7 @@ Each gateway in the chain will perform specific functions:
 - **Gateway A**: Handles SSL termination, Web Application Firewall (WAF), and basic routing. This is exposed to internet.
 - **Gateway B**: Performs advanced routing, authentication, or forwards traffic to internal services. This will be internal to setup.
 
-## Connectivity Options
+### Connectivity Options
 
 Below are some of the connectivity options that can be used
 
@@ -84,7 +84,7 @@ Below are some of the connectivity options that can be used
 |Private Link|This provides private connectivity to Azure services|Secure, private access to Gateway B|
 |ExpressRoute|Dedicated private connection from on-prem to Azure|Hybrid cloud or high-throughput needs|
 
-## Benefits of using Gateway Chaining for DMZ
+### Benefits of using Gateway Chaining for DMZ
 
 |Benefit|Description|
 |--------|-----------|
@@ -94,8 +94,7 @@ Below are some of the connectivity options that can be used
 |Compliance|Easier to meet regulatory requirements with network segmentation|
 |Zero Trust Ready|Supports identity-aware routing and inspection at multiple layers|
 
-## Using NSG to implement routing
-
+## Using NSG to Implement Chaining
 
 ```mermaid
 graph TB
@@ -165,6 +164,22 @@ Use two NSGs when:
 - You want independent control over each layer (e.g., DMZ vs internal).
 - You need more granular logging, auditing, or policy enforcement.
 - This aligns with Zero Trust and defense-in-depth principles.
+
+## Gateway Chaining and Seperation of Concerns
+
+Application gateway provides a bunch of feature that can leverage to build a robust networking and routing strategy for an origanization. These features are multi purpose and optional and be setup as the strategy chosen.
+Below I will show some of the important features and typically where those freature should be enabled.
+
+| Feature                   | Description                                      | Best Applied On         | Why                                                                 |
+|---------------------------|--------------------------------------------------|--------------------------|----------------------------------------------------------------------|
+| WAF (Web Application Firewall) | Protects against OWASP Top 10 threats           | Gateway A (Public)       | Acts as the first line of defense in the DMZ                        |
+| Header Rewrite           | Modify request/response headers                  | Gateway A or B           | A: Strip/add headers for security; B: Add internal routing headers  |
+| URL Rewrite              | Modify URL path/query before forwarding          | Gateway A or B           | A: Clean URLs for external users; B: Internal routing adjustments   |
+| Response Caching         | Cache backend responses to reduce load           | Gateway B (Internal)     | Reduces latency and backend load for internal services              |
+| Authentication (OIDC/JWT)| Validate tokens before forwarding                | Gateway B (Internal)     | Offload auth from backend, secure internal APIs                     |
+| Custom Probes            | Health checks for backend services               | Both                     | Ensure only healthy services receive traffic                        |
+| SSL Termination          | Decrypt SSL at gateway                           | Gateway A                | Offload SSL from backend, inspect traffic                           |
+| End-to-End SSL           | Maintain SSL to backend                          | Gateway B                | Ensures encrypted traffic throughout the chain                      |
 
 ## Conclusion
 
