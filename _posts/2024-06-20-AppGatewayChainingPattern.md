@@ -181,6 +181,81 @@ Below I will show some of the important features and typically where those freat
 | SSL Termination          | Decrypt SSL at gateway                           | Gateway A                | Offload SSL from backend, inspect traffic                           |
 | End-to-End SSL           | Maintain SSL to backend                          | Gateway B                | Ensures encrypted traffic throughout the chain                      |
 
+## Deployment Guide
+
+This section describes how a typical deployment can be done to implement Gateway Chaining.
+
+### Component Overview
+
+We will focus on implementing the pattern using below major components.
+
+1. **Angular Frontend** – Hosted on Azure App Service or Static Web App
+2. **Gateway A (DMZ Layer)** – Public-facing, WAF-enabled, SSL termination, header/url rewrite
+3. **Gateway B (Internal Layer)** – Internal, JWT/OIDC authentication, response caching, internal routing
+4. **Backend API** – Hosted on Azure App Service
+
+### 🔧 Step-by-Step Deployment
+
+#### 1. **Provision Virtual Network**
+- Create a VNet with two subnets:
+  - `subnetA` for Gateway A
+  - `subnetB` for Gateway B
+
+#### 2. **Deploy NSGs**
+- Attach NSGs to each subnet:
+  - Allow HTTPS (443) inbound/outbound
+  - Deny all other traffic
+
+#### 3. **Deploy Gateway A**
+- SKU: `WAF_v2`
+- Enable:
+  - **WAF** in Prevention mode
+  - **SSL Termination** with uploaded PFX certificate
+  - **Header/URL Rewrite** rules (e.g., add security headers)
+  - **Path-based routing** to `/api/*` → Gateway B IP
+
+#### 4. **Deploy Gateway B**
+- SKU: `Standard_v2`
+- Private IP only
+- Enable:
+  - **End-to-End SSL**
+  - **JWT/OIDC Authentication** via Azure AD (use listener with authentication certificates)
+  - **Response Caching** (enable caching in HTTP settings)
+  - **Header/URL Rewrite** for internal routing
+  - Route to backend App Service
+
+#### 5. **Deploy Backend API**
+- Azure App Service (Linux or Windows)
+- Configure:
+  - HTTPS only
+  - Authentication (Azure AD or custom JWT validation)
+  - CORS to allow frontend origin
+
+#### 6. **Deploy Angular Frontend**
+- Option 1: Azure Static Web App
+- Option 2: Azure App Service (Web App)
+- Configure:
+  - MSAL with PKCE
+  - API base URL pointing to Gateway A
+
+#### 7. **DNS & SSL**
+- Map custom domain to Gateway A public IP
+- Upload SSL cert for custom domain
+
+---
+
+### ✅ Feature Mapping
+
+| Feature | Gateway A | Gateway B |
+|--------|-----------|-----------|
+| WAF | ✅ | ❌ |
+| SSL Termination | ✅ | ✅ (end-to-end) |
+| Header/URL Rewrite | ✅ (external) | ✅ (internal) |
+| JWT/OIDC Auth | ❌ | ✅ |
+| Response Caching | ❌ | ✅ |
+| Public IP | ✅ | ❌ |
+
+
 ## Conclusion
 
 The API Gateway is essential in modern distributed systems. Effectively using Application Gateway involves thoughtful planning of your network and segmentation. You should also think about implementing various policies and how application gateway can be effectively leverage for your requirements.
