@@ -6,58 +6,66 @@ tags: [angular, cache, services, pwa, client, server, in-memory, interceptor]   
 description: This post explains the importance of caching in Angular and how to use it effectively.
 ---
 
-# Cache in Angular
-In the world of web development, performance is key. Users expect fast, responsive applications, and one way to achieve this is through caching. Caching involves storing data locally so that it can be quickly retrieved without making repeated network requests. 
+## Cache in Angular
+
+In the world of web development, performance is key. Users expect fast, responsive applications, and one way to achieve this is through caching. Caching involves storing data locally so that it can be quickly retrieved without making repeated network requests.
 
 In this blog post, I will explain about various caching strategies in Angular, using a portfolio application for a fictional firm called "Fast Investments." This application includes modules for banking, stocks, and mutual funds.
 
 > **Info** This sample application builds on the code developed in the previous blog post on Angular Modules. If you haven't read that post, you can find it here: [Angular Modules](https://pravinchandankhede.github.io/posts/AngularModules/).
 {: .prompt-info }
 
-
 ## Importance of Caching
+
 Caching plays a vital role in optimizing web applications by reducing latency and improving performance. Here are some key benefits of caching:
 
- - **Improved Performance**: By storing frequently accessed data locally, client-side caching reduces the need for repeated network requests. This leads to faster load times and a more responsive application, enhancing the overall user experience.
+- **Improved Performance**: By storing frequently accessed data locally, client-side caching reduces the need for repeated network requests. This leads to faster load times and a more responsive application, enhancing the overall user experience.
 
- - **Reduced Server Load**: Caching data on the client-side decreases the number of requests sent to the server. This helps in reducing the server load and can lead to better scalability and performance of the backend services.
+- **Reduced Server Load**: Caching data on the client-side decreases the number of requests sent to the server. This helps in reducing the server load and can lead to better scalability and performance of the backend services.
 
- - **Offline Access**: Client-side caching allows users to access certain parts of the application even when they are offline. This is particularly useful for applications that need to function in environments with intermittent or no internet connectivity.
+- **Offline Access**: Client-side caching allows users to access certain parts of the application even when they are offline. This is particularly useful for applications that need to function in environments with intermittent or no internet connectivity.
 
- - **Cost Savings**: By minimizing the number of network requests, client-side caching can help reduce data transfer costs, especially in scenarios where data usage is metered or limited.
+- **Cost Savings**: By minimizing the number of network requests, client-side caching can help reduce data transfer costs, especially in scenarios where data usage is metered or limited.
 
- - **Enhanced User Experience**: With faster data retrieval and reduced loading times, users experience smoother and more seamless interactions with the application. This can lead to higher user satisfaction and retention rates.
+- **Enhanced User Experience**: With faster data retrieval and reduced loading times, users experience smoother and more seamless interactions with the application. This can lead to higher user satisfaction and retention rates.
 
 ## Implementing Caching in Angular
+
 Caching is the process of storing data locally to reduce the need for repeated network requests. In Angular applications, caching can be implemented using various techniques and strategies. Let's explore some common caching strategies and how to implement them in an Angular application.
 
 ### Types of Caching
 
 #### 1. Client-side caching
+
 This involves storing data on the client-side using mechanisms like local storage, session storage, or in-memory storage.
 
 #### 2. Server-side caching
+
 This involves storing data on the server to reduce the load on the backend and improve response times.
 
 ### Caching Strategies
 
 #### 1. Cache-first strategy
+
 This strategy attempts to retrieve data from the cache first, and only makes a network request if the data is not available.
 
 #### 2. Network-first strategy
+
 This strategy always makes a network request first, and falls back to the cache if the network request fails.
 
 ## Client-side Caching
 
 ### Using Angular Service Worker for Caching
+
 Angular Service Worker can be used to cache static assets and API responses. This approach enables your app to be a PWA for which you need to install the required package. Once package is installed, then provide the configuration for items you want to cache as part of PWA.
 
- 1. Install the Angular PWA package:
+1. Install the Angular PWA package:
 
-```bash
-ng add @angular/pwa
-```
- 2. The ngsw-config.json file is used to configure the Angular Service Worker, which helps in caching static assets and API responses to improve the performance and offline capabilities of Angular application.
+  ```bash
+  ng add @angular/pwa
+  ```
+
+2. The ngsw-config.json file is used to configure the Angular Service Worker, which helps in caching static assets and API responses to improve the performance and offline capabilities of Angular application.
 Configure the service worker in ngsw-config.json:
 
 ```json
@@ -92,6 +100,7 @@ Configure the service worker in ngsw-config.json:
 ```
 
 ### Implementing HttpInterceptor for Caching
+
 An HttpInterceptor can be used to cache HTTP requests. In this caching, we create an interceptor which gets invoke for each API call being done from application. This gives us an opputurnity to implement the technique to first read from cache. If data is present in cache it is returned else it allows the netwrok call and subsequently caches the data for later use.
 Here's an example:
 
@@ -151,6 +160,7 @@ export class CachingInterceptor implements HttpInterceptor {
 ```
 
 #### Associating CachingInterceptor with Angular Application
+
 Associate the CachingInterceptor in app.module.ts file as below. This will enable the interception of HTTP REST calls.
 
 ```typescript
@@ -163,9 +173,11 @@ providers: [
 ```
 
 #### Implementing eviction handler for HttpInterceptor
+
 We are also providing a Cache expiry handler which runs every 60 seconds. This handler will evict the cache entry that are past due.
 
 ### Local Storage Caching
+
 Local storage can be used to persist data across sessions. Here's an example service for caching data in local storage:
 
 ```typescript
@@ -195,6 +207,7 @@ export class LocalStorageService {
 ```
 
 ### Session Storage Caching
+
 Session storage is similar to local storage but data is cleared when the browser or tab is closed. Here's an example service for caching data in session storage:
 
 ```typescript
@@ -224,6 +237,7 @@ export class SessionStorageService {
 ```
 
 ### In-Memory Caching
+
 In-memory caching can be used for temporary storage of data within the application. Here's an example service for in-memory caching:
 
 ```typescript
@@ -254,16 +268,17 @@ export class InMemoryCacheService {
 ```
 
 ### Server-side Caching
+
 Implementing Server-side Caching with Angular Universal
 Server-side rendering (SSR) with Angular Universal can improve performance by caching rendered HTML on the server. Here's how to set it up:
 
- - Add Angular Universal to your project:
+- Add Angular Universal to your project:
 
 ```bash
 ng add @nguniversal/express-engine
 ```
 
- - Configure server-side caching in server.ts:
+- Configure server-side caching in server.ts:
 
 ```typescript
 import 'zone.js/dist/zone-node';
@@ -299,6 +314,7 @@ app.listen(PORT, () => {
 ```
 
 ## Caching in Banking Module
+
 Implementing Caching for Banking Data
 Here's an example service for caching banking data using local storage:
 
@@ -334,6 +350,7 @@ export class BankingService {
 ```
 
 ## Caching in Stocks Module
+
 Implementing Caching for Stock Data
 Here's an example service for caching stock data using session storage:
 
@@ -369,6 +386,7 @@ export class StocksService {
 ```
 
 ## Caching in Mutual Fund Module
+
 Implementing Caching for Mutual Fund Data
 Here's an example service for caching mutual fund data using in-memory storage:
 
@@ -406,6 +424,7 @@ export class MutualFundService {
 ## Advanced Caching Techniques
 
 ### Using IndexedDB for Local Database Caching
+
 IndexedDB is a low-level API for storing large amounts of structured data, including files and blobs. Here's an example service for caching data using IndexedDB:
 
 Install the idb package:
@@ -490,11 +509,12 @@ export class IndexedDBExampleComponent implements OnInit {
 ```
 
 ### Service-side Caching Options
+
 Service-side caching can be implemented using various techniques and tools. Here are a few options:
 
- - **Redis**: An in-memory data structure store that can be used as a database, cache, and message broker.
- - **Memcached**: A distributed memory caching system that can be used to speed up dynamic web applications by alleviating database load.
- - **HTTP Caching**: Using HTTP headers like Cache-Control, ETag, and Last-Modified to control caching behavior on the server side.
+- **Redis**: An in-memory data structure store that can be used as a database, cache, and message broker.
+- **Memcached**: A distributed memory caching system that can be used to speed up dynamic web applications by alleviating database load.
+- **HTTP Caching**: Using HTTP headers like Cache-Control, ETag, and Last-Modified to control caching behavior on the server side.
 
 Example: Implementing Redis Caching
 Install Redis and the redis package:
@@ -555,8 +575,9 @@ export class CacheController {
 ```
 
 ## Conclusion
+
 In this blog post, I tried to provide you with various caching strategies in Angular, using a portfolio application for a "Fast Investments" firm as an example. We covered client-side caching techniques such as using Angular Service Worker, HttpInterceptor, local storage, session storage, and in-memory storage. We also discussed server-side caching with Angular Universal and advanced caching techniques using IndexedDB and Redis.
 
-By implementing these caching strategies, you can significantly improve the performance and user experience of Angular applications. 
+By implementing these caching strategies, you can significantly improve the performance and user experience of Angular applications.
 
 I hope you found this post helpful and informative. If you have any questions or feedback, feel free to leave a comment below.
