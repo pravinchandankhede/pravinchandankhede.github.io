@@ -6,29 +6,35 @@ tags: [ai, ai agents, plugins, planner, llm, vector store, mcp, .NET]     # TAG 
 description: In this post I will show how to integrate tools exposed by a MCP server and consume them through a LLM call made using raw Azure OpenAI client libraries.
 ---
 
-# Model Context Protocol
+## Model Context Protocol
+
 This is a demo project that demonstrate the concept of using [model context protocol](https://modelcontextprotocol.io/introduction) with C#. It uses the core Nuget packages [ModelContextProtocol](https://packages.nuget.org/packages/ModelContextProtocol/0.1.0-preview.10)
 MCP helps you connect with variety of sources and expose them in a way which is similar to other MCP servers. This way the client code is simplified, and it can focus on implementing the core lgoic rather than trying to integrate the Agent with all varied data sources.
 
-In this post I will show how to use LLM tool calling feature utlizing Azure OpenAI classes and tools exposed thorugh an MCP server. 
+In this post I will show how to use LLM tool calling feature utlizing Azure OpenAI classes and tools exposed thorugh an MCP server.
 
 > **Info:** This blog uses the Banking Service and MCP server created in my earlier blog post [here](https://pravinchandankhede.github.io/posts/ModelContextProtocolSimple/)
 {: .prompt-info }
 
-
 ## MCP Client using Azure OpenAI Nuget & LLM Integration
+
 This client demonstrates how to use the MCP tools with Azure OpenAI `ChatCompletion` classes. In this we create tools and then call them through an LLM using the tool calling technique.
 
 ### Create a Azure Client
+
 It first creates a connection using Azure OpenAI client. This is done using the `AzureOpenAIClient` class. The client is used to create a `chatClient` instance that will be used to call an LLM based on user query.
+
 ```csharp
 AzureOpenAIClient azureClient = new(
 	new Uri(AppSetting.Endpoint),
 	new ApiKeyCredential(AppSetting.Key));
 ChatClient chatClient = azureClient.GetChatClient(AppSetting.DeploymentName);
 ```
+
 ### Create a MCP Client
+
 The code later gets a list of `McpClientTool`s from the MCP server. It connects to the SSE based endpoint and retrives the list fo tools supported by the MCP server.
+
 ```csharp
 var endpoint = "http://localhost:5000/sse";
 
@@ -42,7 +48,9 @@ return _mcpClientTools;
 ```
 
 ### Set the MCP Tools for AzureOpenAIClientOptions
+
 We will create a new `AzureOpenAIClientOptions` instance and set the `Tools` property to the list of tools we got from the MCP server. This will allow the Azure OpenAI client to use the MCP tools when calling the LLM. This instance will be later send as an argument while calling LLM with user query and conversation history.
+
 ```csharp
 ChatCompletionOptions options = new();
 
@@ -51,13 +59,17 @@ foreach (var tool in tools)
 	options.Tools.Add(ChatTool.CreateFunctionTool(tool.Name, tool.Description));
 }
 ```
+
 ### Azure OpenAI LLM Call
+
 The code then calls `CompleteChat` method to call the LLM. The method is using the `ChatClient` instance, takes `ChatCompletionOptions` instance and the user query as input. The method returns a `ChatCompletion` object which contains the response from the LLM.
+
 ```csharp
 ChatCompletion completion = chatClient.CompleteChat(conversationMessages, options);
 ```
 
 ### Tool Invocation
+
 The chat completion response from LLM can be of 2 types specified as part of `FinishReason` property.
  - **Stop**: This means the LLM has completed the response and no further action is required.
  - **ToolsCall**: This means the LLM has called a tool and we need to invoke the tool to get the result. The `ToolCalls` property contains the list of tools and the parameters required by that tool. As the LLM might have identifed multiple tools we need to call all of them sequentially and add the response to conversation before calling LLM again.

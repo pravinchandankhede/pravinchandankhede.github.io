@@ -6,73 +6,82 @@ tags: [semantic kernel, ai, ai agents, plugins, planner, llm, vector store, mcp,
 description: In this post I will talk about model context protocol and how it can be implemented in C#. This is a very simple implementation wihtout considerating complexity of high level frameworks. I will try to showcase the concept at a core level.
 ---
 
-# Model Context Protocol
+## Model Context Protocol
+
 This is a demo project that demonstrate the concept of using [model context protocol](https://modelcontextprotocol.io/introduction) with C#. It uses the core Nuget packages [ModelContextProtocol](https://packages.nuget.org/packages/ModelContextProtocol/0.1.0-preview.10)
 MCP helps you connect with variety of sources and expose them in a way which is similar to other MCP servers. This way the client code is simplified, and it can focus on implementing the core lgoic rather than trying to integrate the Agent with all varied data sources.
 
 **In this demo, I will show how to expose your organizations APIs as Tools using MCP server technique.**
 
 ## Banking Service
+
 This is  simple banking service which provides 2 operations
- - **Get Balances**: This returns a list of balances for various accounts.
-	```csharp	   
-	[HttpGet("balance")]
-	public IActionResult GetBalances()
-	{
-		return Ok(AccountBalances);
-	}
-	```
-	
- - **Get Balance**: This returns balance for a given customer.
-	```csharp
-	[HttpGet("balance/{accountName}")]
-	public IActionResult GetBalance(string accountName)
-	{
-		var balance = AccountBalances.FirstOrDefault(b => b.Name?.Equals(accountName, StringComparison.OrdinalIgnoreCase) == true);
 
-		if(balance != null)
-		{
-			return Ok(balance);
-		}
+- **Get Balances**: This returns a list of balances for various accounts.
 
-		return NotFound(new { Message = $"Account '{accountName}' not found." });
-	}
-	```
+```csharp
+    [HttpGet("balance")]
+    public IActionResult GetBalances()
+    {
+        return Ok(AccountBalances);
+    }
+```
+
+- **Get Balance**: This returns balance for a given customer.
+
+```csharp
+[HttpGet("balance/{accountName}")]
+public IActionResult GetBalance(string accountName)
+{
+    var balance = AccountBalances.FirstOrDefault(b => b.Name?.Equals(accountName, StringComparison.OrdinalIgnoreCase) == true);
+
+    if(balance != null)
+    {
+        return Ok(balance);
+    }
+
+    return NotFound(new { Message = $"Account '{accountName}' not found." });
+}
+```
 
 *Note*: For simplicity the banking service implements a in memory list of names and amount.
 
 We will see in next section how these service methods are exposed as MCP tools.
 
 ## Banking MCP Server
+
 This is a MCP server exposed for the banking service. It demonstrates how to implement a MCP server for your organizations APIs. This project how you can build a MCP server around your APIs and then expose them using a ASP.NET Core runtime making it available over a endpoint. This endpoint can then be utilized by a client to list down all the tools available with MCP server.
 
 ### MCP Server Setup
+
 We are using an WebApplication class to create a ASP.NET Core based host for the MCP server. We then enable error logging for it.
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
 builder.Logging.AddConsole(consoleLogOptions =>
-{			
-	consoleLogOptions.LogToStandardErrorThreshold = LogLevel.Error;
+{
+    consoleLogOptions.LogToStandardErrorThreshold = LogLevel.Error;
 });
 ```
 
-We then add the MCP server to the ASP.NET Core pipeline. 
- - The MCP server is added as a service to the DI container. 
- - We also add the support Http transport protocol as the MCP endpoint woudl be exposed over HTTP. This will enable any HTTP client to integrate with the MCP server.
- - Next, we also add the tools support. This will use reflection to go thorugh all classes marked with `McpServerToolType` attribute and add the methods marked with  `McpServerTool` to the MCP server tool list.
- - We also add a `HttpClient` to the DI container. This will be used by the MCP server to make calls to the banking service.
+We then add the MCP server to the ASP.NET Core pipeline.
+
+- The MCP server is added as a service to the DI container.
+- We also add the support Http transport protocol as the MCP endpoint woudl be exposed over HTTP. This will enable any HTTP client to integrate with the MCP server.
+- Next, we also add the tools support. This will use reflection to go thorugh all classes marked with `McpServerToolType` attribute and add the methods marked with  `McpServerTool` to the MCP server tool list.
+- We also add a `HttpClient` to the DI container. This will be used by the MCP server to make calls to the banking service.
 
 ```csharp
 builder.Services
-	.AddMcpServer()
-	.WithHttpTransport()
-	.WithToolsFromAssembly();
+    .AddMcpServer()
+    .WithHttpTransport()
+    .WithToolsFromAssembly();
 builder.Services.AddHttpClient();
 builder.Services.AddSingleton<BankingServiceClient>();
 ```
 
 ### Tool Setup
+
 We will see how to define a tool for MCP server. These tools will be invoked by the client to perform operations. The tools are defined using the `McpServerTool` attribute. This attribute is used to mark a method as a tool. The method can then be invoked by the client using the tool name.
 Below is the implementation of the tool for `GetBalances` method under `BalanceTools` class.
 
