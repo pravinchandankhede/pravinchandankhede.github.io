@@ -12,9 +12,10 @@ RAG stands for Retrieve, Answer and Generate. It is a pattern used in AI to gene
 ## What is Text Generation
 
 ## About Azure Search
+
 Azure Search is a cloud-based search service that provides powerful indexing and querying capabilities. It is essential for:
- 
- - **Efficient Data Retrieval**: Azure Search enables fast and efficient retrieval of data from large datasets.
- - **Advanced Querying**: With support for complex queries, Azure Search allows users to perform sophisticated searches and filter results based on various criteria.
- - **Integration with Other Azure Services**: Azure Search seamlessly integrates with other Azure services, such as Azure Cognitive Services and Azure Machine Learning, to provide a comprehensive data processing solution.
- - **Skill Set**: Azure Search is a powerful tool that allows you customized the retrival, extraction, transformation of content by using skill pipelines.
+
+- **Efficient Data Retrieval**: Azure Search enables fast and efficient retrieval of data from large datasets.
+- **Advanced Querying**: With support for complex queries, Azure Search allows users to perform sophisticated searches and filter results based on various criteria.
+- **Integration with Other Azure Services**: Azure Search seamlessly integrates with other Azure services, such as Azure Cognitive Services and Azure Machine Learning, to provide a comprehensive data processing solution.
+- **Skill Set**: Azure Search is a powerful tool that allows you customized the retrival, extraction, transformation of content by using skill pipelines.

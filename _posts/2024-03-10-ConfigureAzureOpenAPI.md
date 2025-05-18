@@ -6,7 +6,6 @@ tags: [openapi, .net8, gpt, text embeddng]     # TAG names should always be lowe
 description: In this post we will how to create a Azure OpenAI service using Azure Portal and consume it using a .NET Console client.
 ---
 
-# API Documentation
+## API Documentation
 
 ## What is Azure OpenAI?
-
