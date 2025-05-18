@@ -6,7 +6,7 @@ tags: [elements]     # TAG names should always be lowercase
 description: This post highlights the usage of Angular Elements to create reusable features.
 ---
 
-# Angular Elements
+## Angular Elements
 
 ## What are Angular Elements?
 
