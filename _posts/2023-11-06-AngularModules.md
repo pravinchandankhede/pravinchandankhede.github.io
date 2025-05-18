@@ -6,12 +6,14 @@ tags: [angular, modules, components, elements, lazy loading]     # TAG names sho
 description: In this post, I will discuss the importance of Angular Modules and how to use them effectively.
 ---
 
-# Angular Modules
+## Angular Modules
 
 ## Introduction
+
 Angular modules are a powerful feature that allows developers to organize and manage their code efficiently. In this article, we will explore various use cases of Angular modules through a fictitious company named "Fast Investment." We will create a project with modules for banking, mutual funds, and stocks, and provide code samples to illustrate their usage.
 
 ## Overview of Angular Modules
+
 Angular modules help in organizing an application into cohesive blocks of functionality. Each module can contain components, services, directives, and pipes that are related to a specific feature or functionality. This modular approach enhances code maintainability, reusability, and scalability.
 
 The modules are good for sharing the common components, directives, and pipes across the application. It also helps in lazy loading the modules which are not required at the time of application startup. 
@@ -19,6 +21,7 @@ The modules are good for sharing the common components, directives, and pipes ac
 You can import modules in other modules to use the components, directives, and pipes defined in the imported module.
 
 ## Approach in this Article
+
 In this article, we will create a portfolio application for a fictitious company named "Fast Investments" that offers banking, mutual funds, and stocks services. We will create separate modules for each service and define components within each module to display relevant information.
 
 The overall setup will look like this - 
@@ -27,6 +30,7 @@ The overall setup will look like this -
 The core module will provide the features that are common across the application, such as the header and footer components. We will also create a shared module to house common components and services that can be used across multiple modules.
 
 ## Setting Up the Project
+
 To get started, we will create a new Angular project named `portfolio` using the Angular CLI.
 
 ```bash
@@ -37,6 +41,7 @@ cd portfolio
 ## Banking Module
 
 ### Creating the Banking Module
+
 First, let's create the banking module.
 
 ```bash
@@ -46,6 +51,7 @@ ng generate module banking
 ### Banking Components
 
 #### Account Summary Component
+
 We will create an `AccountSummaryComponent` to display the user's account summary.
 
 ```bash
@@ -80,7 +86,7 @@ export class AccountSummaryComponent implements OnInit {
 }
 ```
 
-**account-summary.component.html**
+Below is the **account-summary.component.html**
 
 ```html
 <div>
@@ -90,13 +96,14 @@ export class AccountSummaryComponent implements OnInit {
 ```
 
 #### Transaction History Component
+
 Next, we will create a `TransactionHistoryComponent` to display the user's transaction history.
 
 ```bash
 ng generate component banking/transaction-history
 ```
 
-**transaction-history.component.ts**
+Below is the **transaction-history.component.ts**
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
@@ -144,6 +151,7 @@ export class TransactionHistoryComponent implements OnInit {
 ## Mutual Funds Module
 
 ### Creating the Mutual Funds Module
+
 Let's create the mutual funds module.
 
 ```bash
@@ -153,13 +161,15 @@ ng generate module mutual-funds
 ### Mutual Funds Components
 
 #### Fund Overview Component
+
 We will create a `FundOverviewComponent` to display an overview of mutual funds.
 
 ```bash
 ng generate component mutual-funds/fund-overview
 ```
 
-**fund-overview.component.ts**
+- **fund-overview.component.ts**
+
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
@@ -183,7 +193,7 @@ export class FundOverviewComponent implements OnInit {
 }
 ```
 
-**fund-overview.component.html**
+- **fund-overview.component.html**
 
 ```html
 <div>
@@ -197,13 +207,14 @@ export class FundOverviewComponent implements OnInit {
 ```
 
 #### Investment Calculator Component
+
 Next, we will create an `InvestmentCalculatorComponent` to help users calculate their potential returns.
 
 ```bash
 ng generate component mutual-funds/investment-calculator
 ```
 
-**investment-calculator.component.ts**
+- **investment-calculator.component.ts**
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
@@ -230,7 +241,7 @@ export class InvestmentCalculatorComponent implements OnInit {
 }
 ```
 
-**investment-calculator.component.html**
+- **investment-calculator.component.html**
 
 ```html
 <div>
@@ -249,6 +260,7 @@ export class InvestmentCalculatorComponent implements OnInit {
 ## Stocks Module
 
 ### Creating the Stocks Module
+
 Let's create the stocks module.
 
 ```bash
@@ -258,13 +270,14 @@ ng generate module stocks
 ### Stocks Components
 
 #### Stock Portfolio Component
+
 We will create a `StockPortfolioComponent` to display the user's stock portfolio.
 
 ```bash
 ng generate component stocks/stock-portfolio
 ```
 
-**stock-portfolio.component.ts**
+- **stock-portfolio.component.ts**
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
@@ -288,7 +301,7 @@ export class StockPortfolioComponent implements OnInit {
 }
 ```
 
-**stock-portfolio.component.html**
+- **stock-portfolio.component.html**
 
 ```html
 <div>
@@ -302,13 +315,14 @@ export class StockPortfolioComponent implements OnInit {
 ```
 
 #### Market Trends Component
+
 Next, we will create a `MarketTrendsComponent` to display current market trends.
 
 ```bash
 ng generate component stocks/market-trends
 ```
 
-**market-trends.component.ts**
+- **market-trends.component.ts**
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
@@ -332,7 +346,7 @@ export class MarketTrendsComponent implements OnInit {
 }
 ```
 
-**market-trends.component.html**
+- **market-trends.component.html**
 
 ```html
 <div>
@@ -348,6 +362,7 @@ export class MarketTrendsComponent implements OnInit {
 ## Shared Module
 
 ### Creating the Shared Module
+
 To avoid code duplication and promote reusability, we will create a shared module for common components and services.
 
 ```bash
@@ -357,13 +372,14 @@ ng generate module shared
 ### Shared Components and Services
 
 #### Header Component
+
 We will create a `HeaderComponent` to display a common header across the application.
 
 ```bash
 ng generate component shared/header
 ```
 
-**header.component.ts**
+- **header.component.ts**
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
@@ -384,7 +400,7 @@ export class HeaderComponent implements OnInit {
 }
 ```
 
-**header.component.html**
+- **header.component.html**
 
 ```html
 <header>
@@ -398,13 +414,14 @@ export class HeaderComponent implements OnInit {
 ```
 
 #### Footer Component
+
 Next, we will create a `FooterComponent` to display a common footer across the application.
 
 ```bash
 ng generate component shared/footer
 ```
 
-**footer.component.ts**
+- **footer.component.ts**
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
@@ -425,7 +442,7 @@ export class FooterComponent implements OnInit {
 }
 ```
 
-**footer.component.html**
+- **footer.component.html**
 
 ```html
 <footer>
@@ -434,13 +451,15 @@ export class FooterComponent implements OnInit {
 ```
 
 #### Profile Component
+
 We will create a `ProfileComponent` to display user profile information. This component will be part of the shared module.
 
 ```bash
 ng generate component shared/profile
 ```
 
-**profile.component.ts**
+- **profile.component.ts**
+
 ```typescript
 profile.component.ts
 
@@ -465,7 +484,8 @@ export class ProfileComponent implements OnInit {
 }
 ```
 
-**profile.component.html**
+- **profile.component.html**
+
 ```html
 <div>
   <h2>User Profile</h2>
@@ -476,13 +496,14 @@ export class ProfileComponent implements OnInit {
 ```
 
 #### Home Component
+
 Home component will be used to load the home page for application which will redirect the user to a default route in banking module. This page will also show the header and footer components.
 
 ```bash
 ng generate component shared/home
 ```
 
-**home.component.ts**
+- **home.component.ts**
 
 ```typescript
 import { Component } from '@angular/core';
@@ -498,7 +519,7 @@ export class HomeComponent {
 }
 ```
 
-**home.component.html**
+- **home.component.html**
 
 ```html
 <app-header></app-header>
@@ -509,6 +530,7 @@ export class HomeComponent {
 ## Core Module
 
 ### Creating the Core Module
+
 The core module will provide services that are common across the application, such as authentication, logging, caching, and notifications.
 
 ```bash
@@ -518,13 +540,14 @@ ng generate module core
 ### Core Services
 
 #### AuthService
+
 We will create an `AuthService` to handle authentication across the application.
 
 ```bash
 ng generate service shared/auth
 ```
 
-**auth.service.ts**
+- **auth.service.ts**
 
 ```typescript
 import { Injectable } from '@angular/core';
@@ -557,13 +580,14 @@ export class AuthService {
 ```
 
 #### Logger Service
+
 We will create a `LoggerService` to handle logging across the application.
 
 ```bash
 ng generate service core/logger
 ```
 
-**logger.service.ts**
+- **logger.service.ts**
 
 ```typescript
 import { Injectable } from '@angular/core';
@@ -591,13 +615,14 @@ export class LoggerService {
 ```
 
 #### Caching Service
+
 We will create a `CachingService` to handle caching across the application.
 
 ```bash
 ng generate service core/caching
 ```
 
-**caching.service.ts**
+- **caching.service.ts**
 
 ```typescript
 import { Injectable } from '@angular/core';
@@ -629,6 +654,7 @@ export class CachingService {
 ## App Level Changes
 
 ### Update AppModule
+
 Update AppModule class to import the dependent modules. This helps the DI framework resolve dependencies properly
 
 ```typescript
@@ -658,6 +684,7 @@ export class AppModule { }
 ```
 
 ### App Component HTML
+
 Update the html file to include a router-outlet and let Angular handle the loading part
 
 ```html
@@ -665,6 +692,7 @@ Update the html file to include a router-outlet and let Angular handle the loadi
 ```
 
 ### App Routing
+
 Finally app routing we can update to include the default route and other nested routes between the 3 modules.
 
 ```typescript
@@ -716,14 +744,17 @@ export class AppRoutingModule { }
 ```
 
 ## Running the app
+
 You can build the app from command line using the below commands
 
 Navigate to project directory and run the below command to install all dependencies 
+
 ```bash
 npm install
 ```
 
 Once the dependencies are installed you can run the app by using below command
+
 ```bash
 ng serve -o
 ```
@@ -738,8 +769,8 @@ The source code for this project is available on GitHub. You can find it at the 
 
 Feel free to explore the code, open issues, and contribute!
 
-
 ## Conclusion
+
 In this article, we explored the different use cases of Angular modules through a fictitious company named "Fast Investment." We created a project with modules for banking, mutual funds, and stocks, and provided code samples to illustrate their usage. By organizing our application into cohesive blocks of functionality, we can enhance code maintainability, reusability, and scalability.
 
 Angular modules are a powerful tool for any Angular developer, and understanding how to use them effectively can greatly improve the structure and efficiency of your applications. We hope this article has provided you with valuable insights and practical examples to help you get started with Angular modules.
