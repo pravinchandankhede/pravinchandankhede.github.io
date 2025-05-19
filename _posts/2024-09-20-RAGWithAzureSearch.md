@@ -6,7 +6,8 @@ tags: [rag, azure search, agents, ai, cognitive services, llm]     # TAG names s
 description: This post explain the RAG pattern and its implementation using the Azure SEarch as a vector store. It also shows how to leverage the different search modes in Azure Search
 ---
 
-# What is RAG?
+## What is RAG
+
 RAG stands for Retrieve, Answer and Generate. It is a pattern used in AI to generate responses to user queries. The RAG model is a powerful tool that can be used to generate responses to user queries by retrieving relevant information from a knowledge base, answering the query based on the retrieved information, and generating a response that is both informative and contextually relevant.
 
 ## What is Text Generation

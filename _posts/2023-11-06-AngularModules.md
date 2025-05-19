@@ -16,7 +16,7 @@ Angular modules are a powerful feature that allows developers to organize and ma
 
 Angular modules help in organizing an application into cohesive blocks of functionality. Each module can contain components, services, directives, and pipes that are related to a specific feature or functionality. This modular approach enhances code maintainability, reusability, and scalability.
 
-The modules are good for sharing the common components, directives, and pipes across the application. It also helps in lazy loading the modules which are not required at the time of application startup. 
+The modules are good for sharing the common components, directives, and pipes across the application. It also helps in lazy loading the modules which are not required at the time of application startup.
 
 You can import modules in other modules to use the components, directives, and pipes defined in the imported module.
 
@@ -24,7 +24,7 @@ You can import modules in other modules to use the components, directives, and p
 
 In this article, we will create a portfolio application for a fictitious company named "Fast Investments" that offers banking, mutual funds, and stocks services. We will create separate modules for each service and define components within each module to display relevant information.
 
-The overall setup will look like this - 
+The overall setup will look like this -
 ![Overall Architecture](/assets/images/posts/2023-11-06/overall.jpg)
 
 The core module will provide the features that are common across the application, such as the header and footer components. We will also create a shared module to house common components and services that can be used across multiple modules.
@@ -135,7 +135,7 @@ export class TransactionHistoryComponent implements OnInit {
 }
 ```
 
-**transaction-history.component.html**
+- **transaction-history.component.html**
 
 ```html
 <div>
@@ -169,7 +169,6 @@ ng generate component mutual-funds/fund-overview
 ```
 
 - **fund-overview.component.ts**
-
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
@@ -747,7 +746,7 @@ export class AppRoutingModule { }
 
 You can build the app from command line using the below commands
 
-Navigate to project directory and run the below command to install all dependencies 
+Navigate to project directory and run the below command to install all dependencies.
 
 ```bash
 npm install

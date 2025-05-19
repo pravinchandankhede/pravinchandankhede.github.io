@@ -14,11 +14,11 @@ media_subpath: "/assets/images/posts/2024-01-10"
 
  This post is continuation to my earlier post on [Micro Frontend Architecture](https://pravinchandankhede.github.io/posts/MicroFrontend/). In this post I will explain how to implement Micro Frontend architecture using Angular. We will see how to define multiple child applications and load them in a shell. I will also show how to define common functionlaity that can be utilized by all child applications.
 
-## Reference Implementation App using Angular's Module Federation.
+## Reference Implementation App using Angular's Module Federation
 
 You can find a working demo of the implementation [here](https://agreeable-sand-05b276e0f.4.azurestaticapps.net/)
 
-## Reference Implementation code using Angular's Module Federation.
+## Reference Implementation code using Angular's Module Federation
 
 The source code is available [here](https://github.com/pravinchandankhede/microfrontend)
 

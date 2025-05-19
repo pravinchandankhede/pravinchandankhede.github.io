@@ -21,9 +21,9 @@ APIs enable developers to integrate third-party services, access data, and exten
 
 ## API Economy
 
-The API Economy refers to the ecosystem of business models, strategies, and practices built around the use of Application Programming Interfaces (APIs) to create value-added products and services. It lets business create opportunities by monetizing their APIs by offering them as products or services, enabling other businesses to build on top of their platforms. This fosters innovation, accelerates development, and creates new revenue streams. 
+The API Economy refers to the ecosystem of business models, strategies, and practices built around the use of Application Programming Interfaces (APIs) to create value-added products and services. It lets business create opportunities by monetizing their APIs by offering them as products or services, enabling other businesses to build on top of their platforms. This fosters innovation, accelerates development, and creates new revenue streams.
 
-For example, payment gateways like Stripe and PayPal provide APIs that allow businesses to integrate payment processing into their applications seamlessly. 
+For example, payment gateways like Stripe and PayPal provide APIs that allow businesses to integrate payment processing into their applications seamlessly.
 
 ### Key Aspects of the API Economy
 
@@ -47,7 +47,7 @@ While the API economy offers numerous advantages, it also presents challenges su
 
 ## Subscription-Based API Model
 
-There are service providers where they expose functionalities and data to external applications and consumers. The service provider gives various plans that consumers can subscribe to based on their needs. The usgae of the API is monitored and charged based on the plan subscribed by the consumer. This gives flexibility amd power to consumers to utilise the service as per their needs without having to worry about the hassle of developing these services. 
+There are service providers where they expose functionalities and data to external applications and consumers. The service provider gives various plans that consumers can subscribe to based on their needs. The usgae of the API is monitored and charged based on the plan subscribed by the consumer. This gives flexibility amd power to consumers to utilise the service as per their needs without having to worry about the hassle of developing these services.
 
 This model is widely adopted across various industries, including software, entertainment, and e-commerce, due to its ability to generate predictable revenue and foster long-term customer relationships. This allows businesses to offer their core services to a broader audience. For instance, a weather service provider can offer an API that developers can use to fetch real-time weather data for their applications. This approach not only enhances the service provider's reach but also enables developers to create more feature-rich applications and in short duration of time.
 

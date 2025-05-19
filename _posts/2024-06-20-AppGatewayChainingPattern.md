@@ -148,7 +148,6 @@ You can attach one NSG to the subnet (or NIC) and define inbound and outbound ru
 
 Example: Single NSG on Gateway A Subnet
 
-
 | Priority | Direction | Protocol | Source     | Destination | Port | Action | Description                  |
 |----------|-----------|----------|------------|-------------|------|--------|------------------------------|
 | 100      | Inbound   | TCP      | Internet   | Gateway A   | 443  | Allow  | Allow HTTPS from internet   |

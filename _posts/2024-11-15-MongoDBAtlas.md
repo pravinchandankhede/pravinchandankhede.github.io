@@ -6,6 +6,6 @@ tags: [nosql, managed service]     # TAG names should always be lowercase
 description: I am trying to explore MongoDB Atlas and its features. This post will highlight the benefits of using MongoDB Atlas.
 ---
 
-# MongoDB
+## MongoDB
 
 ## MongoDB Atlas

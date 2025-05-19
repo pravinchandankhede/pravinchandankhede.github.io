@@ -23,7 +23,7 @@ In this  article I will explore the API Gateway pattern in depth, with practical
 
 An **API Gateway** is a server that sits between clients and backend services. It abstracts the internal system architecture and provides a unified API to the clients.
 
-### Responsibilities of an API Gateway:
+### Responsibilities of an API Gateway
 
 - Request routing
 - Load balancing
@@ -80,7 +80,7 @@ Without an API Gateway, clients must interact with each microservice individuall
 7. **Service Mesh Integration**  
    Leveraging service mesh tools like Istio or Linkerd to implement API Gateway functionality as part of the service mesh. This approach is suitable for Kubernetes-based environments.
 
-## Implementing an API Gateway in C#
+## Implementing an API Gateway in C# Code
 
 Let’s start with a **basic custom API Gateway** using **ASP.NET Core**.
 
@@ -94,37 +94,37 @@ Assume we have two microservices:
 The services are created using API controller for Order and Products as shown below
 
 ```csharp
-	// GET: api/Order
-	[HttpGet]
-	public IActionResult GetOrders()
-	{
-		if (!System.IO.File.Exists(DataFilePath))
-		{
-			return NotFound("Data file not found.");
-		}
+// GET: api/Order
+[HttpGet]
+public IActionResult GetOrders()
+{
+    if (!System.IO.File.Exists(DataFilePath))
+    {
+        return NotFound("Data file not found.");
+    }
 
-		var jsonData = System.IO.File.ReadAllText(DataFilePath);
-		var orders = JsonSerializer.Deserialize<List<Order>>(jsonData);
+    var jsonData = System.IO.File.ReadAllText(DataFilePath);
+    var orders = JsonSerializer.Deserialize<List<Order>>(jsonData);
 
-		return Ok(orders);
-	}
+    return Ok(orders);
+}
 ```
 
 ```csharp
-	// GET: api/Product
-	[HttpGet]
-	public IActionResult GetProducts()
-	{
-		if (!System.IO.File.Exists(DataFilePath))
-		{
-			return NotFound("Data file not found.");
-		}
+// GET: api/Product
+[HttpGet]
+public IActionResult GetProducts()
+{
+    if (!System.IO.File.Exists(DataFilePath))
+    {
+        return NotFound("Data file not found.");
+    }
 
-		var jsonData = System.IO.File.ReadAllText(DataFilePath);
-		var products = JsonSerializer.Deserialize<List<Product>>(jsonData);
+    var jsonData = System.IO.File.ReadAllText(DataFilePath);
+    var products = JsonSerializer.Deserialize<List<Product>>(jsonData);
 
-		return Ok(products);
-	}
+    return Ok(products);
+}
 ```
 
 ### Create the API Gateway Project
@@ -147,37 +147,37 @@ Next we will create a GatewayController which exposes endpoints for Products and
 Here we will expose expose gateway method for Products and Orders
 
 ```csharp
-	// GET: api/Gateway/products
-	[HttpGet("products")]
-	public async Task<IActionResult> GetProducts()
-	{
-		var productServiceUrl = _productServiceUrl + "Product";
-		var response = await _httpClient.GetAsync(productServiceUrl);
+// GET: api/Gateway/products
+[HttpGet("products")]
+public async Task<IActionResult> GetProducts()
+{
+    var productServiceUrl = _productServiceUrl + "Product";
+    var response = await _httpClient.GetAsync(productServiceUrl);
 
-		if (!response.IsSuccessStatusCode)
-		{
-			return StatusCode((int)response.StatusCode, "Failed to fetch products.");
-		}
+    if (!response.IsSuccessStatusCode)
+    {
+        return StatusCode((int)response.StatusCode, "Failed to fetch products.");
+    }
 
-		var products = await response.Content.ReadAsStringAsync();
-		return Content(products, "application/json");
-	}
+    var products = await response.Content.ReadAsStringAsync();
+    return Content(products, "application/json");
+}
 
-	// GET: api/Gateway/orders
-	[HttpGet("orders")]
-	public async Task<IActionResult> GetOrders()
-	{
-		var orderServiceUrl = _orderServiceUrl + "Order";
-		var response = await _httpClient.GetAsync(orderServiceUrl);
+// GET: api/Gateway/orders
+[HttpGet("orders")]
+public async Task<IActionResult> GetOrders()
+{
+    var orderServiceUrl = _orderServiceUrl + "Order";
+    var response = await _httpClient.GetAsync(orderServiceUrl);
 
-		if (!response.IsSuccessStatusCode)
-		{
-			return StatusCode((int)response.StatusCode, "Failed to fetch orders.");
-		}
+    if (!response.IsSuccessStatusCode)
+    {
+        return StatusCode((int)response.StatusCode, "Failed to fetch orders.");
+    }
 
-		var orders = await response.Content.ReadAsStringAsync();
-		return Content(orders, "application/json");
-	}
+    var orders = await response.Content.ReadAsStringAsync();
+    return Content(orders, "application/json");
+}
 
 ```
 
