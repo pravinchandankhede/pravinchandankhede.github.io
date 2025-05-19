@@ -10,9 +10,7 @@ description: This post highlights the usage of Rate Limiter middleware available
 
 ## .NET Rate Limiting
 
-
 ## What is Rate Limiting?
-
 
 ### Importance of rate limiting
 

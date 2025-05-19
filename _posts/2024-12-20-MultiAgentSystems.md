@@ -10,19 +10,21 @@ media_subpath: "/assets/images/posts/2024-12-13"
  > This post is a part of the series on Agentic AI. In this post we will see what a multi agent systems is, its patterns and how it can be used to solve complex problems. My earlier post on Agentic AI can be found [here](https://pravinchandankhede.github.io/posts/AgenticAI/).
 {: .prompt-info }
 
-# What are Agents?
+## What are Agents?
+
 AI agents are autonomous systems capable of sensing, learning and acting upon their environments(both digital & physical) to achieve specific objectives.
 
 ## Evolution of Agents
+
 Agents have evolved from simple software agents to more complex AI Agents. AI Agents are more intelligent and can take decisions based on the environment they are in. They can also learn from the environment and improve their decision making capabilities.
 
 ![Agent evolution](/evolution.png)
 
- - **Simple LLM Bots:** With the era of Gen AI, we had a new breed of bots coming in that can understand the semantic meaning of user query and provide data using a pre-trained LLM model. The response was more like humans and gives the feeling of a human like conversation. These bots were trained on large data set and could often provide information on a wide range of topics.
+- **Simple LLM Bots:** With the era of Gen AI, we had a new breed of bots coming in that can understand the semantic meaning of user query and provide data using a pre-trained LLM model. The response was more like humans and gives the feeling of a human like conversation. These bots were trained on large data set and could often provide information on a wide range of topics.
 
- - **RAG bases Bots:** While the LLM bots were capable of understanding the semantic meaning of the user query, and giving the generalized answers, they were not capable of using your own data and formulating responses based on facts that you provide. This is where we see RAG (Retrival Augmented Generation) based bots came into picture. These bots can understand the semantic meaning of the user query and can also use your own data to provide responses. They can also use the pre-trained LLM models to provide generalized answers. This is where Enterprises found value in Gen AI and utlized this technology to increase value of their services.
+- **RAG bases Bots:** While the LLM bots were capable of understanding the semantic meaning of the user query, and giving the generalized answers, they were not capable of using your own data and formulating responses based on facts that you provide. This is where we see RAG (Retrival Augmented Generation) based bots came into picture. These bots can understand the semantic meaning of the user query and can also use your own data to provide responses. They can also use the pre-trained LLM models to provide generalized answers. This is where Enterprises found value in Gen AI and utlized this technology to increase value of their services.
 
- - **Copilots:** Copilots are the next generation of bots which works under the context of a user current work and is natively integrated with the application being used. This enables user to take advantage of LLM without leaving the context and helps in continuity of flow. These bots understand the intent of user and compliments the ability of user to perform the task. Together with RAG capability, they can further improve the user experience and provide more value to the user.
+- **Copilots:** Copilots are the next generation of bots which works under the context of a user current work and is natively integrated with the application being used. This enables user to take advantage of LLM without leaving the context and helps in continuity of flow. These bots understand the intent of user and compliments the ability of user to perform the task. Together with RAG capability, they can further improve the user experience and provide more value to the user.
   
    Examples of such bots are: Microsoft Copilot, GitHub Copilot, etc.
 
@@ -31,7 +33,9 @@ Agents have evolved from simple software agents to more complex AI Agents. AI Ag
   AI Agents are the topic of this article and we will see how they are different from other bots and how they can be used to solve complex problems.
 
 ## Characteristics of AI Agents
+
 AI Agents have the following characteristics:
+
 - An AI agent responds autonomously.
 - They understand the environment they are in.
 - They act on their own based on the environment feedback and change in operational parameters.
@@ -41,6 +45,7 @@ AI Agents have the following characteristics:
 - Utilize the tools to take tangible actions based on the environment feedback.
 
 ## Core Components of AI Agents
+
 AI Agents have the following core components:
 
 ![Core Components of AI Agent](/agentcore.png)
@@ -56,7 +61,9 @@ AI Agents have the following core components:
 - **Memory**: Memory is the data that is stored by the agent. Memory enables the agent to remember the past events and uses them to take decisions in the future.
 
 ## Categories of AI Agents
+
 AI Agents can be categorized into the following categories:
+
 - **Deterministic Agents**: These agents are rule based and take decisions based on the rules defined by the user. These agents are not intelligent and can only take decisions based on the rules defined by the user.
 - **Non-Deterministic Agents**: These agents are intelligent and can take decisions based on the environment feedback and change in operational parameters. These agents can learn from the environment and improve their decision making capabilities.
 
@@ -71,6 +78,7 @@ AI Agents can be categorized into the following categories:
 | Simple Decision Making| Complex Decision Making  |
 
 ## Types of AI Agents
+
 AI Agents are of different types based on the way they operate and type of work they do. These are:
 
 | Type of AI Agent | Description | Adaptibility |
@@ -81,6 +89,7 @@ AI Agents are of different types based on the way they operate and type of work 
 | **Utility Based Agents** |These agents are similar to Goal Based Agents but they consider the utility of the outcome as well. They employ search & planning algorithms and assings weigth to each outcome. This way they ensure optimal decision making in conflicting or uncertain goals| They are more adaptabe and suitable for complex decision making tasks.|
 
 ## AI Agents Patterns
+
 Just like software design patterns, AI Agents have patterns that can be used to solve common problems. These patterns are:
 
 | Pattern | Description | Use Case |
@@ -89,8 +98,9 @@ Just like software design patterns, AI Agents have patterns that can be used to 
 | **Tool Use Pattern** | In this pattern, the agent uses tools to extend the capbilities of agent. This provides oppurtunity to delegate the task to other tools or agents.| This pattern is used when the agent needs to collaborate with other systems. |
 | **Planning Pattern** | In this pattern, the agent uses a planner to generate a plan to achieve a goal. The planner generates a multi-step plan of actions to achieve the goal.| This pattern is used when the agent needs to achieve a dynamic goal. |
 | **Multi-Agent Pattern** | In this pattern, the agent collaborates with other agents to achieve a common goal. The agents can communicate with each other and share information.| This pattern is used when the agent needs to collaborate with other agents to achieve a common goal. |
- 
+
 ## Conclusion
+
 We saw the evolution of AI Agents and how they have evolved from simple bots to more complex AI Agents. We also saw the characteristics of AI Agents and the core components of AI Agents. We also saw the categories and types of AI Agents. We also saw the patterns of AI Agents that can be used to solve common problems. AI Agents are the future of AI and will play a key role in solving complex problems.
 
 Please feel free to leave your feedback.
