@@ -26,8 +26,8 @@ It first creates a connection using Azure OpenAI client. This is done using the 
 
 ```csharp
 AzureOpenAIClient azureClient = new(
-	new Uri(AppSetting.Endpoint),
-	new ApiKeyCredential(AppSetting.Key));
+    new Uri(AppSetting.Endpoint),
+    new ApiKeyCredential(AppSetting.Key));
 ChatClient chatClient = azureClient.GetChatClient(AppSetting.DeploymentName);
 ```
 
@@ -56,7 +56,7 @@ ChatCompletionOptions options = new();
 
 foreach (var tool in tools)
 {
-	options.Tools.Add(ChatTool.CreateFunctionTool(tool.Name, tool.Description));
+    options.Tools.Add(ChatTool.CreateFunctionTool(tool.Name, tool.Description));
 }
 ```
 
@@ -71,36 +71,41 @@ ChatCompletion completion = chatClient.CompleteChat(conversationMessages, option
 ### Tool Invocation
 
 The chat completion response from LLM can be of 2 types specified as part of `FinishReason` property.
- - **Stop**: This means the LLM has completed the response and no further action is required.
- - **ToolsCall**: This means the LLM has called a tool and we need to invoke the tool to get the result. The `ToolCalls` property contains the list of tools and the parameters required by that tool. As the LLM might have identifed multiple tools we need to call all of them sequentially and add the response to conversation before calling LLM again.
+
+- **Stop**: This means the LLM has completed the response and no further action is required.
+- **ToolsCall**: This means the LLM has called a tool and we need to invoke the tool to get the result. The `ToolCalls` property contains the list of tools and the parameters required by that tool. As the LLM might have identifed multiple tools we need to call all of them sequentially and add the response to conversation before calling LLM again.
 
 The process is repeated until the LLM returns a `Stop` response.
+
 ```csharp
 while (completion.FinishReason != ChatFinishReason.Stop)
 {
-	if (completion.FinishReason == ChatFinishReason.ToolCalls)
-	{
-		// Add a new assistant message to the conversation history that includes the tool calls
-		conversationMessages.Add(new AssistantChatMessage(completion));
+    if (completion.FinishReason == ChatFinishReason.ToolCalls)
+    {
+        // Add a new assistant message to the conversation history that includes the tool calls
+        conversationMessages.Add(new AssistantChatMessage(completion));
 
-		foreach (ChatToolCall toolCall in completion.ToolCalls)
-		{
-			conversationMessages.Add(new ToolChatMessage(toolCall.Id, 
-				await HandleToolExecutionAsync(toolCall.FunctionName, GetParameters(toolCall.FunctionArguments))));
-		}				
-	}
+        foreach (ChatToolCall toolCall in completion.ToolCalls)
+        {
+            conversationMessages.Add(new ToolChatMessage(toolCall.Id, 
+                await HandleToolExecutionAsync(toolCall.FunctionName, GetParameters(toolCall.FunctionArguments))));
+        }
+    }
 
-	completion = chatClient.CompleteChat(conversationMessages, options);
+    completion = chatClient.CompleteChat(conversationMessages, options);
 }
 ```
 
 ### Run
-To run the demo - 
+
+To run the demo:
+
 - You can first start the BankingService project, this will start the APIs on `http://localhost:7001`
 - Then you can start the MCP server project, this will start the MCP server on `http://localhost:5000/sse`
 - Finally you can start the MCP Azure OpenAI Client project, this will connect to the LLM and send the user query. In response to user query, it will call the Tool and again call LLM to get final response.
 
 You can see a sample output below -
+
 ```bash
 Tool: GetBalances
 Description: Get a list of accounts and balance.
@@ -121,9 +126,11 @@ Assistant: The balance for account "JohnDoe" is $1500.75.
 ```
 
 ## Source Code
+
 You can find the source code for this project at below location
 
 [Code](https://github.com/pravinchandankhede/agenticai/tree/main/src/model-context-protocol-demo/MCPAzureOpenAIClient)
 
 ## Conclusion
+
 My objective was to demonstrate the integration of MCP tool with LLM tool calling feature. The implementation I showed is core logic behind many frameworks like Semantic Kernel, LangGrapg etc.
