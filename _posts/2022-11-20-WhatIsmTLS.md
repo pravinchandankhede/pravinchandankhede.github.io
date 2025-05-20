@@ -27,7 +27,19 @@ Mutual TLS (mTLS) is a security protocol that provides mutual authentication bet
 
 ### Diagram
 
-![mTLS Diagram](path/to/diagram.png)
+```mermaid
+
+sequenceDiagram
+    participant Client
+    participant Server
+    Client->>Server: Initiate TLS handshake
+    Server->>Client: Send server certificate
+    Client->>Server: Verify server certificate
+    Client->>Server: Send client certificate
+    Server->>Client: Verify client certificate
+    Server->>Client: TLS handshake complete
+    Client->>Server: Secure communication begins 
+```
 
 ## Benefits
 
@@ -52,7 +64,19 @@ Mutual TLS (mTLS) is a security protocol that provides mutual authentication bet
 
 ### Diagram
 
-![Certificate Revocation Methods](path/to/revocation_diagram.png)
+```mermaid
+
+sequenceDiagram
+    participant Client
+    participant Server
+    Client->>Server: Initiate TLS handshake
+    Server->>Client: Send server certificate
+    Client->>Server: Verify server certificate
+    Client->>Server: Send client certificate
+    Server->>Client: Verify client certificate
+    Server->>Client: TLS handshake complete
+    Client->>Server: Secure communication begins 
+```
 
 ## Key Technology Vendors
 
