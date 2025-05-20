@@ -1,7 +1,7 @@
 ---
-title: Whats is Mutual TLS (mTLS)
+title: Guide to Implementing Mutual TLS (mTLS) in .NET
 date: 2022-11-20 10:30:30 +/-TTTT
-categories: [Security, PKI, x509, certificates, ssl, mtls]
+categories: [Security, PKI, x509, certificates, ssl, mtls, .net, azure]
 tags: [api, pki, x509, architecture, certificates, ssl, security, attack, encryption]     # TAG names should always be lowercase
 description: In this post I will explain about the mutual TLS, how its works, benefots and chalenges.
 mermaid: true
@@ -25,7 +25,7 @@ Mutual TLS (mTLS) is a security protocol that provides mutual authentication bet
 4. **Server Verifies Client**: The server checks the validity of the client's certificate. If all checks pass, the server accepts the connection.
 5. **Secure Communication Begins**: Once mutual authentication is successful, the client and server exchange encrypted data over the secure channel.
 
-### Diagram
+Below diagram shows a typical sequence of operations that takes place during a mutual TLS authentication.
 
 ```mermaid
 sequenceDiagram
@@ -43,58 +43,26 @@ sequenceDiagram
 
 ## Benefits
 
-- **Stronger Security**: Both parties are authenticated.
+- **Stronger Security**: In this setup both cleitn & server authenticates the other.
 - **Prevents Impersonation**: Ensures that only trusted clients can access the server.
-- **Common in Enterprise Environments**: Used in APIs, B2B communications, and internal systems.
+- **Common in Enterprise Environments**: This is used in APIs, B2B communications, and internal systems.
 
 ## Challenges
 
-- **Certificate Management**: Managing certificates for all devices can be complex.
-- **Latency**: OCSP can add latency to the connection.
+- **Certificate Management**: Since all clients needs certificates, managing certificates for all devices can be complex.
+- **Latency**: Validating the certificates both ways during handshaking add an extra processing, this results in increased latency to the connection.
 - **Server Configuration**: Requires proper server support and configuration.
 
 ## Implementation Methods
 
-### Certificate Revocation Methods
+There are many ways in which the mutual TLS can be implemented. we will see how to implement mTLS in .NET based applications.
+
+## Certificate Revocation Methods
 
 1. **Certificate Revocation List (CRL)**: A list of revoked certificates published by a CA. Clients download the CRL and check if a certificate is on the list.
 2. **Online Certificate Status Protocol (OCSP)**: Clients query the CA in real-time to check if a certificate is revoked.
 3. **OCSP Stapling**: The server fetches the OCSP response from the CA and “staples” it to the TLS handshake.
 4. **Short-Lived Certificates**: Certificates that expire quickly, avoiding the need for revocation.
-
-### Diagram
-
-```mermaid
-
-sequenceDiagram
-    participant Client
-    participant Server
-    Client->>Server: Initiate TLS handshake
-    Server->>Client: Send server certificate
-    Client->>Server: Verify server certificate
-    Client->>Server: Send client certificate
-    Server->>Client: Verify client certificate
-    Server->>Client: TLS handshake complete
-    Client->>Server: Secure communication begins 
-```
-
-## Key Technology Vendors
-
-- **Microsoft Active Directory Certificate Services (AD CS)**
-- **Intune**
-- **Jamf**
-- **VMware Workspace ONE**
-- **Venafi**
-- **Keyfactor**
-- **HashiCorp Vault**
-
-## Azure Cloud Support
-
-Azure provides robust support for mTLS through services like:
-
-- **Azure Key Vault**: Securely store and manage certificates.
-- **Azure Application Gateway**: Configure mTLS for web applications.
-- **Azure API Management**: Implement mTLS for APIs.
 
 ## Comparison with Other Authentication Methods
 
