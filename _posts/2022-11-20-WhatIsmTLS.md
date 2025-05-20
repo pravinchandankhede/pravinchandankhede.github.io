@@ -28,15 +28,15 @@ Mutual TLS (mTLS) is a security protocol that provides mutual authentication bet
 ### Diagram
 
 ```mermaid
-
 sequenceDiagram
     participant Client
     participant Server
-    Client->>Server: Initiate TLS handshake
-    Server->>Client: Send server certificate
-    Client->>Server: Verify server certificate
+    participant CA
+    Client->>Server: Initiate TLS handshake (1)
+    Server->>Client: Send server certificate (2)
+    Client->>CA: Verify server certificate
     Client->>Server: Send client certificate
-    Server->>Client: Verify client certificate
+    Server->>CA: Verify client certificate
     Server->>Client: TLS handshake complete
     Client->>Server: Secure communication begins 
 ```
