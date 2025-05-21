@@ -207,6 +207,12 @@ Just as generating and using certificate is important so is the revocation of th
 | OCSP Stapling    | ✅        | Low         | Medium       | High        | Low     |
 | Short-Lived Certs| ❌        | Low         | High         | High        | Low     |
 
+This table shows the type of certificates being preferred:
+
+1. **Security and Freshness**: OCSP Stapling and Short-Lived Certificates are preferred for high reliability and low latency.
+2. **Operational Overhead**: CRL and OCSP put more burden on clients and/or servers and may introduce delays or reliability issues.
+3. **Practical Use**: OCSP Stapling is commonly used in modern deployments for balancing security, speed, and reliability.
+
 ## Conclusion
 
 Mutual TLS (mTLS) is a powerful security protocol that ensures both client and server authentication using digital certificates. While it offers stronger security and prevents impersonation, it also comes with challenges such as certificate management and latency. With support from key technology vendors and Azure cloud services, implementing mTLS can be streamlined and effective for enterprise environments.
