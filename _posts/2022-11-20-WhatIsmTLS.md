@@ -15,9 +15,9 @@ In today's digital world, security is a important concern. Ensuring the security
 
 Mutual TLS (mTLS) is a security protocol that provides mutual authentication between the client and the server using digital certificates. Unlike one-way SSL/TLS, where only the server is authenticated, mTLS ensures that both parties verify each other's identity before establishing a secure connection.
 
-## How mTLS Works
+### How mTLS Works
 
-### Step-by-Step Process
+#### Step-by-Step Process
 
 1. **Certificate Setup**: The server and each client have their own SSL/TLS certificates issued by a trusted Certificate Authority (CA).
 2. **Client Sends Request**: The client initiates a connection to the server over HTTPS. During the TLS handshake, the server sends its certificate to the client.
@@ -41,13 +41,13 @@ sequenceDiagram
     Client->>Server: Secure communication begins 
 ```
 
-## Benefits
+### Benefits
 
 - **Stronger Security**: In this setup both cleitn & server authenticates the other.
 - **Prevents Impersonation**: Ensures that only trusted clients can access the server.
 - **Common in Enterprise Environments**: This is used in APIs, B2B communications, and internal systems.
 
-## Challenges
+### Challenges
 
 - **Certificate Management**: Since all clients needs certificates, managing certificates for all devices can be complex.
 - **Latency**: Validating the certificates both ways during handshaking add an extra processing, this results in increased latency to the connection.
