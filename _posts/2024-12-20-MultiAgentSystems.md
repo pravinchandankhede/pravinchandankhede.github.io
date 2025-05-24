@@ -14,7 +14,9 @@ media_subpath: "/assets/images/posts/2024-12-13"
 
 AI agents are autonomous systems capable of sensing, learning and acting upon their environments(both digital & physical) to achieve specific objectives.
 
-## Evolution of Agents
+## What are AI Agents?
+
+AI Agent is an software that leverages the Generative AI capabilities to perform complex task and exhibit an human like behaviour. These agents are self driven and can adjust thier behavior based on environmental and data parameters. These agents do not need constant human intervention and can work continusly round the clock just like any other software.
 
 Agents have evolved from simple software agents to more complex AI Agents. AI Agents are more intelligent and can take decisions based on the environment they are in. They can also learn from the environment and improve their decision making capabilities.
 

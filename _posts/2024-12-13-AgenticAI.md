@@ -8,6 +8,7 @@ media_subpath: "/assets/images/posts/2024-12-13"
 ---
 
 ## What are Agents?
+
 AI agents are autonomous systems capable of sensing, learning and acting upon their environments(both digital & physical) to achieve specific objectives.
 
 ## Evolution of Agents
