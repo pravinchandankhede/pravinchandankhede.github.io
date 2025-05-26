@@ -31,12 +31,15 @@ body {
 }
 
 /* Custom table styling */
+/* Ensure tables are responsive and wrap content */
 table {
   width: 100%;
   border-collapse: collapse;
   margin: 1.5em 0;
   font-size: 0.95rem;
   line-height: 1.6;
+  table-layout: fixed; /* Ensures cells don't expand beyond container */
+  word-wrap: break-word;
 }
 
 table th,
@@ -45,9 +48,9 @@ table td {
   padding: 0.75em;
   text-align: left;
   vertical-align: top;
-  word-wrap: break-word;
   white-space: normal;
   overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 table thead {
@@ -62,4 +65,3 @@ table tbody tr:nth-child(even) {
 table tbody tr:hover {
   background-color: #f0f0f0;
 }
-
