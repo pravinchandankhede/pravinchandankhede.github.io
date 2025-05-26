@@ -32,13 +32,15 @@ body {
 
 /* Custom table styling */
 /* Ensure tables are responsive and wrap content */
+/* Force table responsiveness and wrapping */
 table {
   width: 100%;
   border-collapse: collapse;
   margin: 1.5em 0;
   font-size: 0.95rem;
   line-height: 1.6;
-  table-layout: fixed; /* Ensures cells don't expand beyond container */
+  table-layout: fixed; /* Prevents cells from expanding */
+  overflow-wrap: break-word;
   word-wrap: break-word;
 }
 
@@ -48,9 +50,9 @@ table td {
   padding: 0.75em;
   text-align: left;
   vertical-align: top;
-  white-space: normal;
-  overflow-wrap: break-word;
-  word-break: break-word;
+  white-space: normal !important; /* Force wrapping */
+  word-break: break-word !important; /* Break long words */
+  overflow-wrap: break-word !important;
 }
 
 table thead {
@@ -65,3 +67,9 @@ table tbody tr:nth-child(even) {
 table tbody tr:hover {
   background-color: #f0f0f0;
 }
+
+/* Optional: prevent body overflow */
+body {
+  overflow-x: hidden;
+}
+
