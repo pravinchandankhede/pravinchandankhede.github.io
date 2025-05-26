@@ -51,6 +51,20 @@ They go beyond traditional chatbots by incorporating planning, memory, tool use,
 
 ## Memory of an Agent
 
+## Communication Patterns for Agent
+
+Modern AI Agent Communication Patterns
+
+| **Pattern**                     | **Description**                                                                 | **Use Cases**                                           | **Example**                                                                 |
+|-------------------------------|---------------------------------------------------------------------------------|---------------------------------------------------------|------------------------------------------------------------------------------|
+| **Group Chat**                | Multiple agents interact in a shared conversational space.                      | Brainstorming, collaborative planning                   | Agents in AutoGen solving a coding task together.                           |
+| **Hand-off**                  | One agent delegates a task to another based on expertise.                       | Customer service, multi-step workflows                  | General agent hands off legal query to a legal expert agent.               |
+| **Tool-Using Agent**          | Agents use external tools (APIs, databases, etc.) to complete tasks.            | Research, automation, data analysis                     | Agent queries a weather API and generates a report.                         |
+| **Negotiation**               | Agents engage in dialogue to reach agreements or resolve conflicts.             | Resource allocation, contract negotiation               | Agents representing departments negotiate resource usage.                   |
+| **Principal-Agent-Counterparty** | Agent acts on behalf of a user to interact with external systems.              | Advocacy, customer service, legal assistance            | AI agent negotiates a refund with a company on behalf of a user.           |
+| **ReAct Loop**                | Agents reason, act, observe, and iterate.                                       | Complex task execution, autonomous workflows            | LangChain agent plans, executes, and refines a multi-step task.            |
+| **Memory-Augmented**          | Agents use long-term memory to inform future interactions.                      | Personalized assistants, long-running workflows         | Agent remembers user preferences and adapts responses accordingly.         |
+
 Agents have evolved from simple software agents to more complex AI Agents. AI Agents are more intelligent and can take decisions based on the environment they are in. They can also learn from the environment and improve their decision making capabilities.
 
 ## Conclusion
