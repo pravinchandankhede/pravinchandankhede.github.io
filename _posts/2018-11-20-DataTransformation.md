@@ -30,6 +30,10 @@ By implementing a **canonical data model**, enterprises can:
 
 There are multiple products in market that help achieve this functionality. However our focus here is to design & develop a custom enterprise component that will key features. This let organization manage cost effectively. This approach is mostly used by product based firms which needs full control on feature without giving up on IP rights.
 
+Below is the picture to demonstrate the problem
+
+![Need for Gateway](/assets/images/posts/2018-11-20/image.png)
+
 ### Why XML and XSLT?
 
 **XML (eXtensible Markup Language)** is a widely adopted standard for structured data representation. It is:
