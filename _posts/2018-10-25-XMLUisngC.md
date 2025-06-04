@@ -13,16 +13,15 @@ In modern enterprise applications, **data transformation** is a critical process
 
 In this artical, we will focus on understanding the foundational technology XML & .NET. These we are going to use to build our gateway engine in upcoming series of blog.
 
+## Understanding the Core Technologies
 
-## 2. Understanding the Core Technologies
+Lets start with understanding these technologies in detail.
 
-I am assuming a prior knowledge of XML, XSLT and .NET ecosystem. For a quick reference on these technologies, please refer the below -
-
-### XML Basics : A Quick Summary
+### XML Basics
 
 #### What is XML?
 
-For starters, **[XML (eXtensible Markup Language)](https://www.w3schools.com/xml/)** is a markup language designed to store and transport data. It is both human-readable and machine-readable, making it ideal for data exchange between systems.
+**[XML (eXtensible Markup Language)](https://www.w3schools.com/xml/)** is a markup language designed to store and transport data. It is both human-readable and machine-readable, making it ideal for data exchange between systems.
 
 **[XML (eXtensible Markup Language)](https://en.wikipedia.org/wiki/XML)** is a widely adopted standard for structured data representation.
 
@@ -43,7 +42,7 @@ For starters, **[XML (eXtensible Markup Language)](https://www.w3schools.com/xml
 </person>
 ```
 
-### XSLT Basics: A Quick Summary
+### XSLT Basics
 
 #### What is XSLT?
 
@@ -92,7 +91,7 @@ Output file after transformation
 </html>
 ```
 
-### C# Support for XML and XSLT: A Practical Summary
+### C# Support for XML and XSLT
 
 #### Overview
 
