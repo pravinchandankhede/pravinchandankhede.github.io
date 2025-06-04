@@ -107,7 +107,7 @@ Designing a robust and scalable data transformation engine requires careful plan
 
 A typical transformation pipeline consists of the following components:
 
-## 1. 🧾 Input Handler
+#### 1. Input Handler
 
 **Purpose**: Ingests raw data from various sources and prepares it for transformation.
 
@@ -117,9 +117,7 @@ A typical transformation pipeline consists of the following components:
 - Normalize input into a consistent XML format.
 - Perform initial validations (e.g., well-formed XML).
 
----
-
-## 2. 📜 Schema Validator
+#### 2. Schema Validator
 
 **Purpose**: Ensures that incoming XML adheres to predefined schemas (XSD).
 
@@ -129,9 +127,7 @@ A typical transformation pipeline consists of the following components:
 - Reject or quarantine invalid documents.
 - Log validation errors for diagnostics.
 
----
-
-## 3. 🔄 XSLT Processor
+#### 3. XSLT Processor
 
 **Purpose**: Applies transformation logic using XSLT stylesheets.
 
@@ -142,9 +138,7 @@ A typical transformation pipeline consists of the following components:
 - Support parameterized transformations.
 - Handle conditional logic, loops, and formatting.
 
----
-
-## 4. 🔍 XPath Engine
+#### 4. XPath Engine
 
 **Purpose**: Enables querying and navigating XML documents.
 
@@ -154,9 +148,7 @@ A typical transformation pipeline consists of the following components:
 - Support dynamic rule-based transformations.
 - Enable filtering and conditional processing.
 
----
-
-## 5. 🧩 Canonical Model Mapper
+#### 5. Canonical Model Mapper
 
 **Purpose**: Maps source data to a canonical data model.
 
@@ -166,9 +158,7 @@ A typical transformation pipeline consists of the following components:
 - Ensure consistency across different source formats.
 - Output standardized XML for downstream systems.
 
----
-
-## 6. 🧪 Error Handler
+#### 6. Error Handler
 
 **Purpose**: Captures and manages transformation errors.
 
@@ -178,9 +168,7 @@ A typical transformation pipeline consists of the following components:
 - Log detailed error messages and stack traces.
 - Route failed messages to error queues or retry mechanisms.
 
----
-
-## 7. 📤 Output Dispatcher
+#### 7. Output Dispatcher
 
 **Purpose**: Sends transformed data to target systems.
 
@@ -190,9 +178,7 @@ A typical transformation pipeline consists of the following components:
 - Support multiple output formats (XML, JSON, flat files).
 - Ensure delivery guarantees (e.g., at-least-once, exactly-once).
 
----
-
-## 8. 📊 Monitoring & Logging Module
+#### 8. Monitoring & Logging Module
 
 **Purpose**: Provides observability into the transformation process.
 
@@ -202,9 +188,7 @@ A typical transformation pipeline consists of the following components:
 - Generate logs for auditing and debugging.
 - Integrate with monitoring tools (e.g., Prometheus, ELK, Azure Monitor).
 
----
-
-## 9. ⚙️ Configuration Manager
+#### 9. Configuration Manager
 
 **Purpose**: Manages dynamic configuration of the engine.
 
@@ -214,9 +198,7 @@ A typical transformation pipeline consists of the following components:
 - Support hot-reloading of configuration.
 - Maintain environment-specific settings.
 
----
-
-## 10. 🧱 Extensibility Layer
+#### 10. Extensibility Layer
 
 **Purpose**: Allows the engine to be extended with new features.
 
@@ -226,10 +208,7 @@ A typical transformation pipeline consists of the following components:
 - Support for custom transformation modules.
 - Enable versioning of transformation logic.
 
----
-
 This modular architecture ensures that the transformation engine is **scalable, maintainable, and adaptable** to evolving enterprise integration needs.
-
 
 ### 🔌 Input Layer
 
