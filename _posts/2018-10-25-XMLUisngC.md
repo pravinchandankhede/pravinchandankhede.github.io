@@ -91,13 +91,13 @@ Output file after transformation
 </html>
 ```
 
-### C# Support for XML and XSLT
+## C# Support for XML and XSLT
 
-#### Overview
+### Overview
 
 C# and the .NET Framework provide robust, high-performance support for working with XML and XSLT. These capabilities are essential for building transformation pipelines, especially in enterprise applications.
 
-#### Key Namespaces and Classes
+### Key Namespaces and Classes
 
 | Namespace | Purpose |
 |-----------|---------|
@@ -106,15 +106,15 @@ C# and the .NET Framework provide robust, high-performance support for working w
 | `System.Xml.Xsl` | XSLT transformation engine |
 | `System.Xml.Schema` | XML Schema validation |
 
-#### Optimized Classes for Performance
+### Optimized Classes for Performance
 
 - **`XmlReader` / `XmlWriter`**: Forward-only, streaming access to XML. Ideal for large files.
 - **`XslCompiledTransform`**: Compiles XSLT stylesheets for fast, reusable transformations.
 - **`XPathNavigator`**: Efficient, read-only cursor for XPath queries.
 
-#### Sample: Transform XML Using XSLT with XPath
+### Sample: Transform XML Using XSLT with XPath
 
-##### Sample XML (`input.xml`)
+#### Sample XML (`input.xml`)
 
 ```xml
 <employees>
@@ -126,7 +126,7 @@ C# and the .NET Framework provide robust, high-performance support for working w
 </employees>
 ```
 
-##### Sample XSLT ('transform.xslt')
+#### Sample XSLT ('transform.xslt')
 
 ```xslt
 <xsl:stylesheet version="1.0"
@@ -149,7 +149,7 @@ C# and the .NET Framework provide robust, high-performance support for working w
 </xsl:stylesheet>
 ```
 
-##### C# Code
+#### C# Code
 
 ```csharp
 using System;
@@ -179,7 +179,7 @@ class Program
 }
 ```
 
-##### Output of the XSLT Transformation
+#### Output of the XSLT Transformation
 
 The transformation will generate an HTML file (`output.html`) with the following content:
 
