@@ -17,34 +17,20 @@ In this artical, we will focus on understanding the foundational technology XML 
 
 Lets start with understanding these technologies in detail.
 
-### XML Basics
-
-#### What is XML?
+### What is XML?
 
 **[XML (eXtensible Markup Language)](https://www.w3schools.com/xml/)** is a markup language designed to store and transport data. It is both human-readable and machine-readable, making it ideal for data exchange between systems.
 
 **[XML (eXtensible Markup Language)](https://en.wikipedia.org/wiki/XML)** is a widely adopted standard for structured data representation.
 
-##### Key Features
+#### Key Features
 
 - **Self-descriptive**: Data is wrapped in tags that describe its meaning.
 - **Platform-independent**: Works across different systems and technologies.
 - **Hierarchical structure**: Data is organized in a tree-like format.
 - **Extensible**: You can define your own tags and structure.
 
-##### Basic Syntax
-
-```xml
-<person>
-  <name>John Doe</name>
-  <age>30</age>
-  <email>john@example.com</email>
-</person>
-```
-
-### XSLT Basics
-
-#### What is XSLT?
+### What is XSLT?
 
 **[XSLT (eXtensible Stylesheet Language Transformations)](https://en.wikipedia.org/wiki/XSLT)** is a declarative language designed specifically for transforming XML documents. It excels in:
 
@@ -60,59 +46,7 @@ It is part of the **XSL (Extensible Stylesheet Language)** family and works by a
 - It applies **XPath expressions** to navigate and select nodes.
 - The transformation engine processes the XML and outputs a new document based on the rules.
 
-#### Basic Syntax Example
-
-```xml
-<!-- Source XML -->
-<person>
-  <name>John</name>
-</person>
-
-<!-- XSLT Stylesheet -->
-<xsl:stylesheet version="1.0"
-  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:template match="/person">
-    <html>
-      <body>
-        <h1><xsl:value-of select="name"/></h1>
-      </body>
-    </html>
-  </xsl:template>
-</xsl:stylesheet>
-```
-
-Output file after transformation
-
-```html
-<html>
-  <body>
-    <h1>John<h1>
-  </body>
-</html>
-```
-
-## C# Support for XML and XSLT
-
-### Overview
-
-C# and the .NET Framework provide robust, high-performance support for working with XML and XSLT. These capabilities are essential for building transformation pipelines, especially in enterprise applications.
-
-### Key Namespaces and Classes
-
-| Namespace | Purpose |
-|-----------|---------|
-| `System.Xml` | Core XML support (DOM, readers, writers) |
-| `System.Xml.XPath` | XPath querying support |
-| `System.Xml.Xsl` | XSLT transformation engine |
-| `System.Xml.Schema` | XML Schema validation |
-
-### Optimized Classes for Performance
-
-- **`XmlReader` / `XmlWriter`**: Use this classes for forward-only, streaming access to XML documents. Ideal for large files.
-- **`XslCompiledTransform`**: Compiles XSLT stylesheets for fast, reusable transformations.
-- **`XPathNavigator`**: This provides a read-only cursor for efficient XPath queries execution.
-
-### Sample Preparation
+## Demo Sample Preparation
 
 ### Sample XML File
 
@@ -293,9 +227,9 @@ erDiagram
 
 #### XLST File
 
-The belwo file shows a typical transformation logic tht we can use to genrate a HTML table from given XML file
+The belwo file shows a typical transformation logic that we can use to generate a HTML table from given XML file
 
-```xslt
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
@@ -365,6 +299,28 @@ The belwo file shows a typical transformation logic tht we can use to genrate a 
 </books>
 ```
 
+
+## C# Support for XML and XSLT
+
+### Overview
+
+C# and the .NET Framework provide robust, high-performance support for working with XML and XSLT. These capabilities are essential for building transformation pipelines, especially in enterprise applications.
+
+### Key Namespaces and Classes
+
+| Namespace | Purpose |
+|-----------|---------|
+| `System.Xml` | Core XML support (DOM, readers, writers) |
+| `System.Xml.XPath` | XPath querying support |
+| `System.Xml.Xsl` | XSLT transformation engine |
+| `System.Xml.Schema` | XML Schema validation |
+
+### Optimized Classes for Performance
+
+- **`XmlReader` / `XmlWriter`**: Use this classes for forward-only, streaming access to XML documents. Ideal for large files.
+- **`XslCompiledTransform`**: Compiles XSLT stylesheets for fast, reusable transformations.
+- **`XPathNavigator`**: This provides a read-only cursor for efficient XPath queries execution.
+
 ### Sample: Transform XML Using XSLT with XPath
 
 #### Sample XML (`input.xml`)
@@ -380,6 +336,8 @@ The belwo file shows a typical transformation logic tht we can use to genrate a 
 ```
 
 #### Sample XSLT ('transform.xslt')
+
+We will use the below XSLT fike in our different demos.
 
 ```xslt
 <xsl:stylesheet version="1.0"
