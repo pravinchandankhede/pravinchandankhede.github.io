@@ -108,9 +108,76 @@ C# and the .NET Framework provide robust, high-performance support for working w
 
 ### Optimized Classes for Performance
 
-- **`XmlReader` / `XmlWriter`**: Forward-only, streaming access to XML. Ideal for large files.
+- **`XmlReader` / `XmlWriter`**: Use this classes for forward-only, streaming access to XML documents. Ideal for large files.
 - **`XslCompiledTransform`**: Compiles XSLT stylesheets for fast, reusable transformations.
-- **`XPathNavigator`**: Efficient, read-only cursor for XPath queries.
+- **`XPathNavigator`**: This provides a read-only cursor for efficient XPath queries execution.
+
+### Sample Preparation
+
+We will use the below XML file for all the below demo code. It contains list of authors and books.
+Below table describes each attribute of these entities
+
+#### Books Entity
+
+| Column Name     | Data Type | Description                                      |
+|-----------------|-----------|--------------------------------------------------|
+| id              | String    | Unique identifier for the book (e.g., B001)      |
+| title           | String    | Title of the book                                |
+| authorId        | String    | Reference to the author's ID (foreign key)       |
+| publishedYear   | Integer   | Year the book was published                      |
+| language        | String    | Language in which the book was originally written|
+| isbn            | String    | International Standard Book Number               |
+
+#### Author Entity
+
+| Column Name     | Data Type | Description                                      |
+|-----------------|-----------|--------------------------------------------------|
+| id              | String    | Unique identifier for the author (e.g., A001)    |
+| name            | String    | Full name of the author                          |
+| nationality     | String    | Country of origin                                |
+| genre           | String    | Primary literary genre                           |
+| birthYear       | Integer   | Year the author was born                         |
+| deathYear       | Integer   | Year the author died (optional)                  |
+
+```mermaid
+erDiagram
+    AUTHORS {
+        string id PK
+        string name
+        string nationality
+        string genre
+        int birthYear
+        int deathYear
+    }
+    BOOKS {
+        string id PK
+        string title
+        string authorId FK
+        int publishedYear
+        string language
+        string isbn
+    }
+    AUTHORS ||--o{ BOOKS : writes
+```
+
+### XPathDocument in C# & .NET
+
+`XPathDocument` is a class in the `System.Xml.XPath` namespace that provides a fast, read-only, in-memory representation of an XML document. It is optimized for XPath queries and XSLT transformations, making it more efficient than `XmlDocument` for these purposes.
+
+#### Sample XML File (`books.xml`)
+
+```xml
+<books>
+  <book>
+    <title>Book One</title>
+    <price>29.99</price>
+  </book>
+  <book>
+    <title>Book Two</title>
+    <price>49.99</price>
+  </book>
+</books>
+```
 
 ### Sample: Transform XML Using XSLT with XPath
 
