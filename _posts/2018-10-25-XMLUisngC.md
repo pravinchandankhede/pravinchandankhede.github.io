@@ -280,33 +280,15 @@ The belwo file shows a typical transformation logic that we can use to generate 
 </xsl:stylesheet>
 ```
 
-### XPathDocument in C# & .NET
-
-`XPathDocument` is a class in the `System.Xml.XPath` namespace that provides a fast, read-only, in-memory representation of an XML document. It is optimized for XPath queries and XSLT transformations, making it more efficient than `XmlDocument` for these purposes.
-
-#### Sample XML File (`books.xml`)
-
-```xml
-<books>
-  <book>
-    <title>Book One</title>
-    <price>29.99</price>
-  </book>
-  <book>
-    <title>Book Two</title>
-    <price>49.99</price>
-  </book>
-</books>
-```
-
-
 ## C# Support for XML and XSLT
 
 ### Overview
 
-C# and the .NET Framework provide robust, high-performance support for working with XML and XSLT. These capabilities are essential for building transformation pipelines, especially in enterprise applications.
+C# and the .NET Framework provide robust, high-performance support for working with XML and XSLT. These capabilities are essential for building transformation pipelines, especially in enterprise applications. We will explore some of the most important classes and thier usage. This will give you a solid foundaiton to work on advance XML scenarios.
 
 ### Key Namespaces and Classes
+
+Below are some of the important namespaces in .NET. Depending upon your use case, these can be utilized in combination.
 
 | Namespace | Purpose |
 |-----------|---------|
@@ -403,6 +385,25 @@ The transformation will generate an HTML file (`output.html`) with the following
     </ul>
   </body>
 </html>
+```
+
+### XPathDocument in C# & .NET
+
+`XPathDocument` is a class in the `System.Xml.XPath` namespace that provides a fast, read-only, in-memory representation of an XML document. It is optimized for XPath queries and XSLT transformations, making it more efficient than `XmlDocument` for these purposes.
+
+#### Sample XML File (`books.xml`)
+
+```xml
+<books>
+  <book>
+    <title>Book One</title>
+    <price>29.99</price>
+  </book>
+  <book>
+    <title>Book Two</title>
+    <price>49.99</price>
+  </book>
+</books>
 ```
 
 ## Combining XSLT + .NET for a middlwware developmemt
