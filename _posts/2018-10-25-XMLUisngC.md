@@ -114,6 +114,8 @@ C# and the .NET Framework provide robust, high-performance support for working w
 
 ### Sample Preparation
 
+### Sample XML File
+
 We will use the below XML file for all the below demo code. It contains list of authors and books.
 Below table describes each attribute of these entities
 
@@ -158,6 +160,194 @@ erDiagram
         string isbn
     }
     AUTHORS ||--o{ BOOKS : writes
+```
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+  <authors>
+    <author id="A001" nationality="British" genre="Dystopian">
+      <name>George Orwell</name>
+      <birthYear>1903</birthYear>
+      <deathYear>1950</deathYear>
+    </author>
+    <author id="A002" nationality="British" genre="Fantasy">
+      <name>J.K. Rowling</name>
+      <birthYear>1965</birthYear>
+    </author>
+    <author id="A003" nationality="Japanese" genre="Magical Realism">
+      <name>Haruki Murakami</name>
+      <birthYear>1949</birthYear>
+    </author>
+    <author id="A004" nationality="American" genre="Science Fiction">
+      <name>Isaac Asimov</name>
+      <birthYear>1920</birthYear>
+      <deathYear>1992</deathYear>
+    </author>
+  </authors>
+
+  <books>
+    <book id="B001" authorId="A001" language="English">
+      <title>1984</title>
+      <publishedYear>1949</publishedYear>
+      <isbn>9780451524935</isbn>
+    </book>
+    <book id="B002" authorId="A001" language="English">
+      <title>Animal Farm</title>
+      <publishedYear>1945</publishedYear>
+      <isbn>9780451526342</isbn>
+    </book>
+    <book id="B003" authorId="A002" language="English">
+      <title>Harry Potter and the Sorcerer's Stone</title>
+      <publishedYear>1997</publishedYear>
+      <isbn>9780439708180</isbn>
+    </book>
+    <book id="B004" authorId="A002" language="English">
+      <title>Harry Potter and the Chamber of Secrets</title>
+      <publishedYear>1998</publishedYear>
+      <isbn>9780439064873</isbn>
+    </book>
+    <book id="B005" authorId="A002" language="English">
+      <title>Harry Potter and the Prisoner of Azkaban</title>
+      <publishedYear>1999</publishedYear>
+      <isbn>9780439136365</isbn>
+    </book>
+    <book id="B006" authorId="A002" language="English">
+      <title>Harry Potter and the Goblet of Fire</title>
+      <publishedYear>2000</publishedYear>
+      <isbn>9780439139601</isbn>
+    </book>
+    <book id="B007" authorId="A002" language="English">
+      <title>Harry Potter and the Order of the Phoenix</title>
+      <publishedYear>2003</publishedYear>
+      <isbn>9780439358071</isbn>
+    </book>
+    <book id="B008" authorId="A002" language="English">
+      <title>Harry Potter and the Half-Blood Prince</title>
+      <publishedYear>2005</publishedYear>
+      <isbn>9780439785969</isbn>
+    </book>
+    <book id="B009" authorId="A002" language="English">
+      <title>Harry Potter and the Deathly Hallows</title>
+      <publishedYear>2007</publishedYear>
+      <isbn>9780545010221</isbn>
+    </book>
+    <book id="B010" authorId="A003" language="Japanese">
+      <title>Kafka on the Shore</title>
+      <publishedYear>2002</publishedYear>
+      <isbn>9781400079278</isbn>
+    </book>
+    <book id="B011" authorId="A003" language="Japanese">
+      <title>Norwegian Wood</title>
+      <publishedYear>1987</publishedYear>
+      <isbn>9780375704024</isbn>
+    </book>
+    <book id="B012" authorId="A003" language="Japanese">
+      <title>1Q84</title>
+      <publishedYear>2009</publishedYear>
+      <isbn>9780307593313</isbn>
+    </book>
+    <book id="B013" authorId="A003" language="Japanese">
+      <title>The Wind-Up Bird Chronicle</title>
+      <publishedYear>1994</publishedYear>
+      <isbn>9780679775430</isbn>
+    </book>
+    <book id="B014" authorId="A003" language="Japanese">
+      <title>Hard-Boiled Wonderland and the End of the World</title>
+      <publishedYear>1985</publishedYear>
+      <isbn>9780679743460</isbn>
+    </book>
+    <book id="B015" authorId="A004" language="English">
+      <title>Foundation</title>
+      <publishedYear>1951</publishedYear>
+      <isbn>9780553293357</isbn>
+    </book>
+    <book id="B016" authorId="A004" language="English">
+      <title>Foundation and Empire</title>
+      <publishedYear>1952</publishedYear>
+      <isbn>9780553293371</isbn>
+    </book>
+    <book id="B017" authorId="A004" language="English">
+      <title>Second Foundation</title>
+      <publishedYear>1953</publishedYear>
+      <isbn>9780553293364</isbn>
+    </book>
+    <book id="B018" authorId="A004" language="English">
+      <title>Foundation's Edge</title>
+      <publishedYear>1982</publishedYear>
+      <isbn>9780553293388</isbn>
+    </book>
+    <book id="B019" authorId="A004" language="English">
+      <title>Foundation and Earth</title>
+      <publishedYear>1986</publishedYear>
+      <isbn>9780553293425</isbn>
+    </book>
+    <book id="B020" authorId="A004" language="English">
+      <title>Prelude to Foundation</title>
+      <publishedYear>1988</publishedYear>
+      <isbn>9780553278392</isbn>
+    </book>
+  </books>
+</library>
+```
+
+#### XLST File
+
+The belwo file shows a typical transformation logic tht we can use to genrate a HTML table from given XML file
+
+```xslt
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <xsl:output method="html" indent="yes"/>
+
+  <xsl:key name="booksByAuthor" match="book" use="@authorId"/>
+
+  <xsl:template match="/">
+    <html>
+      <head>
+        <title>Library Catalog</title>
+        <style>
+          table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+          th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+          th { background-color: #f2f2f2; }
+          h2 { margin-top: 40px; }
+        </style>
+      </head>
+      <body>
+        <h1>Library Catalog</h1>
+        <xsl:for-each select="library/authors/author">
+          <xsl:variable name="authorId" select="@id"/>
+          <xsl:if test="count(key('booksByAuthor', $authorId)) &gt; 0">
+            <h2>
+              <xsl:value-of select="name"/> 
+              (<xsl:value-of select="@genre"/>, 
+              <xsl:value-of select="@nationality"/>)
+            </h2>
+            <table>
+              <tr>
+                <th>Title</th>
+                <th>Published Year</th>
+                <th>Language</th>
+                <th>ISBN</th>
+              </tr>
+              <xsl:for-each select="key('booksByAuthor', $authorId)">
+                <tr>
+                  <td><xsl:value-of select="title"/></td>
+                  <td><xsl:value-of select="publishedYear"/></td>
+                  <td><xsl:value-of select="@language"/></td>
+                  <td><xsl:value-of select="isbn"/></td>
+                </tr>
+              </xsl:for-each>
+            </table>
+          </xsl:if>
+        </xsl:for-each>
+      </body>
+    </html>
+  </xsl:template>
+
+</xsl:stylesheet>
 ```
 
 ### XPathDocument in C# & .NET
