@@ -339,9 +339,49 @@ static void UsingXslCompiledTransform()
 }
 ```
 
-### Sample: Transform XML Using XSLT with XPath
+## Using XslTransform class
 
-#### XPathDocument in C# & .NET
+> **Info:** This is only for .NET Framework. This code will not work in .NET Core. I am including this code for the sake completeness but is no longer recommended.
+{: .prompt-info }
+
+This code also follows the same logic as earlier, it
+
+- Create XslTransform instance and loads it with XSLT transformation file
+- Create a XML reader and writer instances
+- Performs transformation
+
+```csharp
+/// <summary>
+/// Transforms an XML file into an HTML file using the legacy XslTransform class.
+/// </summary>
+/// <remarks>
+/// XslTransform is obsolete and only available in .NET Framework, not .NET Core or .NET 5+.
+/// This sample is for legacy reference only.
+/// </remarks>
+static void UsingXslTransform()
+{
+#pragma warning disable SYSLIB0016 // Type or member is obsolete
+    String xmlPath = "books.xml";
+    String xsltPath = "transformation.xslt";
+    String outputPath = "catalog_xsltransform.html";
+
+    XslTransform xslt = new XslTransform();
+    xslt.Load(xsltPath);
+
+    using (XmlReader reader = XmlReader.Create(xmlPath))
+    using (XmlWriter writer = XmlWriter.Create(outputPath))
+    {
+        xslt.Transform(reader, null, writer);
+    }
+
+    Console.WriteLine($"Transformation complete. Output written to {outputPath}");
+#pragma warning restore SYSLIB0016
+    }
+```
+
+## Sample: Transform XML Using XSLT with XPath
+
+### XPathDocument in C# & .NET
 
 `XPathDocument` is a class in the `System.Xml.XPath` namespace that provides a fast, read-only, in-memory representation of an XML document. It is optimized for XPath queries and XSLT transformations, making it more efficient than `XmlDocument` for these purposes.
 
@@ -355,6 +395,7 @@ static void UsingXslCompiledTransform()
 
 This makes the combination of XML, XSLT, and C# ideal for building **high-volume, high-performance transformation pipelines**.
 
+ 
 ## Conclusion
 
 .NET and XML offers a very elegant solution to build transformation component. We will take this idea to next level to build a custom integration and transformation engine. Be with me on this journey.
