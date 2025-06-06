@@ -297,11 +297,18 @@ Below are some of the important namespaces in .NET. Depending upon your use case
 | `System.Xml.Xsl` | XSLT transformation engine |
 | `System.Xml.Schema` | XML Schema validation |
 
-### Optimized Classes for Performance
+### Key .NET classes used in XML Processing & Transformation
 
-- **`XmlReader` / `XmlWriter`**: Use this classes for forward-only, streaming access to XML documents. Ideal for large files.
-- **`XslCompiledTransform`**: Compiles XSLT stylesheets for fast, reusable transformations.
-- **`XPathNavigator`**: This provides a read-only cursor for efficient XPath queries execution.
+- **[`XslCompiledTransform`](https://learn.microsoft.com/en-us/dotnet/api/system.xml.xsl.xslcompiledtransform)**: Compiles XSLT stylesheets for fast, reusable transformations.
+- **[`XslTransform`](https://learn.microsoft.com/en-us/dotnet/api/system.xml.xsl.xsltransform)**: XSL transformation.
+- **[`XmlReader`](https://learn.microsoft.com/en-us/dotnet/api/system.xml.xmlreader) / [`XmlWriter`](https://learn.microsoft.com/en-us/dotnet/api/system.xml.xmlwriter)**: Use this classes for forward-only, streaming access to XML documents. Ideal for large files.
+- **[`XmlDocument`](https://learn.microsoft.com/en-us/dotnet/api/system.xml.xmldocument)**: This provides a DOM based approach to load, modify & save the XML document. This is mostly used to manipulate document pre or post transformaiton.
+- **[`XPathNavigator`](https://learn.microsoft.com/en-us/dotnet/api/system.xml.xpath.xpathnavigator)**: This provides a read-only cursor for efficient XPath queries execution.
+
+We will now see a sample code for each of these classes.
+
+## Using XslCompiledTransform class
+
 
 ### Sample: Transform XML Using XSLT with XPath
 
