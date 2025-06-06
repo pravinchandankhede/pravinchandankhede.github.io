@@ -309,6 +309,35 @@ We will now see a sample code for each of these classes.
 
 ## Using XslCompiledTransform class
 
+In this case we will use XslCompiledTransform class to performs the transformaiton. Here -
+
+- We first load the XSLT file in the `XslCompiledTransform` instance.
+- We create a output stream using `XmlWriter` class. This will write output path.
+- Last we call the `Transform` method to actually do the transformaiton.
+
+This code will perform the transformation and write an output to output.html file.
+
+```csharp
+static void UsingXslCompiledTransform()
+{
+    // Paths to the XML and XSLT files
+    String xmlPath = "books.xml";
+    String xsltPath = "transformation.xslt";
+    String outputPath = "catalog.html";
+
+    // Create the XslCompiledTransform and load the XSLT
+    XslCompiledTransform xslt = new XslCompiledTransform();
+    xslt.Load(xsltPath);
+
+    // Transform the XML and output to HTML file
+    using (XmlWriter writer = XmlWriter.Create(outputPath, xslt.OutputSettings))
+    {
+        xslt.Transform(xmlPath, writer);
+    }
+
+    Console.WriteLine($"Transformation complete. Output written to {outputPath}");
+}
+```
 
 ### Sample: Transform XML Using XSLT with XPath
 
