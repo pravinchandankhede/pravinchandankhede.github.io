@@ -39,7 +39,7 @@ table {
   margin: 1.5em 0;
   font-size: 0.95rem;
   line-height: 1.6;
-  table-layout: fixed; /* Prevents cells from expanding */
+  /*table-layout: fixed;*/ /* Prevents cells from expanding */
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
@@ -65,7 +65,7 @@ table tbody tr:nth-child(even) {
 }
 
 table tbody tr:hover {
-  background-color: red;
+  background-color: #f0f0f0;
 }
 
 /* Optional: prevent body overflow */
