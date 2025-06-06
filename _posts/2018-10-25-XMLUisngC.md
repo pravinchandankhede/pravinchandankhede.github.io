@@ -46,9 +46,9 @@ It is part of the **XSL (Extensible Stylesheet Language)** family and works by a
 - It applies **XPath expressions** to navigate and select nodes.
 - The transformation engine processes the XML and outputs a new document based on the rules.
 
-## Demo Sample Preparation
+## Demo Preparation
 
-### Sample XML File
+### Demo XML File
 
 We will use the below XML file for all the below demo code. It contains list of authors and books.
 Below table describes each attribute of these entities
@@ -225,7 +225,7 @@ erDiagram
 </library>
 ```
 
-#### XLST File
+### Demo XLST File
 
 The belwo file shows a typical transformation logic that we can use to generate a HTML table from given XML file
 
@@ -305,11 +305,11 @@ Below are some of the important namespaces in .NET. Depending upon your use case
 
 ### Sample: Transform XML Using XSLT with XPath
 
-### XPathDocument in C# & .NET
+#### XPathDocument in C# & .NET
 
 `XPathDocument` is a class in the `System.Xml.XPath` namespace that provides a fast, read-only, in-memory representation of an XML document. It is optimized for XPath queries and XSLT transformations, making it more efficient than `XmlDocument` for these purposes.
 
-## Combining XSLT + .NET for a middlwware developmemt
+#### Combining XSLT + .NET for a middlwware developmemt
 
 .NET provides **native support** for XML and XSLT manipulations through namespaces like `System.Xml`, `System.Xml.XPath`, and `System.Xml.Xsl`. It has rich support for reading, wirting, transforming and searching XML based documents. This enables:
 
