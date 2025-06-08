@@ -376,26 +376,9 @@ static void UsingXslTransform()
 
     Console.WriteLine($"Transformation complete. Output written to {outputPath}");
 #pragma warning restore SYSLIB0016
-    }
+}
 ```
 
-## Sample: Transform XML Using XSLT with XPath
-
-### XPathDocument in C# & .NET
-
-`XPathDocument` is a class in the `System.Xml.XPath` namespace that provides a fast, read-only, in-memory representation of an XML document. It is optimized for XPath queries and XSLT transformations, making it more efficient than `XmlDocument` for these purposes.
-
-#### Combining XSLT + .NET for a middlwware developmemt
-
-.NET provides **native support** for XML and XSLT manipulations through namespaces like `System.Xml`, `System.Xml.XPath`, and `System.Xml.Xsl`. It has rich support for reading, wirting, transforming and searching XML based documents. This enables:
-
-- **Efficient transformation** using `XslCompiledTransform`, which compiles XSLT for performance.
-- **XPath queries** for precise data extraction and manipulation.
-- **Streaming support** for processing large XML files without loading them entirely into memory.
-
-This makes the combination of XML, XSLT, and C# ideal for building **high-volume, high-performance transformation pipelines**.
-
- 
 ## Conclusion
 
 .NET and XML offers a very elegant solution to build transformation component. We will take this idea to next level to build a custom integration and transformation engine. Be with me on this journey.
