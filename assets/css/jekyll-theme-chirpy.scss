@@ -11,6 +11,7 @@
 
 body {
   background-color: white; /* Replace with your desired color */
+  overflow-x: hidden;
 }
 
 #sidebar #avatar {
@@ -67,9 +68,3 @@ table tbody tr:nth-child(even) {
 table tbody tr:hover {
   background-color: #f0f0f0;
 }
-
-/* Optional: prevent body overflow */
-body {
-  overflow-x: hidden;
-}
-
