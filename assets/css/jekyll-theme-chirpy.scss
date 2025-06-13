@@ -68,3 +68,10 @@ table tbody tr:nth-child(even) {
 table tbody tr:hover {
   background-color: #f0f0f0;
 }
+
+#toc-wrapper {
+  position: sticky;
+  // top: 80px; // adjust based on your header height
+  z-index: 2;
+}
+
