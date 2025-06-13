@@ -72,7 +72,10 @@ table tbody tr:hover {
 #toc-wrapper {
   position: sticky;
   // top: 80px; // adjust based on your header height
-  z-index: 2;
+  //z-index: 2; 
+z-index: 3;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
   
 }
 
