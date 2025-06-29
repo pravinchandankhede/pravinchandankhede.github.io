@@ -278,7 +278,7 @@ public static async Task Main(String[] args)
 
 ## Sample Application Code
 
-You can find the complete code for the sample application [here](https://github.com/pravinchandankhede/agenticai/tree/main/src/CustomerService). Feel free to fork it and try it out on your own.
+You can find the complete code for the sample application [Semantic Kernel Azure Search Memory](https://github.com/pravinchandankhede/agenticai/tree/main/src/CustomerService). Feel free to fork it and try it out on your own.
 
 I hope you found this post useful, as always the suggestions are welcome. Please feel free to reach out to me or leave a comment below.
 
