@@ -11,4 +11,8 @@ This page provides references of material I found useful for my work.
  - [Cloud Adoption Framework](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/)
  - [Azure Architecture Center](https://learn.microsoft.com/en-us/azure/architecture/)
 
- - <a href="https://learn.microsoft.com/en-us/azure/architecture/" target="_blank">Learn Markdown!</a>
+
+## Tutorials
+
+- [Bash Command Reference](https://www.gnu.org/software/bash/manual/bash.html)
+- [Learn Markdown](https://www.markdownguide.org/basic-syntax/)
