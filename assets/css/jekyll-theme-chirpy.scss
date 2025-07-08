@@ -75,7 +75,7 @@ table tbody tr:hover {
   visibility: visible !important;
   opacity: 1 !important;
   transform: none !important;
-  position: sticky;
+  position: sticky !important;
   top: 300px; // adjust as needed
   right: 20px;
   max-height: 80vh;
