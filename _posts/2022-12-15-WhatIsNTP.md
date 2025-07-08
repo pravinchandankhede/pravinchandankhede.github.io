@@ -5,19 +5,16 @@ categories: [Security, networking, x509, certificates, ssl, mtls, .net, azure]
 tags: [networking, clock, pki, x509, architecture, certificates, ssl, security, attack, encryption]     # TAG names should always be lowercase
 description: This post describes the importance of NTP and other such protocol and how they are used in today's modern system to keep system in sync.
 mermaid: true
+math: true
 ---
 
 ## Introduction
 
-In an internet enabled enterprise and businesses, it important that system remains synchronized. Accurate timekeeping is more than just a convenience—it's a critical infrastructure requirement. Whether you're running a global data center, managing financial transactions, or simply syncing files across devices, time synchronization ensures everything happens in the right order, at the right time.
+In an internet enabled enterprise and businesses, it's important that systems remains synchronized. Accurate timekeeping is more than just a convenience—it's a critical infrastructure requirement. Whether you're running a global data center, managing financial transactions, or simply syncing files across devices, time synchronization ensures everything happens in the right order, at the right time.
 
 ### What is Time Synchronization?
 
 **Time synchronization is the process of coordinating the time settings of computers and devices within a network to ensure they all share the same time reference.** This is crucial for various applications, including logging events, scheduling tasks, and maintaining the integrity of data transactions. Without proper time synchronization, discrepancies can arise, leading to potential security vulnerabilities and operational issues.
-
-### Importance of Time Synchronization
-
-Time synchronization ensures that all devices in a network or system agree on the current time. This is critical for the correct functioning of distributed systems, secure communications, data integrity, and real-time operations.
 
 ### Advantages of Time Synchronization
 
@@ -31,7 +28,7 @@ Time synchronization ensures that all devices in a network or system agree on th
 
 Implementing time synchronization means ensuring all systems and devices follow the same clock using **standardized protocols**. This is essential for consistency, security, and coordination across networks. Fortunately, time synchronization can be achieved using various standardized protocols. These protocols vary in complexity and accuracy and cater to different industries and problem domains.
 
-The most common being Network Time Protocol (NTP). NTP is designed to synchronize the clocks of computers over a network, ensuring that all devices have a consistent time reference. Below are some of the protocols used in time synchronization:
+The most common protocol being Network Time Protocol (NTP). NTP is designed to synchronize the clocks of computers over a network, ensuring that all devices have a consistent time reference. Below are some of the protocols used in time synchronization:
 
 | Protocol         | Description                                                                 | Target Use Cases / Industries                          |
 |------------------|-----------------------------------------------------------------------------|--------------------------------------------------------|
@@ -45,9 +42,11 @@ The most common being Network Time Protocol (NTP). NTP is designed to synchroniz
 | **White Rabbit** | Extension of PTP for sub-nanosecond accuracy using fiber optics.             | Particle physics, scientific research (e.g., CERN)      |
 | **Chrony**       | Modern NTP implementation optimized for variable network conditions.         | Linux systems, virtual machines, mobile devices         |
 
-## How NTP Works
+In this article we will focus on the NTP Protocol, we will see the details about NTP.
 
-**NTP (Network Time Protocol)** is a standardized protocol used to synchronize the clocks of computers and devices over a network. It ensures that all systems agree on the correct time, which is essential for logging, security, coordination, and data consistency.
+## What is NTP Protocol?
+
+**NTP (Network Time Protocol)** is a standardized protocol used to synchronize the clocks of computers and devices over a network. It ensures that all systems agree on the correct time. It is a -
 
 - **Standard**: Defined in RFC 5905
 - **Protocol Layer**: Operates over **UDP port 123**
@@ -141,39 +140,14 @@ An NTP packet is typically **48 bytes** long and consists of the following field
 
 ---
 
-## 🧠 Key Fields Explained
+##### Key Fields in NTP packets
 
-### 🔹 LI (Leap Indicator)
-
-- Values:
-  - `00`: No warning
-  - `01`: Last minute has 61 seconds
-  - `10`: Last minute has 59 seconds
-  - `11`: Alarm condition (clock not synchronized)
-
-### 🔹 VN (Version Number)
-
-- Common values: `3` (NTPv3), `4` (NTPv4)
-
-### 🔹 Mode
-
-- Values:
-  - `1`: Symmetric active
-  - `2`: Symmetric passive
-  - `3`: Client
-  - `4`: Server
-  - `5`: Broadcast
-  - `6`: NTP control
-  - `7`: Private
-
-### 🔹 Timestamps (T1, T2, T3, T4)
-
-- Used to calculate **round-trip delay** and **clock offset**.
-- Each timestamp is a 64-bit value:
-  - 32 bits for seconds since 1900
-  - 32 bits for fractional seconds
-
----
+| Field | Values |
+|-------|--------|
+| **LI (Leap Indicator)** | `00`: No warning   `01`: Last minute has 61 seconds   `10`: Last minute has 59 seconds   `11`: Alarm condition (clock not synchronized) |
+| **VN (Version Number)** | `3` (NTPv3), `4` (NTPv4) |
+| **Mode** | `1`: Symmetric active   `2`: Symmetric passive   `3`: Client   `4`: Server   `5`: Broadcast   `6`: NTP control   `7`: Private |
+| **Timestamps** | T1: Originate Timestamp   T2: Receive Timestamp   T3: Transmit Timestamp   T4: Destination Timestamp |
 
 #### Platform Support
 
