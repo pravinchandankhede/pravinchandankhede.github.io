@@ -4,38 +4,4 @@
   .bundle 
 }
 
-/* append your custom style below */
 
-/*#avatar .rounded-circle {
-  border-radius: 0;
-}*/
-
-#sidebar .profile-wrapper .rounded-circle {
-  border-radius: 20 !important;
-}
-
-#sidebar #avatar {
-  border-radius: 20 !important;
-}
-
-#sidebar #avatar .rounded-circle {
-  border-radius: 20 !important;
-}
-
-#sidebar .profile-wrapper #avatar .rounded-circle {
-  border-radius: 20 !important;
-}
-
-// Force ToC to always be visible
-#toc-wrapper {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  transform: none !important;
-  position: fixed;
-  top: 100px; // adjust as needed
-  right: 20px;
-  max-height: 80vh;
-  overflow-y: auto;
-  z-index: 1000;
-}
