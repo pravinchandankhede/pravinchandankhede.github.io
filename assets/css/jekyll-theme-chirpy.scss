@@ -69,13 +69,18 @@ table tbody tr:hover {
   background-color: #f0f0f0;
 }
 
+// Force ToC to always be visible
 #toc-wrapper {
-  position: sticky;
-  // top: 80px; // adjust based on your header height
-  //z-index: 2; 
-z-index: 3;
-  max-height: calc(100vh - 100px);
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: none !important;
+  position: fixed;
+  top: 100px; // adjust as needed
+  right: 20px;
+  max-height: 80vh;
   overflow-y: auto;
-  
+  z-index: 1000;
 }
+
 
