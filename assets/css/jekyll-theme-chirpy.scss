@@ -73,10 +73,10 @@ table tbody tr:hover {
 #toc-wrapper {
   display: block !important;
   visibility: visible !important;
-  opacity: 1 !important;
+  
   transform: none !important;
   position: sticky !important;
-  top: 300px; // adjust as needed
+  
   right: 20px;
   max-height: 80vh;
   overflow-y: auto;
