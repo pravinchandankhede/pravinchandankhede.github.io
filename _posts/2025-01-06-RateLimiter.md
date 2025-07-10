@@ -10,17 +10,6 @@ mermaid: true
 
 # 📘 Table of Contents: Understanding API Rate Limiting
 
-3. How Rate Limiting Works
-   - Key concepts: requests, limits, windows
-   - Headers and status codes
-
-4. Types of Rate Limiting Algorithms
-   - Fixed Window
-   - Sliding Window
-   - Token Bucket
-   - Leaky Bucket
-   - Comparison of algorithms
-
 5. [Implementing Rate Limiting]
    - At the API Gateway level
    - In application code (Node.js, Python, etc.)
@@ -155,7 +144,7 @@ sequenceDiagram
     end
 ```
 
-### ⚙️ Common Rate Limiting Algorithms
+### Common Rate Limiting Algorithms
 
 Different algorithms offer different trade-offs in terms of accuracy, complexity, and performance. Here's a breakdown of the most widely used ones:
 
@@ -195,9 +184,7 @@ A bucket holds 10 tokens and refills at 1 token per second. A client can make 10
 **Example**:  
 If the leak rate is 1 request per second, and 10 requests arrive at once, they’ll be processed one per second. Excess requests may be dropped if the bucket overflows.
 
----
-
-### 📊 Algorithm Comparison Table
+### Algorithm Comparison Table
 
 | Algorithm      | Burst Handling | Fairness | Complexity | Use Case Example         |
 |----------------|----------------|----------|------------|---------------------------|
@@ -205,9 +192,3 @@ If the leak rate is 1 request per second, and 10 requests arrive at once, they�
 | Sliding Window | ✅ Good         | ✅ High   | ⚠️ Medium  | Public APIs, SaaS platforms |
 | Token Bucket   | ✅ Excellent    | ✅ High   | ⚠️ Medium  | Rate-limited user actions |
 | Leaky Bucket   | ✅ Good         | ✅ High   | ⚠️ Medium  | Streaming, messaging APIs  |
-
----
-
-By understanding how these algorithms work, you can choose the right one based on your API’s traffic patterns, fairness requirements, and implementation complexity.
-
-Next, we’ll look at how to **implement rate limiting** in real-world systems.
