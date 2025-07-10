@@ -7,23 +7,6 @@ description: This post discusses the concept of API rate limiting, its importanc
 mermaid: true
 ---
 
-
-# 📘 Table of Contents: Understanding API Rate Limiting
-
-10. Advanced Topics
-    - Dynamic rate limiting
-    - User-based vs IP-based limits
-    - Rate limiting for GraphQL APIs
-
-11. Conclusion
-    - Summary
-    - Final thoughts and recommendations
-
-12. Further Reading & Resources
-    - Documentation links
-    - Tools and libraries
-    - Community discussions
-
 ## Introduction
 
 APIs (Application Programming Interfaces) are the backbone of modern software systems, enabling communication between different services and applications. They are now the defacto standards for system integration and extension.
@@ -176,21 +159,21 @@ Rate limiting is a component that intercepts the request to your API and control
 
 API gateways are often the first line of defense and are ideal for enforcing rate limits globally or per client.
 
-#### ✅ Pros
+#### Pros
 
 - Centralized control
 - Scales well
 - Easy to configure
 
-#### 🔧 Examples
+#### Examples
 
 - **[Azure API Management](https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-product-with-rates-limits)**: Supports usage plans and throttling per API key. Almost all major cloud providers offer similar services.
 - **[Kong Gateway Rate Limiting Plugin](https://docs.konghq.com/hub/kong-inc/rate-limiting/)**: Offers plugins for rate limiting based on IP, consumer, or credential.
 - **[NGINX Rate Limiting](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html)**: Can be configured with `limit_req_zone` and `limit_req`.
 
-#### 🧪 Sample Azure API Management Config
+#### Sample Azure API Management Config
 
-```yaml
+```xml
 <inbound>
     <base />
     <!-- Limit to 10 calls per 60 seconds per subscription key -->
@@ -213,18 +196,18 @@ This policy enforces a limit of 10 requests per minute for each subscription key
 
 You can implement rate limiting directly in your backend code using libraries or custom logic. This gives you fine-grained control.
 
-#### ✅ Pros
+#### Pros
 
 - Highly customizable
 - Can be user-aware (e.g., based on roles or plans)
 
-#### 🔧 Libraries
+#### Libraries
 
 - Node.js: express-rate-limit, rate-limiter-flexible
 - Python: ratelimit, limits, Flask-Limiter
 - Go: golang.org/x/time/rate
 
-#### 🧪 Example (Node.js with Express)
+#### Example (Node.js with Express)
 
 ```javascript
 const rateLimit = require('express-rate-limit');
@@ -242,12 +225,12 @@ app.use('/api/', limiter);
 
 Cloud-based services and API management platforms often provide built-in rate limiting features.
 
-#### ✅ Pros
+#### Pros
 
 - No infrastructure overhead
 - Built-in analytics and dashboards
 
-#### 🔧 Examples
+#### Examples
 
 - **[Cloudflare Rate Limiting](https://developers.cloudflare.com/rate-limits/):** Create rate limiting rules based on URL patterns, IP addresses, and more.
 - **[Apigee API Management](https://cloud.google.com/apigee/docs/api-platform/security/rate-limiting):** Comprehensive API management with built-in rate limiting policies.
@@ -321,7 +304,7 @@ There is nothing like perfect design. Even with the best intentions, rate limiti
 
 By following best practices and being aware of common pitfalls, you can build a rate limiting system that protects your API without frustrating your users.
 
-## 📊 Monitoring & Analytics
+## Monitoring & Analytics
 
 Monitoring and analytics are important aspects of software development. They allow for close observation of different components in a system. In the context of API rate limiting, monitoring and analytics involve collecting, analyzing, and visualizing data related to:
 
@@ -331,7 +314,7 @@ Monitoring and analytics are important aspects of software development. They all
 - System performance under load
 - Anomalies or abuse attempts
 
-### 🎯 Why It’s Important
+### Why It’s Important
 
 | **Reason**                         | **Explanation**                                                                                      |
 |-----------------------------------|------------------------------------------------------------------------------------------------------|
@@ -342,9 +325,7 @@ Monitoring and analytics are important aspects of software development. They all
 | **User Experience Optimization**  | Identify legitimate users frequently throttled and adjust limits or tiers.                          |
 | **Compliance & Auditing**         | Maintain logs and metrics for regulatory or internal compliance.                                    |
 
----
-
-### ✅ Value It Adds to Rate Limiting
+### Value It Adds to Rate Limiting
 
 | **Value**                          | **How It Helps**                                                                                     |
 |-----------------------------------|-------------------------------------------------------------------------------------------------------|
@@ -354,7 +335,9 @@ Monitoring and analytics are important aspects of software development. They all
 | **Enhanced Security Posture**     | Correlate rate limit data with security logs to detect threats.                                     |
 | **Better Developer Support**      | Provide clear answers to “Why was I throttled?” with supporting data.                               |
 
-### 📈 Best Practices
+### Best Practices
+
+Efforts should be made to align the monitoring and analytics with the rate limiting strategy across the organization. Every organization has a set of defined practices for observability and rate limiting is no different. Here are some best practices to follow:
 
 - **Dashboards**: Use tools like Grafana, Kibana, or Datadog to visualize metrics.
 - **Alerts**: Set up alerts for high throttle rates, traffic spikes, or anomalies.
@@ -363,6 +346,8 @@ Monitoring and analytics are important aspects of software development. They all
 - **Anomaly Detection**: Use statistical models or ML to detect unusual usage patterns.
 
 ## Advanced Topics in API Rate Limiting
+
+Below are some of the things that you would like to consider while designing your API rate limiting.
 
 | **Topic**                        | **Description**                                                                                                                                     | **Best Practices / Mitigation**                                                                 |
 |----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
@@ -378,3 +363,8 @@ Monitoring and analytics are important aspects of software development. They all
 | **Backoff Strategies**           | Clients should back off when throttled (e.g., exponential backoff, jitter).                                                                          | Document expected client behavior. Provide clear error messages and retry-after headers.         |
 | **Rate Limiting as a Service**   | Using third-party tools or platforms (e.g., Kong, Envoy, AWS API Gateway) to manage rate limits.                                                    | Evaluate based on latency, flexibility, and integration needs.                                   |
 | **Analytics & Anomaly Detection**| Monitoring usage patterns to detect abuse, misconfiguration, or unusual spikes.                                                                     | Use dashboards, alerts, and anomaly detection tools.                                             |
+
+## Conclusion
+
+Rate limiting is a crucial aspect of API design that helps maintain stability, security, and performance. By controlling how many requests clients can make, you can prevent abuse, ensure fair usage, and improve the overall user experience. While designing your API rate limiting strategy, consider the specific needs of your application, the expected traffic patterns, and the user experience you want to provide. Follow the best practices outlined in this post to implement effective rate limiting that scales with your API's growth.
+As APIs continue to evolve and become more integral to software ecosystems, mastering rate limiting will be essential for developers and architects alike. I hope this article has provided you with a solid understanding of API rate limiting, its importance, and how to implement it effectively. If you have any questions or would like to share your experiences with rate limiting, feel free to leave a comment below.
