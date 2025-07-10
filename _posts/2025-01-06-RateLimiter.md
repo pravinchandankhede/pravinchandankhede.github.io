@@ -49,7 +49,7 @@ mermaid: true
     - Tools and libraries
     - Community discussions
 
-## 1. Introduction
+## Introduction
 
 APIs (Application Programming Interfaces) are the backbone of modern software systems, enabling communication between different services and applications. They are now the defacto standards for system integration and extension.
 
@@ -192,3 +192,96 @@ If the leak rate is 1 request per second, and 10 requests arrive at once, they�
 | Sliding Window | ✅ Good         | ✅ High   | ⚠️ Medium  | Public APIs, SaaS platforms |
 | Token Bucket   | ✅ Excellent    | ✅ High   | ⚠️ Medium  | Rate-limited user actions |
 | Leaky Bucket   | ✅ Good         | ✅ High   | ⚠️ Medium  | Streaming, messaging APIs  |
+
+## Implementing Rate Limiting
+
+Rate limiting is a component that intercepts the request to your API and controls the rate at which requests are processed. It can be implemented using code, configuration, or infrastructure components. Implementing API rate limiting can be done at various layers of your infrastructure, depending on your architecture, scale, and performance needs. Below are the most common approaches:
+
+### 1. At the API Gateway Level
+
+API gateways are often the first line of defense and are ideal for enforcing rate limits globally or per client.
+
+#### ✅ Pros
+
+- Centralized control
+- Scales well
+- Easy to configure
+
+#### 🔧 Examples
+
+- **[Azure API Management](https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-product-with-rates-limits)**: Supports usage plans and throttling per API key. Almost all major cloud providers offer similar services.
+- **[Kong Gateway Rate Limiting Plugin](https://docs.konghq.com/hub/kong-inc/rate-limiting/)**: Offers plugins for rate limiting based on IP, consumer, or credential.
+- **[NGINX Rate Limiting](https://nginx.org/en/docs/http/ngx_http_limit_req_module.html)**: Can be configured with `limit_req_zone` and `limit_req`.
+
+#### 🧪 Sample Azure API Management Config
+
+```yaml
+<inbound>
+    <base />
+    <!-- Limit to 10 calls per 60 seconds per subscription key -->
+    <rate-limit-by-key calls="10" renewal-period="60" counter-key="@(context.Subscription.Key)" />
+</inbound>
+<backend>
+    <base />
+</backend>
+<outbound>
+    <base />
+</outbound>
+<on-error>
+    <base />
+</on-error>
+```
+
+This policy enforces a limit of 10 requests per minute for each subscription key. You can adjust `calls` and `renewal-period` as needed. Place this in your API's policy definition in Azure API Management.
+
+### 2. In Application Code
+
+You can implement rate limiting directly in your backend code using libraries or custom logic. This gives you fine-grained control.
+
+#### ✅ Pros
+
+- Highly customizable
+- Can be user-aware (e.g., based on roles or plans)
+
+#### 🔧 Libraries
+
+- Node.js: express-rate-limit, rate-limiter-flexible
+- Python: ratelimit, limits, Flask-Limiter
+- Go: golang.org/x/time/rate
+
+#### 🧪 Example (Node.js with Express)
+
+```javascript
+const rateLimit = require('express-rate-limit');
+
+const limiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 10, // Limit each IP to 10 requests per windowMs
+  message: 'Too many requests, please try again later.',
+});
+
+app.use('/api/', limiter);
+```
+
+### 3. Using Third-Party Services
+
+Cloud-based services and API management platforms often provide built-in rate limiting features.
+
+#### ✅ Pros
+
+- No infrastructure overhead
+- Built-in analytics and dashboards
+
+#### 🔧 Examples
+
+- Cloudflare: Rate limiting rules based on URL patterns, IPs, etc.
+- APIGee: Comprehensive API management with built-in rate limiting
+- Google Cloud Endpoints: Supports quota enforcement and monitoring
+
+### Choosing the Right Approach
+
+| Approach            | Best For                                   | Customization | Scalability |
+|---------------------|--------------------------------------------|---------------|-------------|
+| API Gateway         | Centralized control, microservices         | ⚠️ Medium     | ✅ High     |
+| Application Code    | Custom logic, user-specific limits         | ✅ High       | ⚠️ Medium   |
+| Third-Party Services| Quick setup, managed infrastructure        | ⚠️ Medium     | ✅ High     |
