@@ -10,21 +10,10 @@ mermaid: true
 
 # 📘 Table of Contents: Understanding API Rate Limiting
 
-5. [Implementing Rate Limiting]
-   - At the API Gateway level
-   - In application code (Node.js, Python, etc.)
-   - Using third-party services (e.g., Cloudflare, AWS API Gateway)
-
 6. [Best Practices]
    - Choosing the right limits
    - Communicating limits to clients
    - Handling rate limit errors gracefully
-
-7. [Rate Limiting in Popular APIs]
-   - Twitter API
-   - GitHub API
-   - OpenAI API
-   - Google APIs
 
 8. Monitoring and Analytics
    - Logging rate-limited requests
