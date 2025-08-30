@@ -3,7 +3,7 @@ title: Matrix. An Agentic AI Development Platform
 date: 2025-05-10 10:30:30 +/-TTTT
 categories: [Architecture, Agentic AI, Model Context Protocol, Matrix Testing]
 tags: [matrix, models, semantic kernel, ai, ai agents, plugins, planner, llm, vector store, mcp, .NET]     # TAG names should always be lowercase
-description: In this post I will show how to test a mcp server using inspector tool. We will utilise a mcp server created in my earlier blog post.
+description: In this post I will talk about Matrix, an Agentic AI development platform that I have been working on. .
 mermaid: true
 ---
 
