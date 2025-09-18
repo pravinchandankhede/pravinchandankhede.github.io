@@ -35,20 +35,49 @@ Interoperability: How to ensure that agents developed by different teams or vend
 
 **Why A2A now?** As enterprises adopt specialized agents (for data ops, customer support, content generation, compliance, etc.), emergent collaboration becomes a force multiplier—but only if agents can find, trust, and talk to each other in a consistent way.
 
-A2A brings:
+A2A enables:
 
 - **Discovery** (who can do what)
-- **Interoperability** (shared message contract & schemas)
+- **Interoperability** (shared message contract & schemas based on open standards)
 - **Negotiation** (intent → proposal → acceptance)
 - **Observability** (correlation, metrics, audit)
 - **Security & Policy** (authn/z, data classification, consent)
-- **Scalability** (async patterns, backpressure, resilient retries)
+- **Scalability** (async patterns, backpressure, resilient
 
 ## Key Design Principles of A2A
 
+A2A is built on the philosphy of simplicity, enterprise readiness, security and future readiness. Below are some of the key design principles:
+
+**Simple / Build on existing standards**
+A2A reuses well‑understood web standards—HTTP, JSON‑RPC 2.0, and Server‑Sent Events (SSE)—to lower the barrier to adoption and maximize interoperability.
+
+**Enterprise‑Ready**
+The protocol is designed to align with established enterprise practices for authentication, authorization, security, privacy, tracing, and monitoring—so it can be deployed in real production environments.
+
+**Async‑First**
+A2A is explicitly designed for long‑running tasks and human‑in‑the‑loop interactions. Streaming updates and asynchronous notifications are first‑class citizens.
+
+**Modality‑Agnostic**
+The content model supports text, files, structured data/forms, and references to audio/video—so agents can negotiate and exchange the right modality for a task.
+
+**Opaque Execution**
+Agents collaborate via declared capabilities and exchanged information without revealing internal thoughts/plans/tools—supporting IP protection and safer security boundaries.
+
 ## Core Challenges it addresses
 
+**Interoperability & Collaboration** — provide a common language for agents built by different vendors and frameworks to work together (delegation, context exchange, multi‑agent tasks).
+
+**Discovery** — let agents find and understand one another’s capabilities (via an Agent Card).
+
+**Flexibility** — support sync request/response, streaming for real‑time progress, and asynchronous push notifications for long‑running work.
+
+**Security** — align with standard web security practices to enable secure, enterprise deployments.
+
+**Asynchronicity** — native support for long‑running tasks and HITL scenarios.
+
 ## Implementation Details
+
+### Core concepts of A2A
 
 ### Key Components of A2A system
 
