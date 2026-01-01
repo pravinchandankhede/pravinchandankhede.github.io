@@ -4,7 +4,7 @@ date: 2025-05-16 10:30:30 +/-TTTT
 categories: [Architecture, Agentic AI, Model Context Protocol, Distributed Agents]
 tags: [semantic kernel, ai, ai agents, plugins, planner, llm, vector store, a2a, .NET]     # TAG names should always be lowercase
 description: In this post we will see the Agent 2 Agent (A2A) protocol and its significance in the realm of AI agents. This is introductory post to the core concepts of A2A.
-mermaid:true
+
 ---
 
 ## The rise of AI Agent
