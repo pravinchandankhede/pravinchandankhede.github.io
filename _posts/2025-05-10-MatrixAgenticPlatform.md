@@ -1,5 +1,5 @@
 ---
-title: Matrix. An Agentic AI Development Platform
+title: Matrix An Agentic AI Development Platform
 date: 2025-05-10 10:30:30 +/-TTTT
 categories: [Architecture, Agentic AI, Model Context Protocol, Matrix Testing]
 tags: [matrix, models, semantic kernel, ai, ai agents, plugins, planner, llm, vector store, mcp, .NET]     # TAG names should always be lowercase
