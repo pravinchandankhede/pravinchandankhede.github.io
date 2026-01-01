@@ -1,5 +1,5 @@
 ---
-title: Agentic AI - What is Agent 2 Agent Protocol?
+title: Agentic AI and Agent 2 Agent Protocol.
 date: 2025-05-15 10:30:30 +/-TTTT
 categories: [Architecture, Agentic AI, Model Context Protocol, Distributed Agents]
 tags: [semantic kernel, ai, ai agents, plugins, planner, llm, vector store, a2a, .NET]     # TAG names should always be lowercase
