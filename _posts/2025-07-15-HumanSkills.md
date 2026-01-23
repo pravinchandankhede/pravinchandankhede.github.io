@@ -4,7 +4,7 @@ date: 2025-07-15 10:30:30 +/-TTTT
 categories: [Architecture, Agentic AI, Human Skills, Model Context Protocol, Distributed Agents]
 tags: [semantic kernel, ai, ai agents, plugins, planner, llm, humanskills]     # TAG names should always be lowercase
 description: In this post, I will disucss a bit about how human skills are important to realise the full value of AI investments.
-media_subpath: "/assets/images/posts/2025-07-15"
+
 ---
 
 ## AI Is Advancing Faster Than Organisations Can Absorb — But Are Humans Ready?
