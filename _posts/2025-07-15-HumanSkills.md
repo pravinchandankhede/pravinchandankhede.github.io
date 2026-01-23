@@ -17,7 +17,7 @@ Because in my view, the real barrier isn’t technology anymore —
 it’s human readiness, operating-model readiness, and behavioural readiness.
 While AI capability is accelerating exponentially, I believe human capability and trust are still moving linearly. And to me, this is the #1 reason why AI value fails to materialise.
 
-## Four Mantras for Tech Leaders
+## Mantras for Tech Leaders
 
 ### AI Readiness ≠ Human Readiness
 
