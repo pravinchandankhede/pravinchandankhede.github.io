@@ -5,6 +5,7 @@ categories: [Architecture, Agentic AI, Gateway, Model Context Protocol, Distribu
 tags: [semantic kernel, ai, ai agents, plugins, planner, llm, humanskills]     # TAG names should always be lowercase
 description: In this post, we will the idea behind MCP gateway and how does it helps in steamlining your tool integration.
 media_subpath: "/assets/images/posts/2025-08-10"
+mermaid: true
 ---
 
 
@@ -12,8 +13,20 @@ media_subpath: "/assets/images/posts/2025-08-10"
 
 MCP server have become a popular choice for hosting AI agents due to their ability to provide seamless integration with various tools and services. However, as the number of agents and tools increases, managing connections and ensuring efficient communication can become challenging. This is where the concept of an MCP Gateway comes into play.
 
-> For a starter on MCP, refer my post on MCP server [here](https://pravinchandankhede.github.io/posts/ModelContextProtocolSimple/).
+> For a starter on MCP, refer my post [here](https://pravinchandankhede.github.io/posts/ModelContextProtocolSimple/).
 {: .prompt-info }
+
+### What is MCP Gateway?
+
+An MCP Gateway is a centralized routing and management layer that sits between AI agents and multiple MCP servers. It acts as an intermediary that handles incoming requests from agents, routes them to the appropriate MCP server based on predefined rules, and manages the communication protocols used for interaction.
+It helps you in streamlining the connections, improving scalability, and enhancing the overall performance of your AI agent ecosystem.
+
+### Key Features of MCP Gateway
+
+- **Centralized Routing**: The gateway routes requests from AI agents to the appropriate MCP server based on factors such as server load, agent requirements, and tool availability.
+- **Protocol Management**: It supports multiple communication protocols (e.g., SSE, Streamable HTTP) to ensure compatibility with various agents and servers.
+- **Scalability**: The gateway can handle a large number of agents and MCP servers, making it easier to scale your AI ecosystem as needed.
+- **Load Balancing**: It can distribute requests evenly across multiple MCP servers to prevent overload and ensure optimal performance.
 
 ```mermaid
 
