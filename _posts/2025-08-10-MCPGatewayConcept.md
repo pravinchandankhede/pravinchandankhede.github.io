@@ -154,6 +154,16 @@ Future‑proofing. Lets teams add new adapters, policies, format transformers, a
 
 Hybrid interop. Uses cloud API gateways (e.g., AWS API Gateway/Azure APIM) to expose non‑MCP services, with REST→MCP adapters for consistent policy, auth, and observability.
 
+### Benefits of MCP Gateway
+
+**Centralized Security & Governance**: The gateway acts as a single point for enforcing security policies, authentication, and authorization across all MCP servers. No need to implement these controls on each server individually.
+
+**Unified Observability**: Collect logs, metrics, and traces from a single location, simplifying monitoring and troubleshooting of agent-server interactions. From agentic perspective, it also helps you track error rate and latency across various tools and models.
+
+**Operational Simplicity**: Simplifies the architecture by reducing the number of direct connections between agents and MCP servers. Agents only need to know about the gateway, not each individual server. This helps in reducing configuration complexity and also let agent discover new tools dynamically.
+
+**Cost Management**: By centralizing connections and optimizing routing, the gateway can help reduce costs associated with maintaining multiple direct connections and improve resource utilization across MCP servers. It also let you implement caching for standard tools, enforce rate limits and quotas to control usage.
+
 ### Example Architecture Diagram
 
 The following diagram illustrates the architecture of a typical MCP Gateway setup:
@@ -339,187 +349,3 @@ style L7b      fill:#F5FFF8,stroke:#2ECC71,stroke-width:1.2px;
 ## Conclusion
 
 Implementing an MCP Gateway can significantly enhance the management and scalability of AI agent ecosystems. By centralizing routing, protocol management, security, and observability, the gateway simplifies interactions between agents and MCP servers, allowing for more efficient tool integration and improved performance. As AI applications continue to grow in complexity, adopting an MCP Gateway architecture will be crucial for maintaining a robust and flexible infrastructure.
-
-```mermaid
-
-flowchart TB
-
-%% ============================================
-%% LAYER 1: AI Agents (Top)
-%% ============================================
-subgraph L1[AI Agents]
-  direction TB
-  A1[AI Agent 1]
-  A2[AI Agent 2]
-  A3[AI Agent 3]
-  AN[AI Agent N]
-end
-
-%% ============================================
-%% LAYERS 2–4: MCP Gateway (Boundary)
-%% ============================================
-subgraph GWBOUND["MCP Gateway (Boundary)"]
-  direction TB
-
-  %% Ingress & Protocol Adapters
-  subgraph L2[Ingress & Protocol Adapters]
-    direction TB
-    PAD1[SSE Adapter]
-    PAD2[Streamable HTTP Adapter]
-    PAD3[WebSocket Adapter]
-  end
-
-  %% Gateway Core
-  subgraph L3[MCP Gateway Core]
-    direction TB
-    RP[Reverse Proxy Router]
-    REG[MCP Registry / Discovery]
-    CM[Connection Manager]
-  end
-
-  %% Security & Policy
-  subgraph L4[Security & Policy]
-    direction TB
-    AUTH["AuthN/AuthZ (OIDC/JWT/mTLS)"]
-    POL["Policy Engine (OPA/Rego)"]
-    RATELIM[Rate Limits / Quotas]
-    AUDIT[Audit & Access Logs]
-  end
-
-  %% Ingress -> Core
-  PAD1 --> RP
-  PAD2 --> RP
-  PAD3 --> RP
-  RP --> REG
-  RP --> CM
-
-  %% Core <-> Security
-  RP --- AUTH
-  RP --- POL
-  RP --- RATELIM
-  RP --- AUDIT
-  REG --- AUDIT
-end
-
-%% ============================================
-%% LAYER 5: MCP Servers (immediately below Gateway)
-%% ============================================
-subgraph L5["A) Local & B) Clustered MCP Servers"]
-  direction LR
-
-  %% 5A: Local MCP Servers
-  subgraph L5a[Local MCP Servers]
-    direction TB
-    LSV1[MCP Server 1]
-    LSV2[MCP Server 2]
-  end
-
-  %% 5B: Clustered MCP Servers
-  subgraph L5b["Clustered MCP Servers (EKS/EC2)"]
-    direction TB
-    CSV3[MCP Server 3]
-    CSV4[MCP Server 4]
-    HPA[Autoscale / Pooling]
-  end
-end
-
-%% ============================================
-%% LAYER 6: Cloud API Gateway + Functions
-%% ============================================
-subgraph L6[Cloud API Gateway + Functions]
-  direction TB
-  AGW[Amazon API Gateway]
-  LMB1[AWS Lambda Function 1]
-  LMB2[AWS Lambda Function 2]
-end
-
-%% ============================================
-%% LAYER 7: Data Sources (Bottom)
-%% ============================================
-subgraph L7
-  direction LR
-
-  subgraph L7a[Databases]
-    direction TB
-    DB1["(Database 1)"]
-    DB2["(Database 2)"]
-  end
-
-  subgraph L7b[External Data Sources / APIs]
-    direction TB
-    API1[External API 1]
-    API2[External API 2]
-    API3[External API 3]
-  end
-end
-
-%% ============================================
-%% FLOWS (Top -> Bottom)
-%% ============================================
-%% Agents -> Ingress (inside Gateway boundary)
-A1 -->|MCP / SSE| PAD1
-A2 -->|MCP / SSE| PAD1
-A3 -->|MCP / Streamable HTTP| PAD2
-AN -->|MCP / WS or HTTP| PAD3
-
-%% Gateway Core -> MCP servers (directly below)
-RP -->|SSE| LSV1
-RP -->|SSE| LSV2
-RP -->|SSE| CSV3
-RP -->|SSE| CSV4
-CM --> HPA
-
-%% Gateway Core -> Cloud API Gateway
-RP -->|Streamable HTTP| AGW
-AGW --> LMB1
-AGW --> LMB2
-
-%% Tool Connections to Data Sources (bottom)
-LSV1 -->|Tool Conn.| DB1
-LSV2 -->|Tool Conn.| DB2
-CSV3 -->|Tool Conn.| API1
-CSV4 -->|Tool Conn.| API2
-LMB2 -->|Tool Conn.| API3
-
-%% ============================================
-%% THEME (classDef then assignments)
-%% ============================================
-classDef agent        fill:#E6F2FF,stroke:#4A90E2,color:#0A2540,stroke-width:1px;
-classDef ingress      fill:#E8FBFF,stroke:#00ACC1,color:#003944,stroke-width:1px;
-classDef gatewayCore  fill:#F3E8FF,stroke:#7E57C2,color:#2C115B,stroke-width:1px;
-classDef security     fill:#FFF3F3,stroke:#E57373,color:#4A1010,stroke-width:1px;
-classDef mcpLocal     fill:#FFF4E5,stroke:#FB8C00,color:#4A2A00,stroke-width:1px;
-classDef mcpCluster   fill:#EFE7FB,stroke:#8E7CC3,color:#231942,stroke-width:1px;
-classDef apiGateway   fill:#FFEDE7,stroke:#FF7043,color:#4A1D12,stroke-width:1px;
-classDef lambda       fill:#FFE2EA,stroke:#EC407A,color:#4A0F27,stroke-width:1px;
-classDef database     fill:#E9F7FF,stroke:#00ACC1,color:#003944,stroke-width:1px;
-classDef extApi       fill:#F1FFF5,stroke:#2ECC71,color:#0B3A1F,stroke-width:1px;
-
-class A1,A2,A3,AN agent
-class PAD1,PAD2,PAD3 ingress
-class RP,REG,CM gatewayCore
-class AUTH,POL,RATELIM,AUDIT security
-class LSV1,LSV2 mcpLocal
-class CSV3,CSV4,HPA mcpCluster
-class AGW apiGateway
-class LMB1,LMB2 lambda
-class DB1,DB2 database
-class API1,API2,API3 extApi
-
-%% ============================================
-%% SUBGRAPH STYLES
-%% ============================================
-style L1       fill:#F7FBFF,stroke:#4A90E2,stroke-width:1.2px;
-style GWBOUND  fill:#F9FBFF,stroke:#5C6BC0,stroke-width:2px;
-style L2       fill:#F5FDFF,stroke:#00ACC1,stroke-width:1.2px;
-style L3       fill:#F6F2FF,stroke:#7E57C2,stroke-width:1.2px;
-style L4       fill:#FFF7F7,stroke:#E57373,stroke-width:1.2px;
-style L5       fill:#FBF8FF,stroke:#8E7CC3,stroke-width:1.2px;
-style L5a      fill:#FFF8EE,stroke:#FB8C00,stroke-width:1.2px;
-style L5b      fill:#F4F0FF,stroke:#8E7CC3,stroke-width:1.2px;
-style L6       fill:#FFF5F0,stroke:#FF7043,stroke-width:1.2px;
-style L7       fill:#F5FFF8,stroke:#2ECC71,stroke-width:1.2px;
-style L7a      fill:#F5FBFF,stroke:#00ACC1,stroke-width:1.2px;
-style L7b      fill:#F5FFF8,stroke:#2ECC71,stroke-width:1.2px;
-
-```
