@@ -14,4 +14,8 @@ mermaid: true
 GitHub Copilot SDK is a recently launched SDK that helps you build AI Agents faster and in a more reliable way. It abstracts away most of the common boilerplate code required for building AI agents, allowing developers to focus on creating unique and innovative agent capabilities.
 
 >The feature is still in preview and expected to change over time. For the latest updates, please refer to the [official documentation](https://github.com/github/copilot-sdk).
-{: .note}
+{: .prompt-info }
+
+## Purpose
+
+The GitHub Copilot SDK is a new framework that allows developers to embed Copilot‑like agentic capabilities directly into any application—not just IDEs. It represents a major evolution from traditional “autocomplete AI” toward full agentic coding workflows, where AI systems can plan, execute, and manage complex multi-step software development tasks.
