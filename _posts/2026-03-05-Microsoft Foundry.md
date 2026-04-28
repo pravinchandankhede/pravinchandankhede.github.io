@@ -4,7 +4,7 @@ date: 2026-01-24 10:30:30 +/-TTTT
 categories: [Architecture, Agentic AI, Microsoft Foundry, Model Context Protocol, Distributed Agents]
 tags: [ai, ai agents, plugins, planner, llm, foundry, enterprise ai, strategy, agenticai,  microsoftfoundry, enterprisearchitecture, aigovernance, nextgenai, enterpriseai, aistrategy]     # TAG names should always be lowercase
 description: In this post, I explore the advantages of Microsoft Foundry in redefining enterprise AI strategy.
-media_subpath: "/assets/images/posts/2026-03-05"
+
 mermaid: true
 ---
 

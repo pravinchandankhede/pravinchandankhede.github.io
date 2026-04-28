@@ -4,7 +4,7 @@ date: 2026-01-24 10:30:30 +/-TTTT
 categories: [Architecture, Agentic AI, Azure, Microsoft Foundry, Model Context Protocol, Distributed Agents]
 tags: [ai, ai agents, plugins, planner, llm, foundry, enterprise ai, strategy, agenticai,  microsoftfoundry, enterprisearchitecture, aigovernance, nextgenai, enterpriseai, aistrategy, workiq, foundryiq]     # TAG names should always be lowercase
 description: We will explore how Azure is evolving into an agentic operating system, enabling intelligent agents across the enterprise.
-media_subpath: "/assets/images/posts/2026-04-15"
+
 mermaid: true
 ---
 
@@ -16,7 +16,7 @@ A traditional OS provides core services like runtime, memory, scheduling, identi
 
 As an architect, I see these agent ecosystems as collections of autonomous, semi-autonomous, and orchestrated agents that reason, collaborate, retain context, and act across enterprise systems — powered by an emerging Agentic OS.
 
-![Azure as Agentic OS — Architecture Diagram](azure-agentic-os.svg)
+![Azure as Agentic OS — Architecture Diagram](../assets/images/posts/2026-04-15/azure-agentic-os.png)
 
 ### 𝗛𝗼𝘄 𝘁𝗵𝗲 𝗔𝗴𝗲𝗻𝘁𝗶𝗰 𝗢𝗦 𝗪𝗼𝗿𝗸𝘀
 
