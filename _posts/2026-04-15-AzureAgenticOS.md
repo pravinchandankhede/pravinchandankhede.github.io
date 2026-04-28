@@ -1,6 +1,6 @@
 ﻿---
-title: Azure as Agentic OS
-date: 2026-01-24 10:30:30 +/-TTTT
+title: Azure Agentic OS
+date: 2026-04-15 10:30:30 +/-TTTT
 categories: [Architecture, Agentic AI, Azure, Microsoft Foundry, Model Context Protocol, Distributed Agents]
 tags: [ai, ai agents, plugins, planner, llm, foundry, enterprise ai, strategy, agenticai,  microsoftfoundry, enterprisearchitecture, aigovernance, nextgenai, enterpriseai, aistrategy, workiq, foundryiq]     # TAG names should always be lowercase
 description: We will explore how Azure is evolving into an agentic operating system, enabling intelligent agents across the enterprise.
@@ -8,7 +8,7 @@ description: We will explore how Azure is evolving into an agentic operating sys
 mermaid: true
 ---
 
-## 𝗔𝘇𝘂𝗿𝗲 𝗮𝘀 𝗮𝗻 𝗔𝗴𝗲𝗻𝘁𝗶𝗰 𝗢𝗦 — 𝗘𝗻𝘁𝗲𝗿𝗽𝗿𝗶𝘀𝗲 𝗖𝗹𝗼𝘂𝗱 𝗧𝗿𝗮𝗻𝘀𝗳𝗼𝗿𝗺𝗮𝘁𝗶𝗼𝗻
+## 𝗔𝘇𝘂𝗿𝗲 𝗔𝗴𝗲𝗻𝘁𝗶𝗰 𝗢𝗦 — 𝗘𝗻𝘁𝗲𝗿𝗽𝗿𝗶𝘀𝗲 𝗖𝗹𝗼𝘂𝗱 𝗧𝗿𝗮𝗻𝘀𝗳𝗼𝗿𝗺𝗮𝘁𝗶𝗼𝗻
 
 Cloud is undergoing a transformation — from being a hosting provider to a completely new paradigm. Over the last few years, Azure has evolved into something more foundational: an operating system for intelligent agents.
 
