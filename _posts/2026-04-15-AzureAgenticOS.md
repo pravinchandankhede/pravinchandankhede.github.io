@@ -41,10 +41,10 @@ These capabilities are built on top of the Azure execution substrate — compute
 
 For enterprise architecture, it provides:
 
-• A consistent execution model for agents across the organisation
-• Built-in governance and control, not bolted on after experimentation
-• Separation of experience and intelligence, allowing UX to evolve without re-architecting cognition
-• Scalable, reusable agent ecosystems instead of siloed copilots
+- A consistent execution model for agents across the organisation
+- Built-in governance and control, not bolted on after experimentation
+- Separation of experience and intelligence, allowing UX to evolve without re-architecting cognition
+- Scalable, reusable agent ecosystems instead of siloed copilots
 
 We are no longer designing applications or services. We are designing agent ecosystems, control fabrics, memory architectures, and trust models.
 
